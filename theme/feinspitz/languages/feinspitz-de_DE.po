@@ -12,7 +12,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_x:1,2c;_ex:1,2c;esc_html_x:1,2c;esc_attr_x:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"PO-Revision-Date: 2026-07-02 09:50+0000\n"
+"PO-Revision-Date: 2026-07-02 09:53+0000\n"
 
 #: inc/checkout.php:36
 #: inc/homepage.php:29
@@ -57,6 +57,10 @@ msgstr "Startseite: Über uns / Story"
 #: inc/homepage.php:38
 msgid "Startseite: Weinproben & Catering"
 msgstr "Startseite: Weinproben & Catering"
+
+#: inc/i18n.php:73
+msgid "Sprache wählen"
+msgstr "Sprache wählen"
 
 #: inc/product.php:121
 msgid "Produkt: Galerie & Kaufbereich"

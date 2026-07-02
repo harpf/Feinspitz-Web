@@ -5,7 +5,12 @@
 	<!-- wp:pattern {"slug":"feinspitz/home-hero"} /-->
 	<!-- wp:pattern {"slug":"feinspitz/home-featured"} /-->
 	<!-- wp:pattern {"slug":"feinspitz/home-categories"} /-->
-	<!-- wp:pattern {"slug":"feinspitz/wine-finder-teaser"} /-->
+	<!-- Teaser direkt als Shortcode (Shortcodes in wp:pattern rendern hier nicht zuverlässig) -->
+	<!-- wp:group {"align":"wide","className":"feinspitz-wf-teaser-wrap","layout":{"type":"constrained","contentSize":"1080px"}} -->
+	<div class="wp-block-group alignwide feinspitz-wf-teaser-wrap">
+		<!-- wp:shortcode -->[feinspitz_wine_finder_teaser]<!-- /wp:shortcode -->
+	</div>
+	<!-- /wp:group -->
 	<!-- wp:pattern {"slug":"feinspitz/home-story"} /-->
 	<!-- wp:pattern {"slug":"feinspitz/home-cta"} /-->
 </main>

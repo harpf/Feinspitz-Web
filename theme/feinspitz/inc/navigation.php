@@ -84,6 +84,7 @@ function feinspitz_nav_items() {
 		return array(
 			array( 'Shop', home_url( '/shop/' ) ),
 			array( 'Guide', feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
+			array( 'Glossary', feinspitz_nav_category_url( 'weinlexikon', 'glossary', '/category/weinlexikon/' ) ),
 			array( 'FAQ', feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 			array( 'About us', feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 			array( 'Contact', feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),
@@ -93,6 +94,7 @@ function feinspitz_nav_items() {
 	return array(
 		array( __( 'Shop', 'feinspitz' ), home_url( '/shop/' ) ),
 		array( __( 'Ratgeber', 'feinspitz' ), feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
+		array( __( 'Weinlexikon', 'feinspitz' ), feinspitz_nav_category_url( 'weinlexikon', 'glossary', '/category/weinlexikon/' ) ),
 		array( __( 'FAQ', 'feinspitz' ), feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 		array( __( 'Über uns', 'feinspitz' ), feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 		array( __( 'Kontakt', 'feinspitz' ), feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),

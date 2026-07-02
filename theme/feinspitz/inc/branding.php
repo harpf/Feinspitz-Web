@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz - Branding, Header & Footer (refine/branding-header-footer).
+ * Feinspitz · Branding, Header & Footer (refine/branding-header-footer).
  *
  * Diese Datei wird von functions.php automatisch geladen (glob inc/*.php) und
  * gehört exklusiv dem Branding-Branch. Sie stellt bereit:
@@ -50,8 +50,8 @@ function feinspitz_logo_shortcode( $atts = array() ) {
 
 	$src   = esc_url( get_template_directory_uri() . '/assets/logo.svg' );
 	$home  = esc_url( home_url( '/' ) );
-	$label = esc_attr__( 'Feinspitz - zur Startseite', 'feinspitz' );
-	$alt   = esc_attr__( 'Feinspitz - Weine & Genuss', 'feinspitz' );
+	$label = esc_attr__( 'Feinspitz · zur Startseite', 'feinspitz' );
+	$alt   = esc_attr__( 'Feinspitz · Weine & Genuss', 'feinspitz' );
 	$class = $atts['class'] ? ' ' . esc_attr( $atts['class'] ) : '';
 	$style = $atts['height'] ? sprintf( ' style="height:%s"', esc_attr( $atts['height'] ) ) : '';
 
@@ -118,13 +118,13 @@ function feinspitz_footer_shortcode() {
 
 	$t = $is_en
 		? array(
-			'tagline'  => 'Histamine-tested wines for more trust and enjoyment - for a better quality of life.',
+			'tagline'  => 'Histamine-tested wines for more trust and enjoyment · for a better quality of life.',
 			'contact'  => 'Contact',
 			'discover' => 'Discover',
 			'language' => 'Language',
 		)
 		: array(
-			'tagline'  => 'Histamingeprüfte Weine mit mehr Vertrauen und Genuss - für mehr Lebensqualität.',
+			'tagline'  => 'Histamingeprüfte Weine mit mehr Vertrauen und Genuss · für mehr Lebensqualität.',
 			'contact'  => 'Kontakt',
 			'discover' => 'Entdecken',
 			'language' => 'Sprache',
@@ -205,7 +205,7 @@ add_action( 'init', function () {
 } );
 
 /**
- * Gescopte Styles für Header & Footer - an das Theme-Stylesheet gehängt, damit
+ * Gescopte Styles für Header & Footer · an das Theme-Stylesheet gehängt, damit
  * style.css / theme.json (Phase 0) unberührt bleiben.
  */
 add_action( 'wp_enqueue_scripts', function () {

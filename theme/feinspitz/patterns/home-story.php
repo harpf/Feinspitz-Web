@@ -6,7 +6,7 @@
  * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Persönliche Story des Familienweinguts Steyrer (Traisental) mit echtem
- * Original-Motiv (assets/images/natur-winzer.jpg - Weinberg + Winzer + Siegel),
+ * Original-Motiv (assets/images/natur-winzer.jpg · Weinberg + Winzer + Siegel),
  * persönlichem Zitat + Signatur und dem Marken-Slogan. Bild neben Text,
  * stapelt auf Mobil automatisch.
  *
@@ -42,7 +42,7 @@ $story_img = esc_url( get_template_directory_uri() . '/assets/images/natur-winze
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
-			<p style="margin-top:var(--wp--preset--spacing--30)"><?php esc_html_e( 'Familie Steyrer bewirtschaftet ihre Reben nachhaltig - zertifiziert nach Austria Bio Garantie, zu 100 % histamingeprüft und vegan. Als erster Anbieter histamingeprüfter Weine der Schweiz bringen wir dieses Handwerk seit über 20 Jahren zu Ihnen.', 'feinspitz' ); ?></p>
+			<p style="margin-top:var(--wp--preset--spacing--30)"><?php esc_html_e( 'Familie Steyrer bewirtschaftet ihre Reben nachhaltig · zertifiziert nach Austria Bio Garantie, zu 100 % histamingeprüft und vegan. Als erster Anbieter histamingeprüfter Weine der Schweiz bringen wir dieses Handwerk seit über 20 Jahren zu Ihnen.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"},"padding":{"left":"var:preset|spacing|50"}},"border":{"left":{"color":"var:preset|color|gold","width":"3px"}}},"layout":{"type":"default"}} -->
@@ -58,7 +58,7 @@ $story_img = esc_url( get_template_directory_uri() . '/assets/images/natur-winze
 			<!-- /wp:group -->
 
 			<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600","lineHeight":"1.35"},"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"textColor":"wine","fontSize":"medium"} -->
-			<p class="has-wine-color has-text-color has-medium-font-size" style="margin-top:var(--wp--preset--spacing--40);font-weight:600;line-height:1.35"><?php esc_html_e( 'Histamingeprüfte Weine mit mehr Vertrauen und Genuss erleben - für mehr Lebensqualität!', 'feinspitz' ); ?></p>
+			<p class="has-wine-color has-text-color has-medium-font-size" style="margin-top:var(--wp--preset--spacing--40);font-weight:600;line-height:1.35"><?php esc_html_e( 'Histamingeprüfte Weine mit mehr Vertrauen und Genuss erleben · für mehr Lebensqualität!', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->

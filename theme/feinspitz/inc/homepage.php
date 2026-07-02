@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz - Startseite (feature/homepage).
+ * Feinspitz · Startseite (feature/homepage).
  *
  * Registriert die Block-Pattern-Kategorie "feinspitz" und die home-* Patterns,
  * die von templates/front-page.html referenziert werden.
@@ -9,7 +9,7 @@
  * Die Pattern-Dateien liegen in theme/feinspitz/patterns/home-*.php und werden
  * hier BEWUSST manuell registriert (statt über die WP-Core-Auto-Registrierung),
  * damit die Registrierung nachvollziehbar an einer Stelle gebündelt ist. Die
- * Pattern-Dateien enthalten daher KEINEN Datei-Header - reines Block-Markup mit
+ * Pattern-Dateien enthalten daher KEINEN Datei-Header · reines Block-Markup mit
  * übersetzbaren Strings (Textdomain feinspitz).
  *
  * @package Feinspitz
@@ -34,7 +34,7 @@ add_action( 'init', function () {
  *
  * WICHTIG (i18n): Die Patterns enthalten übersetzbare Strings (esc_html_e), die
  * beim Registrieren via ob_start()/include AUSGEFÜHRT und im Content eingefroren
- * werden. Deshalb NICHT auf `init` registrieren - dort hat Polylang die Sprache
+ * werden. Deshalb NICHT auf `init` registrieren · dort hat Polylang die Sprache
  * der Anfrage noch nicht gesetzt, und die Strings würden für ALLE Sprachen in der
  * Standardsprache (DE) eingefroren. Auf `template_redirect` steht die aktuelle
  * Sprache fest (und es ist vor dem Template-Rendern) → korrekte Übersetzung je
@@ -125,7 +125,7 @@ add_shortcode( 'feinspitz_featured', function ( $atts ) {
 } );
 
 /**
- * Styles für das Featured-Grid - an das Theme-Stylesheet gehängt.
+ * Styles für das Featured-Grid · an das Theme-Stylesheet gehängt.
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$css = '

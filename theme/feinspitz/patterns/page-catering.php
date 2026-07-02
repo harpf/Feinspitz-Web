@@ -4,7 +4,7 @@
  * Slug: feinspitz/page-catering
  * Categories: feinspitz
  * Post Types: page
- * Description: Catering-Seite - vom Apéro bis zum Grillevent, mit passender Weinbegleitung.
+ * Description: Catering-Seite · vom Apéro bis zum Grillevent, mit passender Weinbegleitung.
  * Keywords: catering, apéro, apero, event, grill, anlass
  * Inserter: true
  *
@@ -22,7 +22,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"fontSize":"large"} -->
-	<p class="has-large-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Wir gestalten Ihren Anlass kulinarisch - vom feinen Apéro riche bis zum entspannten Grillevent, immer mit der passenden Weinbegleitung.', 'feinspitz' ); ?></p>
+	<p class="has-large-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Wir gestalten Ihren Anlass kulinarisch · vom feinen Apéro riche bis zum entspannten Grillevent, immer mit der passenden Weinbegleitung.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -34,7 +34,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"fontSize":"medium"} -->
-	<p class="has-text-align-center has-medium-font-size" style="margin-top:var(--wp--preset--spacing--30)"><?php esc_html_e( 'Ob kleine Feier oder Firmenanlass - wir passen Menü, Format und Weinauswahl an Ihren Rahmen an.', 'feinspitz' ); ?></p>
+	<p class="has-text-align-center has-medium-font-size" style="margin-top:var(--wp--preset--spacing--30)"><?php esc_html_e( 'Ob kleine Feier oder Firmenanlass · wir passen Menü, Format und Weinauswahl an Ihren Rahmen an.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -49,7 +49,7 @@
 			<h3 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Apéro & Apéro riche', 'feinspitz' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size"><?php esc_html_e( 'Feine Häppchen, Antipasti und Gourmet-Spezialitäten aus unserem Sortiment - der stilvolle Einstieg in jeden Anlass.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size"><?php esc_html_e( 'Feine Häppchen, Antipasti und Gourmet-Spezialitäten aus unserem Sortiment · der stilvolle Einstieg in jeden Anlass.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -60,7 +60,7 @@
 			<h3 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Firmen- & Privatanlässe', 'feinspitz' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size"><?php esc_html_e( 'Jubiläen, Geschäftsessen oder private Feiern - abgestimmt auf Ihre Gästezahl und mit passender Weinbegleitung.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size"><?php esc_html_e( 'Jubiläen, Geschäftsessen oder private Feiern · abgestimmt auf Ihre Gästezahl und mit passender Weinbegleitung.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

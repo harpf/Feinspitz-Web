@@ -19,7 +19,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"medium"} -->
-	<p class="has-medium-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Prüfen Sie Ihre Auswahl, passen Sie Mengen an und lösen Sie einen Gutschein ein - bevor es zur Kasse geht.', 'feinspitz' ); ?></p>
+	<p class="has-medium-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Prüfen Sie Ihre Auswahl, passen Sie Mengen an und lösen Sie einen Gutschein ein · bevor es zur Kasse geht.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

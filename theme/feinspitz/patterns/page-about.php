@@ -22,7 +22,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}},"typography":{"lineHeight":"1.6"}},"fontSize":"large"} -->
-	<p class="has-large-font-size" style="margin-top:var(--wp--preset--spacing--40);line-height:1.6"><?php esc_html_e( 'Feinspitz steht für sorgfältig ausgewählte Weine und Spezialitäten - mit einer Überzeugung im Zentrum: Genuss soll bekömmlich sein. Als erster Anbieter histamingeprüfter Weine der Schweiz haben wir eine ganze Kategorie mitgeprägt.', 'feinspitz' ); ?></p>
+	<p class="has-large-font-size" style="margin-top:var(--wp--preset--spacing--40);line-height:1.6"><?php esc_html_e( 'Feinspitz steht für sorgfältig ausgewählte Weine und Spezialitäten · mit einer Überzeugung im Zentrum: Genuss soll bekömmlich sein. Als erster Anbieter histamingeprüfter Weine der Schweiz haben wir eine ganze Kategorie mitgeprägt.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
@@ -54,7 +54,7 @@
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph -->
-			<p><?php esc_html_e( 'Persönliche Beratung, ehrliche Qualität und ein Fokus auf Bekömmlichkeit - das ist der Kern von Feinspitz.', 'feinspitz' ); ?></p>
+			<p><?php esc_html_e( 'Persönliche Beratung, ehrliche Qualität und ein Fokus auf Bekömmlichkeit · das ist der Kern von Feinspitz.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -74,7 +74,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"align":"center","textColor":"contrast","fontSize":"medium"} -->
-	<p class="has-text-align-center has-contrast-color has-text-color has-medium-font-size"><?php esc_html_e( 'Jeder histamingeprüfte Wein wird im Labor auf seinen Histamingehalt untersucht - für alle, die auf Verträglichkeit achten, ohne auf Genuss zu verzichten.', 'feinspitz' ); ?></p>
+	<p class="has-text-align-center has-contrast-color has-text-color has-medium-font-size"><?php esc_html_e( 'Jeder histamingeprüfte Wein wird im Labor auf seinen Histamingehalt untersucht · für alle, die auf Verträglichkeit achten, ohne auf Genuss zu verzichten.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div></div>
 <!-- /wp:cover -->
@@ -93,7 +93,7 @@
 			<h3 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size"><?php esc_html_e( 'Laborgeprüfte Weine für bewussten, bekömmlichen Genuss - unsere Kernkompetenz seit 20 Jahren.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size"><?php esc_html_e( 'Laborgeprüfte Weine für bewussten, bekömmlichen Genuss · unsere Kernkompetenz seit 20 Jahren.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -115,7 +115,7 @@
 			<h3 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Persönlich', 'feinspitz' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size"><?php esc_html_e( 'Ehrliche Beratung ohne Schnickschnack - im Shop in Urdorf und bei jeder Empfehlung, die wir aussprechen.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size"><?php esc_html_e( 'Ehrliche Beratung ohne Schnickschnack · im Shop in Urdorf und bei jeder Empfehlung, die wir aussprechen.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

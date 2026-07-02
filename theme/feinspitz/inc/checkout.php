@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz - Warenkorb & Kasse (feature/cart-checkout).
+ * Feinspitz · Warenkorb & Kasse (feature/cart-checkout).
  *
  * Registriert die checkout-* Block-Patterns, die von templates/cart.html und
  * templates/checkout.html referenziert werden (Bold-Kopfzeilen, Trust-/USP-Leiste,

@@ -21,7 +21,7 @@
 			<p class="has-gold-color has-text-color has-heading-font-family has-large-font-size" style="font-weight:700;line-height:1"><?php esc_html_e( 'Sicher bezahlen', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Verschlüsselte Übertragung und geprüfte Zahlungsarten - Ihre Daten bleiben geschützt.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Verschlüsselte Übertragung und geprüfte Zahlungsarten · Ihre Daten bleiben geschützt.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -43,7 +43,7 @@
 			<p class="has-gold-color has-text-color has-heading-font-family has-large-font-size" style="font-weight:700;line-height:1"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Der erste Anbieter histamingeprüfter Weine der Schweiz - Genuss auch für Empfindliche.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Der erste Anbieter histamingeprüfter Weine der Schweiz · Genuss auch für Empfindliche.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -54,7 +54,7 @@
 			<p class="has-gold-color has-text-color has-heading-font-family has-large-font-size" style="font-weight:700;line-height:1"><?php esc_html_e( 'Persönliche Beratung', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Fragen zum Wein? Wir beraten Sie gerne persönlich - ehrlich und kompetent.', 'feinspitz' ); ?></p>
+			<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Fragen zum Wein? Wir beraten Sie gerne persönlich · ehrlich und kompetent.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

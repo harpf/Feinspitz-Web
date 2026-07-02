@@ -19,7 +19,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.6"},"layout":{"selfStretch":"fit"}},"fontSize":"large"} -->
-	<p class="has-large-font-size" style="line-height:1.6;max-width:640px"><?php esc_html_e( 'Histamingeprüfte Weine, Delikatessen und ausgesuchte Spezialitäten - sorgfältig kuratiert für empfindliche Geniesserinnen und Geniesser.', 'feinspitz' ); ?></p>
+	<p class="has-large-font-size" style="line-height:1.6;max-width:640px"><?php esc_html_e( 'Histamingeprüfte Weine, Delikatessen und ausgesuchte Spezialitäten · sorgfältig kuratiert für empfindliche Geniesserinnen und Geniesser.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

@@ -1,12 +1,12 @@
 <?php
 /**
- * Feinspitz — Sprachbewusste Hauptnavigation.
+ * Feinspitz - Sprachbewusste Hauptnavigation.
  *
  * Der native core/navigation-Block lokalisiert unter freiem Polylang die Menü-
  * Labels/Links NICHT pro Sprache (DE und EN zeigten dieselben deutschen Labels
  * und verlinkten DE-Seiten). Diese Datei stellt stattdessen den Shortcode
  * [feinspitz_nav] bereit, der die Hauptnavigation deterministisch pro Sprache
- * rendert — deutsche Labels/Links auf DE, englische Labels + /en/-Links auf EN.
+ * rendert - deutsche Labels/Links auf DE, englische Labels + /en/-Links auf EN.
  *
  * Eingebunden in parts/header.html per core/shortcode-Block (Block-Theme-Parts
  * führen kein PHP aus). Mobile-Menü rein per CSS (Checkbox-Toggle), ohne JS.
@@ -63,7 +63,7 @@ function feinspitz_nav_page_url( $slug, $fallback ) {
  * @return string
  */
 function feinspitz_nav_category_url( $de_slug, $en_slug, $fallback ) {
-	// Auf /en/ filtert Polylang Term-Abfragen auf die aktuelle Sprache — daher
+	// Auf /en/ filtert Polylang Term-Abfragen auf die aktuelle Sprache - daher
 	// direkt den sprachrichtigen Slug nachschlagen (ratgeber = DE, guide = EN).
 	$slug = ( 'en' === feinspitz_current_lang() ) ? $en_slug : $de_slug;
 	$term = get_term_by( 'slug', $slug, 'category' );
@@ -100,7 +100,7 @@ function feinspitz_nav_items() {
 }
 
 /**
- * Shortcode [feinspitz_nav] — rendert die sprachbewusste Hauptnavigation.
+ * Shortcode [feinspitz_nav] - rendert die sprachbewusste Hauptnavigation.
  */
 add_shortcode( 'feinspitz_nav', function () {
 	$items   = feinspitz_nav_items();

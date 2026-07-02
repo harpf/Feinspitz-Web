@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz — Shop & Kategorie-Archive (feature/shop-archive).
+ * Feinspitz - Shop & Kategorie-Archive (feature/shop-archive).
  *
  * Registriert die shop-* Block-Patterns, die von templates/archive-product.html
  * und templates/taxonomy-product_cat.html referenziert werden, und passt einige
@@ -11,7 +11,7 @@
  * Die Pattern-Dateien liegen in theme/feinspitz/patterns/shop-*.php und werden
  * hier BEWUSST manuell registriert (analog zu inc/homepage.php), damit die
  * Registrierung nachvollziehbar an einer Stelle gebündelt ist. Die Pattern-
- * Dateien enthalten daher KEINEN Datei-Header — reines Block-Markup mit
+ * Dateien enthalten daher KEINEN Datei-Header - reines Block-Markup mit
  * übersetzbaren Strings (Textdomain feinspitz).
  *
  * @package Feinspitz
@@ -71,19 +71,19 @@ add_action( 'init', function () {
  * Pagination der Haupt-Query ausgibt. Damit unsere eigenen, BOLD gestalteten
  * Kopfbereiche (shop-archive-header / shop-category-header) den Titel und die
  * Kategorie-Beschreibung besitzen, unterdrücken wir hier die Standard-Ausgaben
- * von WooCommerce — sonst erschiene der Titel doppelt.
+ * von WooCommerce - sonst erschiene der Titel doppelt.
  */
 add_action( 'init', function () {
 
 	if ( ! function_exists( 'is_woocommerce' ) ) {
-		return; // WooCommerce nicht aktiv — nichts zu tun.
+		return; // WooCommerce nicht aktiv - nichts zu tun.
 	}
 
 	// Standard-<h1> ("Shop" bzw. Kategoriename) der Archiv-Vorlage abschalten.
 	add_filter( 'woocommerce_show_page_title', '__return_false' );
 
 	// Standard-Beschreibungen (Shop-Seiteninhalt + Kategorie-Beschreibung)
-	// abschalten — wir zeigen die Kategorie-Beschreibung im eigenen Kopf.
+	// abschalten - wir zeigen die Kategorie-Beschreibung im eigenen Kopf.
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
 }, 99 );
@@ -96,7 +96,7 @@ add_action( 'init', function () {
  * Preis, "In den Warenkorb"-Button; dazu Ergebnis-Zähler, Sortierung,
  * Breadcrumbs, Pagination). Wir gestalten dieses Markup ausschliesslich über
  * gescopte Inline-Styles, die an das in functions.php registrierte
- * Theme-Stylesheet-Handle "feinspitz-style" gehängt werden — theme.json und
+ * Theme-Stylesheet-Handle "feinspitz-style" gehängt werden - theme.json und
  * style.css bleiben unangetastet.
  *
  * Alle Regeln sind auf .feinspitz-shop-grid (Grid-Pattern) bzw.
@@ -126,7 +126,7 @@ add_action( 'wp_enqueue_scripts', function () {
 .feinspitz-shop-grid ul.products li.product{position:relative;width:auto !important;margin:0 !important;padding:0 !important;float:none !important;display:flex;flex-direction:column;background:var(--wp--preset--color--contrast);border:1px solid rgba(14,11,8,.08);border-radius:16px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
 .feinspitz-shop-grid ul.products li.product:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(74,17,25,.55);border-color:rgba(201,162,75,.5)}
 .feinspitz-shop-grid li.product a.woocommerce-LoopProduct-link{display:flex;flex-direction:column;flex:1 1 auto;color:inherit;text-decoration:none}
-.feinspitz-shop-grid li.product img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;margin:0 0 .9rem;background:#efe7d8}
+.feinspitz-shop-grid li.product img{width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;display:block;margin:0 0 .9rem;padding:.75rem;background:#f6f1e7}
 .feinspitz-shop-grid li.product .woocommerce-loop-product__title{font-family:var(--wp--preset--font-family--heading);font-size:1.02rem;line-height:1.25;font-weight:600;color:var(--wp--preset--color--base);margin:0 1rem .45rem;padding:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
 .feinspitz-shop-grid li.product .star-rating{margin:0 1rem .5rem;font-size:.85rem}
 .feinspitz-shop-grid li.product .price{margin:auto 1rem .25rem !important;padding-top:.35rem;font-family:var(--wp--preset--font-family--body);font-weight:700;font-size:1.05rem;color:var(--wp--preset--color--wine)}
@@ -167,7 +167,7 @@ CSS;
 	// Aktiven Flag-Filter markieren (Progressive Enhancement). Der Filter selbst
 	// funktioniert serverseitig über ?product_tag; dieses Skript hebt lediglich
 	// den zur aktuellen URL passenden Button hervor. Nur auf Shop-/Kategorie-
-	// Archiven laden — das Markup existiert nur dort.
+	// Archiven laden - das Markup existiert nur dort.
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
 		$js = <<<'JS'
 (function(){
@@ -196,13 +196,13 @@ JS;
  * Englische Kategorie-ANZEIGENAMEN auf /en/.
  *
  * Das freie Polylang übersetzt WooCommerce-Produkt-Kategorien (Taxonomie
- * product_cat) NICHT — die Terme existieren nur in Deutsch. Damit die Shop-
+ * product_cat) NICHT - die Terme existieren nur in Deutsch. Damit die Shop-
  * OBERFLÄCHE auf /en/ dennoch vollständig englisch wirkt, bilden wir die
  * Kategorie-Slugs hier auf englische Anzeigenamen ab und ersetzen den
  * ausgegebenen Kategorie-Titel, wenn die aktuelle Polylang-Sprache "en" ist.
  *
  * Produktnamen und -Beschreibungen bleiben unberührt (per Projekt-Vorgabe
- * deutsch) — hier geht es ausschliesslich um die Kategorie-Überschrift der
+ * deutsch) - hier geht es ausschliesslich um die Kategorie-Überschrift der
  * Archiv-Seiten (/en/produkt-kategorie/<slug>/).
  *
  * Angewendet über drei Filter, die alle Wege abdecken, auf denen der Titel
@@ -231,7 +231,7 @@ function feinspitz_shop_category_en_names() {
 }
 
 /**
- * Englischer Anzeigename der aktuell abgefragten Produkt-Kategorie — oder null.
+ * Englischer Anzeigename der aktuell abgefragten Produkt-Kategorie - oder null.
  *
  * Liefert nur dann einen Wert, wenn (a) Polylang aktiv ist und die aktuelle
  * Sprache "en" ist, (b) ein product_cat-Term abgefragt wird und (c) dessen Slug

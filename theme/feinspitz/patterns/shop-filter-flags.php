@@ -3,11 +3,11 @@
  * Shop-Pattern: Flag-Filter (histamingeprüft / vegan / alkoholfrei).
  *
  * Registriert in inc/shop.php als feinspitz/shop-filter-flags.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Die Flags sind als Produkt-Tags mit den Slugs histamingeprueft / vegan /
  * alkoholfrei angelegt. Gefiltert wird über den registrierten Query-Var
- * `product_tag` auf der Shop-Seite (/shop/?product_tag=<slug>) — das funktioniert
+ * `product_tag` auf der Shop-Seite (/shop/?product_tag=<slug>) - das funktioniert
  * unabhängig vom Tag-Permalink-Base und respektiert die Haupt-Query, sodass der
  * WooCommerce-"Classic Template"-Grid automatisch nur die getaggten Produkte
  * zeigt. "Alle Produkte" setzt den Filter zurück (/shop/).

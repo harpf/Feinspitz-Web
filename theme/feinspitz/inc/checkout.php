@@ -1,13 +1,13 @@
 <?php
 /**
- * Feinspitz — Warenkorb & Kasse (feature/cart-checkout).
+ * Feinspitz - Warenkorb & Kasse (feature/cart-checkout).
  *
  * Registriert die checkout-* Block-Patterns, die von templates/cart.html und
  * templates/checkout.html referenziert werden (Bold-Kopfzeilen, Trust-/USP-Leiste,
  * leerer-Warenkorb-Zustand). Analog zu inc/homepage.php werden die Pattern-Dateien
  * BEWUSST manuell registriert (statt Core-Auto-Registrierung), damit die
  * Registrierung nachvollziehbar an einer Stelle gebündelt ist. Die Pattern-Dateien
- * unter theme/feinspitz/patterns/checkout-*.php enthalten daher KEINEN Datei-Header —
+ * unter theme/feinspitz/patterns/checkout-*.php enthalten daher KEINEN Datei-Header -
  * reines Block-Markup mit übersetzbaren Strings (Textdomain feinspitz).
  *
  * Diese Datei wird von functions.php automatisch geladen (glob inc/*.php).

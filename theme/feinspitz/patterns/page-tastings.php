@@ -4,7 +4,7 @@
  * Slug: feinspitz/page-tastings
  * Categories: feinspitz
  * Post Types: page
- * Description: Weinproben-Seite — Verkostungen im Shop, an Events und privat zu Hause.
+ * Description: Weinproben-Seite - Verkostungen im Shop, an Events und privat zu Hause.
  * Keywords: weinprobe, weinproben, verkostung, tasting, degustation
  * Inserter: true
  *
@@ -22,7 +22,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"textColor":"contrast","fontSize":"large"} -->
-	<p class="has-contrast-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Erleben Sie histamingeprüfte Weine mit allen Sinnen — geführt, ehrlich und ohne Berührungsängste. Ob im Shop, an Ihrem Event oder privat bei Ihnen zu Hause.', 'feinspitz' ); ?></p>
+	<p class="has-contrast-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Erleben Sie histamingeprüfte Weine mit allen Sinnen - geführt, ehrlich und ohne Berührungsängste. Ob im Shop, an Ihrem Event oder privat bei Ihnen zu Hause.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div></div>
 <!-- /wp:cover -->
@@ -40,7 +40,7 @@
 			<h2 class="wp-block-heading has-contrast-color has-text-color has-large-font-size"><?php esc_html_e( 'Im Shop', 'feinspitz' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"contrast","fontSize":"small"} -->
-			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Geführte Degustation an der Bahnhofstrasse in Urdorf — kleine Runde, grosse Auswahl, persönliche Einordnung zu jedem Wein.', 'feinspitz' ); ?></p>
+			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Geführte Degustation an der Bahnhofstrasse in Urdorf - kleine Runde, grosse Auswahl, persönliche Einordnung zu jedem Wein.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -54,7 +54,7 @@
 			<h2 class="wp-block-heading has-contrast-color has-text-color has-large-font-size"><?php esc_html_e( 'An Events', 'feinspitz' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"contrast","fontSize":"small"} -->
-			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Firmenanlässe, Jubiläen oder Messen — wir bringen die Verkostung zu Ihnen und begleiten Ihre Gäste durch die Weine.', 'feinspitz' ); ?></p>
+			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Firmenanlässe, Jubiläen oder Messen - wir bringen die Verkostung zu Ihnen und begleiten Ihre Gäste durch die Weine.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -68,7 +68,7 @@
 			<h2 class="wp-block-heading has-contrast-color has-text-color has-large-font-size"><?php esc_html_e( 'Privat zu Hause', 'feinspitz' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"contrast","fontSize":"small"} -->
-			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Die Weinprobe im eigenen Wohnzimmer — mit Freunden, in entspannter Runde und ganz auf Ihren Geschmack abgestimmt.', 'feinspitz' ); ?></p>
+			<p class="has-contrast-color has-text-color has-small-font-size"><?php esc_html_e( 'Die Weinprobe im eigenen Wohnzimmer - mit Freunden, in entspannter Runde und ganz auf Ihren Geschmack abgestimmt.', 'feinspitz' ); ?></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
@@ -82,7 +82,7 @@
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"align":"center","fontSize":"medium"} -->
-		<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Erzählen Sie uns von Ihrem Anlass — wir stellen die passende Auswahl zusammen.', 'feinspitz' ); ?></p>
+		<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Erzählen Sie uns von Ihrem Anlass - wir stellen die passende Auswahl zusammen.', 'feinspitz' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->

@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz — Einzelprodukt (feature/product-single).
+ * Feinspitz - Einzelprodukt (feature/product-single).
  *
  * Registriert die product-* Block-Patterns, die von
  * templates/single-product.html referenziert werden, sowie einen Shortcode
@@ -10,7 +10,7 @@
  * Die Pattern-Dateien liegen in theme/feinspitz/patterns/product-*.php und
  * werden hier BEWUSST manuell registriert (wie bei inc/homepage.php), damit
  * die Registrierung nachvollziehbar an einer Stelle gebündelt ist. Die
- * Pattern-Dateien enthalten daher KEINEN Datei-Header — reines Block-Markup
+ * Pattern-Dateien enthalten daher KEINEN Datei-Header - reines Block-Markup
  * mit übersetzbaren Strings (Textdomain feinspitz).
  *
  * @package Feinspitz
@@ -38,7 +38,7 @@ function feinspitz_product_flag_tags() {
 }
 
 /**
- * Shortcode [feinspitz_product_badges] — rendert die Flag-Badges des aktuellen
+ * Shortcode [feinspitz_product_badges] - rendert die Flag-Badges des aktuellen
  * Produkts. Läuft im Single-Product-Kontext (globales $product) und wird von
  * der Pattern-Datei product-showcase.php eingebunden.
  */

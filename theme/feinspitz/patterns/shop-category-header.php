@@ -3,10 +3,10 @@
  * Shop-Pattern: Kopfbereich einer Produkt-Kategorie (taxonomy-product_cat).
  *
  * Registriert in inc/shop.php als feinspitz/shop-category-header.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Der Titel wird dynamisch über core/query-title (Archiv-Titel ohne Präfix)
- * gerendert, die Beschreibung über core/term-description — beide lösen auf den
+ * gerendert, die Beschreibung über core/term-description - beide lösen auf den
  * aktuell aufgerufenen Kategorie-Term auf (/produkt-kategorie/<slug>/).
  *
  * @package Feinspitz

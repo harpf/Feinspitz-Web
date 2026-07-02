@@ -3,7 +3,7 @@
  * Produkt-Pattern: Verwandte Produkte.
  *
  * Registriert in inc/product.php als feinspitz/product-related.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * woocommerce/related-products rendert serverseitig verwandte Produkte des
  * aktuellen Produkts und bleibt leer, falls keine ermittelbar sind.

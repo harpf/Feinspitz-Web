@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz — Inhaltsseiten (Über uns, Kontakt, Weinproben, Catering, Rechtstexte).
+ * Feinspitz - Inhaltsseiten (Über uns, Kontakt, Weinproben, Catering, Rechtstexte).
  *
  * Besitzt (laut Implementierungsplan, Branch feature/content-pages):
  *   - theme/feinspitz/templates/page.html   (flexibles Seiten-Template)
@@ -43,7 +43,7 @@ add_action( 'init', function () {
 /**
  * Fallback: Patterns explizit registrieren, falls die automatische
  * Registrierung von Theme-Patterns nicht greift (z. B. durch ein Plugin
- * deaktiviert). Idempotent — bereits registrierte Slugs werden übersprungen.
+ * deaktiviert). Idempotent - bereits registrierte Slugs werden übersprungen.
  *
  * WordPress liest die Header (Title, Slug, Categories, Description) beim
  * Auto-Load selbst; hier lesen wir sie im Bedarfsfall aus derselben Datei.

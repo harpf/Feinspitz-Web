@@ -4,10 +4,10 @@
  *
  * Registriert in inc/ratgeber.php als feinspitz/faq-accordion. Der Inhalt stammt
  * bewusst NICHT aus statischem Markup, sondern aus feinspitz_faq_accordion_markup()
- * — derselben Quelle wie das FAQPage-JSON-LD, damit sichtbarer Inhalt und
+ * - derselben Quelle wie das FAQPage-JSON-LD, damit sichtbarer Inhalt und
  * strukturierte Daten deckungsgleich bleiben.
  *
- * Diese Datei liefert das Markup (kein Datei-Header) — Strings via Textdomain
+ * Diese Datei liefert das Markup (kein Datei-Header) - Strings via Textdomain
  * feinspitz innerhalb der Builder-Funktion.
  *
  * @package Feinspitz

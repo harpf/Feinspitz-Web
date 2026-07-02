@@ -1,15 +1,15 @@
 <?php
 /**
- * Feinspitz — Mehrsprachigkeit (feature/i18n-multilingual).
+ * Feinspitz - Mehrsprachigkeit (feature/i18n-multilingual).
  *
  * Diese Datei wird von functions.php automatisch geladen (glob inc/*.php) und
  * gehört exklusiv dem i18n-Branch. Sie stellt den Sprachumschalter bereit:
  *
- *  - Shortcode [pll_languages] — rendert einen kompakten DE/EN-Umschalter über
+ *  - Shortcode [pll_languages] - rendert einen kompakten DE/EN-Umschalter über
  *    Polylangs pll_the_languages(). Wird in parts/header.html und parts/footer.html
  *    per core/shortcode-Block eingebunden. Bewusst als Shortcode (statt des nativen
  *    Polylang-Blocks), damit die Ausgabe deterministisch, voll gestaltbar und
- *    unabhängig von der Polylang-Block-Registrierung ist — und ohne Polylang
+ *    unabhängig von der Polylang-Block-Registrierung ist - und ohne Polylang
  *    sauber leer bleibt (kein Fatal).
  *
  *    Alternative (falls gewünscht): der native Block
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Strings, obwohl feinspitz-en_US.mo korrekt vorliegt.
  *
  * Fix: Auf Seiten, die Polylang als Englisch erkennt (z. B. /en/, Ratgeber, FAQ,
- * übersetzte Seiten), die Locale explizit auf en_US umschalten — VOR dem Rendern
+ * übersetzte Seiten), die Locale explizit auf en_US umschalten - VOR dem Rendern
  * (template_redirect, sehr früh), damit alle nachfolgend registrierten Patterns
  * und Ausgaben in Englisch erscheinen. Läuft nur im Frontend.
  *
@@ -59,7 +59,7 @@ add_action( 'template_redirect', function () {
 	// Polylang setzt zwar die Locale (get_locale() == en_US), lädt aber die
 	// Theme-Textdomain NICHT für die Sprache → __()/esc_html_e() liefern die
 	// deutschen Quell-Strings. Daher die passende .mo IMMER explizit (mit vollem
-	// Pfad) laden — unabhängig davon, ob die Locale schon stimmt.
+	// Pfad) laden - unabhängig davon, ob die Locale schon stimmt.
 	if ( get_locale() !== $locale ) {
 		switch_to_locale( $locale );
 	}
@@ -125,7 +125,7 @@ add_action( 'init', function () {
 } );
 
 /**
- * Gescopte Styles für den Sprachumschalter — an das Theme-Stylesheet gehängt,
+ * Gescopte Styles für den Sprachumschalter - an das Theme-Stylesheet gehängt,
  * damit style.css (Phase 0) unberührt bleibt.
  */
 add_action( 'wp_enqueue_scripts', function () {
@@ -161,14 +161,14 @@ add_action( 'wp_enqueue_scripts', function () {
  *   - `lang`            : liest/setzt die Polylang-Sprache (Slug, z. B. "de"/"en").
  *   - `pll_translations`: liest/setzt die Übersetzungs-Verknüpfung ({slug: post_id}).
  *
- * Damit wird die Sprachzuordnung über wp/v2 (Cookie+Nonce als Admin) skriptbar —
+ * Damit wird die Sprachzuordnung über wp/v2 (Cookie+Nonce als Admin) skriptbar -
  * genutzt von scripts/i18n/polylang-content.mjs. Die Felder existieren nur, wenn
  * Polylang aktiv ist; die Schreib-Callbacks erfordern reguläre Bearbeitungsrechte
  * (REST prüft das ohnehin), sind also nicht öffentlich missbrauchbar.
  */
 add_action( 'rest_api_init', function () {
 	if ( ! function_exists( 'pll_set_post_language' ) ) {
-		return; // Polylang nicht aktiv — keine Brücke.
+		return; // Polylang nicht aktiv - keine Brücke.
 	}
 
 	$types = array( 'post', 'page', 'product' );

@@ -3,7 +3,7 @@
  * Produkt-Pattern: Beschreibung & Details.
  *
  * Registriert in inc/product.php als feinspitz/product-details.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * woocommerce/product-details rendert die Standard-Tabs (Beschreibung,
  * Zusätzliche Informationen, Bewertungen) zuverlässig aus den Produktdaten und

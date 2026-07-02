@@ -3,7 +3,7 @@
  * Shop-Pattern: Produkt-Grid inkl. Sortierung & Pagination.
  *
  * Registriert in inc/shop.php als feinspitz/shop-grid.
- * Reines Block-Markup (kein Pattern-Header) — keine übersetzbaren Strings, da
+ * Reines Block-Markup (kein Pattern-Header) - keine übersetzbaren Strings, da
  * die Ausgabe (Ergebnis-Zähler, Sortier-Dropdown, Produkt-Loop, Pagination)
  * vollständig von WooCommerce kommt.
  *

@@ -7,7 +7,7 @@
  * gestalteten Leer-Zustand mit Weg-zum-Shop-CTA.
  *
  * Registriert in inc/checkout.php als feinspitz/checkout-empty-cart.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * @package Feinspitz
  */
@@ -23,7 +23,7 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"align":"center","fontSize":"medium"} -->
-	<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Entdecken Sie histamingeprüfte Weine und feine Delikatessen — handverlesen und ehrlich beraten.', 'feinspitz' ); ?></p>
+	<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Entdecken Sie histamingeprüfte Weine und feine Delikatessen - handverlesen und ehrlich beraten.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->

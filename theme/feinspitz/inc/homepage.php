@@ -1,6 +1,6 @@
 <?php
 /**
- * Feinspitz — Startseite (feature/homepage).
+ * Feinspitz - Startseite (feature/homepage).
  *
  * Registriert die Block-Pattern-Kategorie "feinspitz" und die home-* Patterns,
  * die von templates/front-page.html referenziert werden.
@@ -9,7 +9,7 @@
  * Die Pattern-Dateien liegen in theme/feinspitz/patterns/home-*.php und werden
  * hier BEWUSST manuell registriert (statt über die WP-Core-Auto-Registrierung),
  * damit die Registrierung nachvollziehbar an einer Stelle gebündelt ist. Die
- * Pattern-Dateien enthalten daher KEINEN Datei-Header — reines Block-Markup mit
+ * Pattern-Dateien enthalten daher KEINEN Datei-Header - reines Block-Markup mit
  * übersetzbaren Strings (Textdomain feinspitz).
  *
  * @package Feinspitz
@@ -34,7 +34,7 @@ add_action( 'init', function () {
  *
  * WICHTIG (i18n): Die Patterns enthalten übersetzbare Strings (esc_html_e), die
  * beim Registrieren via ob_start()/include AUSGEFÜHRT und im Content eingefroren
- * werden. Deshalb NICHT auf `init` registrieren — dort hat Polylang die Sprache
+ * werden. Deshalb NICHT auf `init` registrieren - dort hat Polylang die Sprache
  * der Anfrage noch nicht gesetzt, und die Strings würden für ALLE Sprachen in der
  * Standardsprache (DE) eingefroren. Auf `template_redirect` steht die aktuelle
  * Sprache fest (und es ist vor dem Template-Rendern) → korrekte Übersetzung je
@@ -74,7 +74,7 @@ add_action( 'template_redirect', function () {
 }, 1 );
 
 /**
- * Shortcode [feinspitz_featured] — ausgewählte Produkte als Karten-Grid.
+ * Shortcode [feinspitz_featured] - ausgewählte Produkte als Karten-Grid.
  *
  * Ersetzt den WooCommerce-[products]-Shortcode, der im registrierten Pattern
  * nicht zuverlässig verarbeitet wurde (er erschien als literaler Text). Dieser
@@ -125,15 +125,15 @@ add_shortcode( 'feinspitz_featured', function ( $atts ) {
 } );
 
 /**
- * Styles für das Featured-Grid — an das Theme-Stylesheet gehängt.
+ * Styles für das Featured-Grid - an das Theme-Stylesheet gehängt.
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$css = '
 .feinspitz-featured{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2.5vw,1.75rem)}
 @media (min-width:900px){.feinspitz-featured{grid-template-columns:repeat(4,1fr)}}
 .feinspitz-featured__link{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
-.feinspitz-featured__media{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:rgba(0,0,0,.04)}
-.feinspitz-featured__media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.feinspitz-featured__media{display:block;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#f6f1e7;padding:.75rem}
+.feinspitz-featured__media img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .35s ease}
 .feinspitz-featured__link:hover .feinspitz-featured__media img{transform:scale(1.04)}
 .feinspitz-featured__name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:.7rem 0 .15rem;font-family:var(--wp--preset--font-family--heading);font-size:1.02rem;line-height:1.25;min-height:2.5em}
 .feinspitz-featured__price{font-weight:600;color:var(--wp--preset--color--wine)}

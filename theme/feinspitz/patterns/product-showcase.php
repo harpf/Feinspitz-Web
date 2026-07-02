@@ -3,7 +3,7 @@
  * Produkt-Pattern: Galerie & Kaufbereich (Showcase).
  *
  * Registriert in inc/product.php als feinspitz/product-showcase.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Läuft im Single-Product-Kontext von templates/single-product.html, daher
  * greifen die woocommerce/product-* Blöcke auf das globale Produkt zu. Titel &

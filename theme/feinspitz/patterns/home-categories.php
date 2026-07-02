@@ -3,10 +3,10 @@
  * Startseiten-Pattern: Kategorien-Teaser.
  *
  * Registriert in inc/homepage.php als feinspitz/home-categories.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Farb-Kacheln verlinken auf Produkt-Kategorien/Filter. Die Slugs
- * (/produkt-kategorie/<slug>/) sind Annahmen — sobald die Content-Migration
+ * (/produkt-kategorie/<slug>/) sind Annahmen - sobald die Content-Migration
  * die echten Kategorien/Attribute anlegt, ggf. hier anpassen.
  *
  * @package Feinspitz
@@ -32,7 +32,7 @@
 				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Weine', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size"><?php esc_html_e( 'Weiss, Rot, Rosé, Schaumwein & Süsswein — sorgfältig kuratiert.', 'feinspitz' ); ?></p>
+				<p class="has-small-font-size"><?php esc_html_e( 'Weiss, Rot, Rosé, Schaumwein & Süsswein - sorgfältig kuratiert.', 'feinspitz' ); ?></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -68,7 +68,7 @@
 				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
-				<p class="has-small-font-size"><?php esc_html_e( 'Laborgeprüfte Weine für empfindliche Geniesser — unsere Spezialität.', 'feinspitz' ); ?></p>
+				<p class="has-small-font-size"><?php esc_html_e( 'Laborgeprüfte Weine für empfindliche Geniesser - unsere Spezialität.', 'feinspitz' ); ?></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

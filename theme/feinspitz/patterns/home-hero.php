@@ -3,7 +3,7 @@
  * Startseiten-Pattern: Hero.
  *
  * Registriert in inc/homepage.php als feinspitz/home-hero.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Der Cover-Block nutzt ein echtes Original-Motiv aus dem Asset-Pool
  * (assets/images/shop-interior.jpg, referenziert via get_template_directory_uri)
@@ -28,7 +28,7 @@ $hero_img = esc_url( get_template_directory_uri() . '/assets/images/shop-interio
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"fontSize":"medium"} -->
-		<p class="has-text-align-center has-medium-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Als erster Anbieter histamingeprüfter Weine der Schweiz stehen wir seit über 20 Jahren für ehrlichen, verträglichen Genuss — handverlesen und persönlich beraten.', 'feinspitz' ); ?></p>
+		<p class="has-text-align-center has-medium-font-size" style="margin-top:var(--wp--preset--spacing--40)"><?php esc_html_e( 'Als erster Anbieter histamingeprüfter Weine der Schweiz stehen wir seit über 20 Jahren für ehrlichen, verträglichen Genuss - handverlesen und persönlich beraten.', 'feinspitz' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}},"typography":{"fontSize":"1.05rem"}}} -->

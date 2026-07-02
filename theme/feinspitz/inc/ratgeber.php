@@ -1,11 +1,11 @@
 <?php
 /**
- * Feinspitz — Ratgeber & FAQ (feature/ratgeber-faq).
+ * Feinspitz - Ratgeber & FAQ (feature/ratgeber-faq).
  *
  * Diese Datei wird von functions.php automatisch geladen (glob inc/*.php) und
  * gehört exklusiv dem Ratgeber/FAQ-Branch. Sie stellt bereit:
  *
- *  - feinspitz_faq_items() — die EINE Quelle der FAQ-Fragen/Antworten. Sowohl das
+ *  - feinspitz_faq_items() - die EINE Quelle der FAQ-Fragen/Antworten. Sowohl das
  *    sichtbare Akkordeon (Pattern feinspitz/faq-accordion) als auch das
  *    FAQPage-JSON-LD werden hieraus erzeugt → beide können NICHT auseinanderlaufen
  *    (Google verlangt, dass das strukturierte Markup dem sichtbaren Inhalt
@@ -14,7 +14,7 @@
  *    (analog zu inc/homepage.php: Markup-Datei unter /patterns/, Registrierung hier).
  *  - FAQPage-JSON-LD im wp_head, ausschliesslich auf der FAQ-Seite (Slug „faq").
  *  - Gescopte Inline-Styles fürs Akkordeon (an das Theme-Stylesheet gehängt, damit
- *    style.css — Phase-0-Datei — unberührt bleibt).
+ *    style.css - Phase-0-Datei - unberührt bleibt).
  *
  * Der eigentliche Ratgeber-Inhalt (Beiträge, Kategorie „Ratgeber", FAQ-Seite) wird
  * NICHT hier, sondern idempotent per REST über scripts/content/ratgeber.mjs angelegt.
@@ -40,11 +40,11 @@ function feinspitz_faq_items() {
 	return array(
 		array(
 			'q' => __( 'Was bedeutet „histamingeprüft" bei einem Wein?', 'feinspitz' ),
-			'a' => __( 'Histamingeprüfte Weine werden im Labor auf ihren Histamingehalt untersucht. So wissen Sie vor dem Kauf, woran Sie sind — ideal für alle, die auf Verträglichkeit achten und Wein bewusst geniessen möchten.', 'feinspitz' ),
+			'a' => __( 'Histamingeprüfte Weine werden im Labor auf ihren Histamingehalt untersucht. So wissen Sie vor dem Kauf, woran Sie sind - ideal für alle, die auf Verträglichkeit achten und Wein bewusst geniessen möchten.', 'feinspitz' ),
 		),
 		array(
 			'q' => __( 'Sind histamingeprüfte Weine automatisch histaminfrei?', 'feinspitz' ),
-			'a' => __( 'Nein. Wein enthält von Natur aus geringe Mengen Histamin — histaminfrei gibt es nicht. „Geprüft" heisst: der Gehalt ist bekannt und niedrig ausgewiesen. Bei diagnostizierter Histaminintoleranz halten Sie im Zweifel bitte Rücksprache mit Ihrer Ärztin oder Ihrem Arzt.', 'feinspitz' ),
+			'a' => __( 'Nein. Wein enthält von Natur aus geringe Mengen Histamin - histaminfrei gibt es nicht. „Geprüft" heisst: der Gehalt ist bekannt und niedrig ausgewiesen. Bei diagnostizierter Histaminintoleranz halten Sie im Zweifel bitte Rücksprache mit Ihrer Ärztin oder Ihrem Arzt.', 'feinspitz' ),
 		),
 		array(
 			'q' => __( 'Wie erkenne ich vegane und alkoholfreie Weine im Shop?', 'feinspitz' ),
@@ -56,7 +56,7 @@ function feinspitz_faq_items() {
 		),
 		array(
 			'q' => __( 'Wie lange dauert die Lieferung innerhalb der Schweiz?', 'feinspitz' ),
-			'a' => __( 'Bestellungen bearbeiten wir in der Regel innerhalb von ein bis zwei Werktagen. Danach ist Ihr Wein üblicherweise innert weniger Werktage bei Ihnen — abhängig von Versandart und Region.', 'feinspitz' ),
+			'a' => __( 'Bestellungen bearbeiten wir in der Regel innerhalb von ein bis zwei Werktagen. Danach ist Ihr Wein üblicherweise innert weniger Werktage bei Ihnen - abhängig von Versandart und Region.', 'feinspitz' ),
 		),
 		array(
 			'q' => __( 'Kann ich meine Bestellung in Urdorf abholen?', 'feinspitz' ),
@@ -68,7 +68,7 @@ function feinspitz_faq_items() {
 		),
 		array(
 			'q' => __( 'Berät mich Feinspitz auch persönlich bei der Auswahl?', 'feinspitz' ),
-			'a' => __( 'Sehr gerne. Wir verkosten unser Sortiment selbst und beraten Sie ehrlich — ob zur Verträglichkeit, zu Speisekombinationen oder zum passenden Wein für einen Anlass. Nehmen Sie einfach über die Kontaktseite mit uns Kontakt auf.', 'feinspitz' ),
+			'a' => __( 'Sehr gerne. Wir verkosten unser Sortiment selbst und beraten Sie ehrlich - ob zur Verträglichkeit, zu Speisekombinationen oder zum passenden Wein für einen Anlass. Nehmen Sie einfach über die Kontaktseite mit uns Kontakt auf.', 'feinspitz' ),
 		),
 	);
 }
@@ -78,7 +78,7 @@ function feinspitz_faq_items() {
  *
  * Reine core/details-Blöcke in einem constrained Group-Wrapper mit der Klasse
  * „feinspitz-faq" (siehe gescopte Styles unten). Wird sowohl vom Pattern
- * feinspitz/faq-accordion als auch — als Fallback — direkt genutzt.
+ * feinspitz/faq-accordion als auch - als Fallback - direkt genutzt.
  *
  * @return string Gültiges Gutenberg-Block-Markup.
  */
@@ -116,7 +116,7 @@ function feinspitz_faq_accordion_markup() {
  *
  * register_block_pattern_category ist idempotent (bereits vorhandene Kategorie
  * wird überschrieben, nicht dupliziert). faq-accordion wird aus dem gemeinsamen
- * Builder gespeist, ratgeber-intro aus der Markup-Datei — analog inc/homepage.php.
+ * Builder gespeist, ratgeber-intro aus der Markup-Datei - analog inc/homepage.php.
  */
 add_action( 'init', function () {
 	if ( function_exists( 'register_block_pattern_category' ) ) {
@@ -164,7 +164,7 @@ add_action( 'init', function () {
  * Durchläuft die Blöcke rekursiv und sammelt jeden core/details-Block als
  * Frage/Antwort-Paar: Frage = Summary (Block-Attribut, ersatzweise der Text im
  * <summary>), Antwort = Text der inneren Blöcke (i. d. R. ein Paragraph). Damit
- * bleibt das strukturierte Markup deckungsgleich mit dem sichtbaren Akkordeon —
+ * bleibt das strukturierte Markup deckungsgleich mit dem sichtbaren Akkordeon -
  * unabhängig von der Sprache. Die englische FAQ-Seite trägt literale
  * core/details-Blöcke (siehe scripts/content/faq-en.mjs), sodass hier automatisch
  * die englischen Fragen/Antworten erkannt werden.
@@ -218,7 +218,7 @@ function feinspitz_faq_items_from_blocks( $blocks ) {
  *
  * Bevorzugt aus dem Seiteninhalt abgeleitet (DE wie EN). Bindet die Seite das
  * gemeinsame Akkordeon-Pattern ein (statt literaler details-Blöcke), greift die
- * kanonische Quelle feinspitz_faq_items() — genau die Liste, aus der das Pattern
+ * kanonische Quelle feinspitz_faq_items() - genau die Liste, aus der das Pattern
  * serverseitig rendert. So bleibt das Schema in beiden Fällen deckungsgleich.
  *
  * @param WP_Post $post Die aktuelle Seite.
@@ -243,7 +243,7 @@ function feinspitz_faq_items_for_page( $post ) {
 }
 
 /**
- * FAQPage-JSON-LD (schema.org) im <head> ausgeben — NUR auf der FAQ-Seite.
+ * FAQPage-JSON-LD (schema.org) im <head> ausgeben - NUR auf der FAQ-Seite.
  *
  * Die Fragen/Antworten werden aus dem SEITENINHALT abgeleitet
  * (feinspitz_faq_items_for_page()), damit die strukturierten Daten dem sichtbaren
@@ -294,7 +294,7 @@ add_action( 'wp_head', function () {
 }, 20 );
 
 /**
- * Meta-Description im <head> — aus dem Excerpt der Ratgeber-Beiträge bzw. der
+ * Meta-Description im <head> - aus dem Excerpt der Ratgeber-Beiträge bzw. der
  * FAQ-Seite. Bewusst eng gescoped (nur einzelne Beiträge mit Excerpt und die
  * FAQ-Seite), damit kein anderes SEO-Verhalten überschrieben wird. Kein
  * SEO-Plugin nötig (siehe Spec: saubere Semantik genügt).
@@ -305,7 +305,7 @@ add_action( 'wp_head', function () {
 	if ( is_singular( 'post' ) && has_excerpt() ) {
 		$description = get_the_excerpt();
 	} elseif ( is_page( 'faq' ) ) {
-		$description = __( 'Häufige Fragen zu histamingeprüften Weinen, Versand innerhalb der Schweiz, Abholung in Urdorf sowie veganen und alkoholfreien Weinen — klar beantwortet von Feinspitz.', 'feinspitz' );
+		$description = __( 'Häufige Fragen zu histamingeprüften Weinen, Versand innerhalb der Schweiz, Abholung in Urdorf sowie veganen und alkoholfreien Weinen - klar beantwortet von Feinspitz.', 'feinspitz' );
 	}
 
 	$description = trim( wp_strip_all_tags( $description ) );
@@ -326,7 +326,7 @@ add_action( 'wp_head', function () {
  *
  * An das in functions.php registrierte Theme-Stylesheet gehängt (style.css bleibt
  * Phase-0-unangetastet), mit Fallback-Handle. Nur auf FAQ-/Single-Ansichten nötig,
- * aber die Regeln sind klein und gescoped — bewusst leichtgewichtig gehalten.
+ * aber die Regeln sind klein und gescoped - bewusst leichtgewichtig gehalten.
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$css = '

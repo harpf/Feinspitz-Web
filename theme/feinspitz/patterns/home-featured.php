@@ -3,7 +3,7 @@
  * Startseiten-Pattern: Ausgewählte Produkte.
  *
  * Registriert in inc/homepage.php als feinspitz/home-featured.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Das Produkt-Grid nutzt den WooCommerce-[products]-Shortcode: er rendert
  * zuverlässig, sobald Produkte importiert sind, und bleibt leer/unauffällig,

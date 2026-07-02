@@ -3,7 +3,7 @@
  * Kassen-Pattern: Bold-Kopfzeile für die Kassen-Seite.
  *
  * Registriert in inc/checkout.php als feinspitz/checkout-checkout-header.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * @package Feinspitz
  */

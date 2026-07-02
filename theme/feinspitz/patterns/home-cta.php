@@ -3,7 +3,7 @@
  * Startseiten-Pattern: Weinproben & Catering (Call-to-Action).
  *
  * Registriert in inc/homepage.php als feinspitz/home-cta.
- * Reines Block-Markup (kein Pattern-Header) — Strings via Textdomain feinspitz.
+ * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
  *
  * Zwei Bild-Karten (Cover mit Original-Motiven aus dem Asset-Pool) mit dunklem
  * Overlay und klarer CTA je Karte. Stapelt auf Mobil automatisch.
@@ -35,7 +35,7 @@ $catering_img = esc_url( get_template_directory_uri() . '/assets/images/catering
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-				<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Entdecken Sie unsere Weine bei einer geführten Probe — auch histaminarm auf Wunsch.', 'feinspitz' ); ?></p>
+				<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Entdecken Sie unsere Weine bei einer geführten Probe - auch histaminarm auf Wunsch.', 'feinspitz' ); ?></p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
@@ -59,7 +59,7 @@ $catering_img = esc_url( get_template_directory_uri() . '/assets/images/catering
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-				<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt.', 'feinspitz' ); ?></p>
+				<p class="has-small-font-size" style="margin-top:var(--wp--preset--spacing--20)"><?php esc_html_e( 'Stilvolles Catering für Ihren Anlass - wir stellen ein Erlebnis zusammen, das schmeckt.', 'feinspitz' ); ?></p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->

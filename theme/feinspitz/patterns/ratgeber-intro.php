@@ -1,10 +1,10 @@
 <?php
 /**
- * Pattern-Markup: Ratgeber-Übersicht — Intro/Hero.
+ * Pattern-Markup: Ratgeber-Übersicht - Intro/Hero.
  *
  * Registriert in inc/ratgeber.php als feinspitz/ratgeber-intro und von
  * templates/category-ratgeber.html referenziert. Reines Block-Markup (kein
- * Datei-Header) — Strings via Textdomain feinspitz.
+ * Datei-Header) - Strings via Textdomain feinspitz.
  *
  * @package Feinspitz
  */
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"align":"center","fontSize":"medium"} -->
-	<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Fundiertes Wissen rund um histaminarmen Weingenuss, vegane Weine und die kleinen Dinge, die den grossen Unterschied machen — verständlich erklärt vom Team hinter Feinspitz.', 'feinspitz' ); ?></p>
+	<p class="has-text-align-center has-medium-font-size"><?php esc_html_e( 'Fundiertes Wissen rund um histaminarmen Weingenuss, vegane Weine und die kleinen Dinge, die den grossen Unterschied machen - verständlich erklärt vom Team hinter Feinspitz.', 'feinspitz' ); ?></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

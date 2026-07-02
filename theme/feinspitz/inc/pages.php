@@ -51,12 +51,12 @@ add_action( 'init', function () {
 add_action( 'init', function () {
 	if (
 		! function_exists( 'register_block_pattern' ) ||
-		! function_exists( 'get_block_patterns_registry' )
+		! class_exists( 'WP_Block_Patterns_Registry' )
 	) {
 		return;
 	}
 
-	$registry = get_block_patterns_registry();
+	$registry = WP_Block_Patterns_Registry::get_instance();
 	$dir      = get_template_directory() . '/patterns';
 
 	foreach ( glob( $dir . '/page-*.php' ) as $file ) {

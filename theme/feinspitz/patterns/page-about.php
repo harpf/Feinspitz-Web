@@ -33,8 +33,8 @@
 	<div class="wp-block-columns are-vertically-aligned-center">
 		<!-- wp:column {"verticalAlignment":"center","width":"38%"} -->
 		<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:38%">
-			<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","lineHeight":"0.9","letterSpacing":"-0.03em"}},"textColor":"gold","fontFamily":"heading"} -->
-			<p class="has-gold-color has-text-color has-heading-font-family" style="font-style:normal;font-weight:600;line-height:0.9;letter-spacing:-0.03em;font-size:clamp(6rem, 4rem + 12vw, 12rem)">20</p>
+			<!-- wp:paragraph {"style":{"typography":{"fontSize":"clamp(6rem, 4rem + 12vw, 12rem)","fontStyle":"normal","fontWeight":"600","letterSpacing":"-0.03em","lineHeight":"0.9"}},"textColor":"gold","fontFamily":"heading"} -->
+			<p class="has-gold-color has-text-color has-heading-font-family" style="font-size:clamp(6rem, 4rem + 12vw, 12rem);font-style:normal;font-weight:600;letter-spacing:-0.03em;line-height:0.9">20</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:paragraph {"style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.22em","fontWeight":"600"}},"textColor":"wine","fontSize":"small"} -->

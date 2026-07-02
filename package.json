@@ -15,7 +15,8 @@
     "i18n": "node scripts/i18n/make-pot.mjs && node scripts/i18n/make-po.mjs",
     "theme:zip": "node scripts/deploy/build-zip.mjs",
     "theme:deploy": "node scripts/deploy/deploy-theme.mjs",
-    "content:import": "node migration/import.mjs"
+    "content:import": "node migration/import.mjs",
+    "content:ratgeber": "node scripts/content/ratgeber.mjs"
   },
   "dependencies": {
     "adm-zip": "^0.5.16",

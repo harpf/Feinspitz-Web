@@ -280,3 +280,30 @@ add_filter(
 	},
 	99
 );
+
+/**
+ * Gedankenstriche in der WooCommerce-Ergebnisanzeige normalisieren
+ * ("Ergebnisse 1 – 16 von 171" → "1 - 16"). Der Strich steckt im gettext-Quellstring
+ * ("Showing %1$d&ndash;%2$d of %3$d results"); daher gezielt über den gettext-Filter
+ * nur für genau diesen String (Quelle enthält &ndash;) ersetzen.
+ */
+$feinspitz_dash_fix = function ( $translated ) {
+	return str_replace(
+		array( '&ndash;', '&mdash;', '&#8211;', '&#8212;', '&#x2013;', '&#x2014;', '–', '—' ),
+		'-',
+		$translated
+	);
+};
+// __() → gettext; _n() → ngettext; _x() → gettext_with_context; _nx() → ngettext_with_context.
+add_filter( 'gettext', function ( $t, $text, $domain ) use ( $feinspitz_dash_fix ) {
+	return ( 'woocommerce' === $domain && false !== strpos( $text, '&ndash;' ) ) ? $feinspitz_dash_fix( $t ) : $t;
+}, 20, 3 );
+add_filter( 'gettext_with_context', function ( $t, $text, $ctx, $domain ) use ( $feinspitz_dash_fix ) {
+	return ( 'woocommerce' === $domain && false !== strpos( $text, '&ndash;' ) ) ? $feinspitz_dash_fix( $t ) : $t;
+}, 20, 4 );
+add_filter( 'ngettext', function ( $t, $single, $plural, $number, $domain ) use ( $feinspitz_dash_fix ) {
+	return ( 'woocommerce' === $domain && ( false !== strpos( $single, '&ndash;' ) || false !== strpos( $plural, '&ndash;' ) ) ) ? $feinspitz_dash_fix( $t ) : $t;
+}, 20, 5 );
+add_filter( 'ngettext_with_context', function ( $t, $single, $plural, $number, $ctx, $domain ) use ( $feinspitz_dash_fix ) {
+	return ( 'woocommerce' === $domain && ( false !== strpos( $single, '&ndash;' ) || false !== strpos( $plural, '&ndash;' ) ) ) ? $feinspitz_dash_fix( $t ) : $t;
+}, 20, 6 );

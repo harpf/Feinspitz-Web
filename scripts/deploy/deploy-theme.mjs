@@ -19,11 +19,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
 const ZIP = join(ROOT, 'dist', 'feinspitz.zip');
 
-// 1) Zip sicherstellen.
-if (!existsSync(ZIP)) {
-  console.log('… dist/feinspitz.zip fehlt, baue es.');
-  await import('./build-zip.mjs');
-}
+// 1) Zip IMMER frisch bauen (sonst wird versehentlich ein veralteter Stand deployt).
+await import('./build-zip.mjs');
 
 function extractNonce(html, action = 'theme-upload') {
   // Feld: <input ... name="_wpnonce" value="XXXX">

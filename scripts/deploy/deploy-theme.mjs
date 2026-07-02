@@ -31,16 +31,20 @@ function extractNonce(html, action = 'theme-upload') {
   return m ? m[1] : null;
 }
 
-function extractHiddenFields(html) {
-  const fields = {};
-  const re = /<input[^>]+type=["']hidden["'][^>]*>/gi;
-  for (const tag of html.match(re) || []) {
-    const n = tag.match(/name=["']([^"']+)["']/i);
-    const v = tag.match(/value=["']([^"']*)["']/i);
-    if (n) fields[n[1]] = v ? v[1] : '';
-  }
-  return fields;
+function decodeEntities(s) {
+  return s.replace(/&amp;/g, '&').replace(/&#0?38;/g, '&');
 }
+
+/** Findet den "Installiertes durch Hochgeladenes ersetzen"-Link (Overwrite). */
+function extractOverwritePath(html) {
+  const m = html.match(/class="[^"]*update-from-upload-overwrite[^"]*"\s+href="([^"]+)"/i);
+  if (!m) return null;
+  let href = decodeEntities(m[1]).replace(/^\/?wp-admin\//, '');
+  return `/wp-admin/${href}`;
+}
+
+const isSuccess = (html) =>
+  /erfolgreich (installiert|aktualisiert)|successfully (installed|updated)|Theme (aktualisiert|updated|installiert)/i.test(html);
 
 const session = await wpAdminSession();
 console.log('✓ Bei wp-admin eingeloggt.');
@@ -59,25 +63,24 @@ fd.set('_wp_http_referer', '/wp-admin/theme-install.php');
 fd.set('install-theme-submit', 'Jetzt installieren');
 fd.set('themezip', new Blob([zipBytes], { type: 'application/zip' }), 'feinspitz.zip');
 
-let res = await session.post('/wp-admin/update.php?action=upload-theme', fd);
+const res = await session.post('/wp-admin/update.php?action=upload-theme', fd);
 let html = await res.text();
 
-// Overwrite-Bestätigung? -> Formular generisch erneut absenden.
-if (/bereits installiert|already installed|überschreiben|overwrite|replace/i.test(html)) {
-  console.log('… Theme existiert bereits — bestätige Overwrite.');
-  const hidden = extractHiddenFields(html);
-  const overwriteForm = new URLSearchParams(hidden);
-  // WordPress markiert den Overwrite-Submit üblicherweise so:
-  if (!overwriteForm.has('overwrite')) overwriteForm.set('overwrite', 'update-theme');
-  const res2 = await session.post('/wp-admin/update.php?action=upload-theme', overwriteForm);
-  html = await res2.text();
+// Existiert das Theme schon, zeigt WordPress einen Overwrite-Link ("… ersetzen").
+const overwritePath = extractOverwritePath(html);
+if (overwritePath) {
+  console.log('… Theme existiert bereits — ersetze bestehende Version.');
+  html = await session.get(overwritePath);
 }
 
-if (/erfolgreich|successfully|Theme installiert|Theme updated/i.test(html)) {
-  console.log('✓ Theme hochgeladen.');
+if (isSuccess(html)) {
+  console.log('✓ Theme hochgeladen/aktualisiert.');
+} else if (/Der Zielordner existiert bereits|destination folder already exists/i.test(html)) {
+  console.warn('⚠ Overwrite-Bestätigung konnte nicht gefolgt werden — bitte wp-admin prüfen.');
+  process.exitCode = 1;
 } else {
-  console.warn('⚠ Upload-Ergebnis unklar — bitte wp-admin prüfen. Antwort-Auszug:');
-  console.warn(html.replace(/\s+/g, ' ').slice(0, 400));
+  console.warn('⚠ Upload-Ergebnis unklar — Antwort-Auszug:');
+  console.warn(html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 300));
 }
 
 // 5) Aktivieren (cookie-auth themes.php).

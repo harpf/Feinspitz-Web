@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "kulinarium",
+    "name": "Kulinarium",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "essig-verjus",
+    "name": "Essig & Verjus",
+    "parent": "kulinarium",
+    "description": ""
+  },
+  {
+    "slug": "senf-gewuerze",
+    "name": "Senf und Gewürze",
+    "parent": "kulinarium",
+    "description": ""
+  },
+  {
+    "slug": "pesto-chutney-co",
+    "name": "Pesto Chutney & Co",
+    "parent": "kulinarium",
+    "description": ""
+  },
+  {
+    "slug": "pasta",
+    "name": "Pasta und Nudeln",
+    "parent": "kulinarium",
+    "description": ""
+  },
+  {
+    "slug": "spirituosen",
+    "name": "Spirituosen",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "gin",
+    "name": "Gin",
+    "parent": "spirituosen",
+    "description": ""
+  },
+  {
+    "slug": "whiskey-rum",
+    "name": "Whiskey&Rum",
+    "parent": "spirituosen",
+    "description": ""
+  },
+  {
+    "slug": "sonstige-braende",
+    "name": "Sonstige Brände & Liköre",
+    "parent": "spirituosen",
+    "description": ""
+  },
+  {
+    "slug": "schaumweine",
+    "name": "Schaumweine",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "weissweine",
+    "name": "Weissweine",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "gruener-veltliner",
+    "name": "Grüner Veltliner",
+    "parent": "weissweine",
+    "description": ""
+  },
+  {
+    "slug": "riesling",
+    "name": "Riesling",
+    "parent": "weissweine",
+    "description": ""
+  },
+  {
+    "slug": "weissburgunder",
+    "name": "Weissburgunder",
+    "parent": "weissweine",
+    "description": ""
+  },
+  {
+    "slug": "gemischter-satz",
+    "name": "Gemischter Satz",
+    "parent": "weissweine",
+    "description": ""
+  },
+  {
+    "slug": "sonstige-weissweine",
+    "name": "Sonstige Weissweine",
+    "parent": "weissweine",
+    "description": ""
+  },
+  {
+    "slug": "rose",
+    "name": "Rosè Wein",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "rotweine",
+    "name": "Rotweine",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "zweigelt",
+    "name": "Zweigelt",
+    "parent": "rotweine",
+    "description": ""
+  },
+  {
+    "slug": "st-laurent",
+    "name": "St. Laurent",
+    "parent": "rotweine",
+    "description": ""
+  },
+  {
+    "slug": "blaufraenkisch",
+    "name": "Blaufränkisch",
+    "parent": "rotweine",
+    "description": ""
+  },
+  {
+    "slug": "cuvee",
+    "name": "Cuvèe",
+    "parent": "rotweine",
+    "description": ""
+  },
+  {
+    "slug": "sonstige-rotweine",
+    "name": "Sonstige Rotweine",
+    "parent": "rotweine",
+    "description": ""
+  },
+  {
+    "slug": "suessweine",
+    "name": "Süssweine",
+    "parent": null,
+    "description": ""
+  },
+  {
+    "slug": "buecher",
+    "name": "Buecher",
+    "parent": null,
+    "description": ""
+  }
+]

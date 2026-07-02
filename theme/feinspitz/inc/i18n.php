@@ -188,3 +188,75 @@ add_action( 'rest_api_init', function () {
 		);
 	}
 } );
+
+/**
+ * REST-Brücke für TAXONOMIE-TERME (z. B. Beitrags-Kategorie „Ratgeber").
+ *
+ * Analog zur Post-Brücke, aber term-basiert (pll_set_term_language /
+ * pll_save_term_translations). Nötig, um die Ratgeber-Kategorie über REST
+ * zweisprachig zu verknüpfen (freies Polylang bietet dafür keinen REST-Weg).
+ */
+add_action( 'rest_api_init', function () {
+	if ( ! function_exists( 'pll_set_term_language' ) ) {
+		return;
+	}
+
+	$taxonomies = array( 'category' );
+
+	foreach ( $taxonomies as $tax ) {
+		register_rest_field(
+			$tax,
+			'lang',
+			array(
+				'schema'          => array(
+					'description' => 'Polylang language slug (term).',
+					'type'        => array( 'string', 'null' ),
+					'context'     => array( 'view', 'edit' ),
+				),
+				'get_callback'    => function ( $obj ) {
+					if ( ! function_exists( 'pll_get_term_language' ) ) {
+						return null;
+					}
+					$slug = pll_get_term_language( (int) $obj['id'], 'slug' );
+					return $slug ? $slug : null;
+				},
+				'update_callback' => function ( $value, $term ) {
+					if ( is_string( $value ) && '' !== $value ) {
+						pll_set_term_language( (int) $term->term_id, sanitize_key( $value ) );
+					}
+					return true;
+				},
+			)
+		);
+
+		register_rest_field(
+			$tax,
+			'pll_translations',
+			array(
+				'schema'          => array(
+					'description' => 'Polylang term translations as {language-slug: term-id}.',
+					'type'        => 'object',
+					'context'     => array( 'view', 'edit' ),
+				),
+				'get_callback'    => function ( $obj ) {
+					if ( ! function_exists( 'pll_get_term_translations' ) ) {
+						return array();
+					}
+					return pll_get_term_translations( (int) $obj['id'] );
+				},
+				'update_callback' => function ( $value, $term ) {
+					if ( is_array( $value ) && function_exists( 'pll_save_term_translations' ) ) {
+						$map = array();
+						foreach ( $value as $slug => $id ) {
+							$map[ sanitize_key( $slug ) ] = (int) $id;
+						}
+						if ( $map ) {
+							pll_save_term_translations( $map );
+						}
+					}
+					return true;
+				},
+			)
+		);
+	}
+} );

@@ -324,11 +324,17 @@ async function updateNavigation(ratgeberUrl, faqUrl) {
   let content = (target.content && (target.content.raw ?? target.content)) || '';
   if (typeof content !== 'string') content = '';
 
+  // Ein wp:page-list-Block listet ALLE veröffentlichten Seiten automatisch — die
+  // FAQ-Seite erscheint dann von selbst, ein expliziter Link wäre ein Duplikat.
+  // Die Ratgeber-Übersicht ist dagegen eine Kategorie und nie durch page-list abgedeckt.
+  const hasPageList = /wp:page-list\b/.test(content);
+
   const additions = [];
-  if (!content.includes('>Ratgeber<') && !content.includes(ratgeberUrl)) {
+  if (!content.includes('"label":"Ratgeber"') && !content.includes(ratgeberUrl)) {
     additions.push(navLink('Ratgeber', ratgeberUrl));
   }
-  if (!content.includes('>FAQ<') && !content.includes(faqUrl)) {
+  const faqCovered = hasPageList || content.includes('"label":"FAQ"') || content.includes(faqUrl);
+  if (!faqCovered) {
     additions.push(navLink('FAQ', faqUrl));
   }
 

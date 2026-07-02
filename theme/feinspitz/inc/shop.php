@@ -191,3 +191,92 @@ JS;
 		wp_add_inline_script( 'feinspitz-shop', $js );
 	}
 }, 20 );
+
+/**
+ * Englische Kategorie-ANZEIGENAMEN auf /en/.
+ *
+ * Das freie Polylang übersetzt WooCommerce-Produkt-Kategorien (Taxonomie
+ * product_cat) NICHT — die Terme existieren nur in Deutsch. Damit die Shop-
+ * OBERFLÄCHE auf /en/ dennoch vollständig englisch wirkt, bilden wir die
+ * Kategorie-Slugs hier auf englische Anzeigenamen ab und ersetzen den
+ * ausgegebenen Kategorie-Titel, wenn die aktuelle Polylang-Sprache "en" ist.
+ *
+ * Produktnamen und -Beschreibungen bleiben unberührt (per Projekt-Vorgabe
+ * deutsch) — hier geht es ausschliesslich um die Kategorie-Überschrift der
+ * Archiv-Seiten (/en/produkt-kategorie/<slug>/).
+ *
+ * Angewendet über drei Filter, die alle Wege abdecken, auf denen der Titel
+ * gerendert wird:
+ *   - get_the_archive_title : der core/query-title-Block im shop-category-header.
+ *   - single_term_title     : WordPress-Kern-Term-Titel (Basis vieler Ausgaben).
+ *   - woocommerce_page_title: WooCommerce-eigene Seitentitel-Ausgabe.
+ *
+ * @return array Slug => englischer Anzeigename.
+ */
+function feinspitz_shop_category_en_names() {
+	return array(
+		'weissweine'      => 'White Wines',
+		'rotweine'        => 'Red Wines',
+		'rose'            => 'Rosé',
+		'schaumweine'     => 'Sparkling Wines',
+		'suessweine'      => 'Dessert Wines',
+		'kulinarium'      => 'Gourmet',
+		'senf-gewuerze'   => 'Mustard & Spices',
+		'pesto-chutney-co' => 'Pesto, Chutney & Co.',
+		'essig-verjus'    => 'Vinegar & Verjus',
+		'spirituosen'     => 'Spirits',
+		'gin'             => 'Gin',
+		'buecher'         => 'Books',
+	);
+}
+
+/**
+ * Englischer Anzeigename der aktuell abgefragten Produkt-Kategorie — oder null.
+ *
+ * Liefert nur dann einen Wert, wenn (a) Polylang aktiv ist und die aktuelle
+ * Sprache "en" ist, (b) ein product_cat-Term abgefragt wird und (c) dessen Slug
+ * in der Map steht. In allen anderen Fällen null → Aufrufer behält den
+ * Original-Titel (Deutsch bleibt Deutsch).
+ *
+ * @return string|null
+ */
+function feinspitz_shop_category_en_title() {
+	if ( ! function_exists( 'pll_current_language' ) || 'en' !== pll_current_language() ) {
+		return null;
+	}
+
+	$obj = get_queried_object();
+	if ( ! ( $obj instanceof WP_Term ) || 'product_cat' !== $obj->taxonomy ) {
+		return null;
+	}
+
+	$map = feinspitz_shop_category_en_names();
+	return isset( $map[ $obj->slug ] ) ? $map[ $obj->slug ] : null;
+}
+
+add_filter(
+	'get_the_archive_title',
+	function ( $title ) {
+		$en = feinspitz_shop_category_en_title();
+		return ( null !== $en ) ? $en : $title;
+	},
+	99
+);
+
+add_filter(
+	'single_term_title',
+	function ( $title ) {
+		$en = feinspitz_shop_category_en_title();
+		return ( null !== $en ) ? $en : $title;
+	},
+	99
+);
+
+add_filter(
+	'woocommerce_page_title',
+	function ( $title ) {
+		$en = feinspitz_shop_category_en_title();
+		return ( null !== $en ) ? $en : $title;
+	},
+	99
+);

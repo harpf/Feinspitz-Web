@@ -12,13 +12,30 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_x:1,2c;_ex:1,2c;esc_html_x:1,2c;esc_attr_x:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"PO-Revision-Date: 2026-07-02 09:53+0000\n"
+"PO-Revision-Date: 2026-07-02 11:47+0000\n"
+
+#: inc/branding.php:53
+msgid "Feinspitz — zur Startseite"
+msgstr "Feinspitz — zur Startseite"
+
+#: inc/branding.php:54
+msgid "Feinspitz — Weine & Genuss"
+msgstr "Feinspitz — Weine & Genuss"
+
+#: inc/branding.php:88
+msgid "Warenkorb, %s Artikel"
+msgid_plural "Warenkorb, %s Artikel"
+msgstr[0] "Warenkorb, %s Artikel"
+msgstr[1] "Warenkorb, %s Artikel"
+
+#: inc/branding.php:89
+msgid "Warenkorb"
+msgstr "Warenkorb"
 
 #: inc/checkout.php:36
 #: inc/homepage.php:29
 #: inc/product.php:115
 #: inc/shop.php:33
-#: patterns/home-hero.php:20
 msgid "Feinspitz"
 msgstr "Feinspitz"
 
@@ -62,6 +79,34 @@ msgstr "Startseite: Weinproben & Catering"
 msgid "Sprache wählen"
 msgstr "Sprache wählen"
 
+#: inc/navigation.php:74
+#: patterns/page-contact.php:37
+#: patterns/shop-archive-header.php:14
+msgid "Shop"
+msgstr "Shop"
+
+#: inc/navigation.php:75
+#: patterns/ratgeber-intro.php:19
+msgid "Ratgeber"
+msgstr "Ratgeber"
+
+#: inc/navigation.php:76
+msgid "FAQ"
+msgstr "FAQ"
+
+#: inc/navigation.php:77
+msgid "Über uns"
+msgstr "Über uns"
+
+#: inc/navigation.php:78
+#: patterns/page-contact.php:17
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: inc/pages.php:38
+msgid "Seiten-Layouts für die Feinspitz-Inhaltsseiten."
+msgstr "Seiten-Layouts für die Feinspitz-Inhaltsseiten."
+
 #: inc/product.php:121
 msgid "Produkt: Galerie & Kaufbereich"
 msgstr "Produkt: Galerie & Kaufbereich"
@@ -77,6 +122,7 @@ msgstr "Produkt: Verwandte Produkte"
 #: inc/product.php:34
 #: patterns/checkout-trust.php:43
 #: patterns/home-categories.php:68
+#: patterns/page-about.php:93
 #: patterns/shop-filter-flags.php:31
 msgid "Histamingeprüft"
 msgstr "Histamingeprüft"
@@ -96,6 +142,82 @@ msgstr "Alkoholfrei"
 #: inc/product.php:80
 msgid "Produkt-Eigenschaften"
 msgstr "Produkt-Eigenschaften"
+
+#: inc/ratgeber.php:137
+msgid "FAQ: Akkordeon"
+msgstr "FAQ: Akkordeon"
+
+#: inc/ratgeber.php:152
+msgid "Ratgeber: Übersicht-Intro"
+msgstr "Ratgeber: Übersicht-Intro"
+
+#: inc/ratgeber.php:212
+msgid "Häufige Fragen zu histamingeprüften Weinen, Versand innerhalb der Schweiz, Abholung in Urdorf sowie veganen und alkoholfreien Weinen — klar beantwortet von Feinspitz."
+msgstr "Häufige Fragen zu histamingeprüften Weinen, Versand innerhalb der Schweiz, Abholung in Urdorf sowie veganen und alkoholfreien Weinen — klar beantwortet von Feinspitz."
+
+#: inc/ratgeber.php:42
+msgid "Was bedeutet „histamingeprüft\" bei einem Wein?"
+msgstr "Was bedeutet „histamingeprüft\" bei einem Wein?"
+
+#: inc/ratgeber.php:43
+msgid "Histamingeprüfte Weine werden im Labor auf ihren Histamingehalt untersucht. So wissen Sie vor dem Kauf, woran Sie sind — ideal für alle, die auf Verträglichkeit achten und Wein bewusst geniessen möchten."
+msgstr "Histamingeprüfte Weine werden im Labor auf ihren Histamingehalt untersucht. So wissen Sie vor dem Kauf, woran Sie sind — ideal für alle, die auf Verträglichkeit achten und Wein bewusst geniessen möchten."
+
+#: inc/ratgeber.php:46
+msgid "Sind histamingeprüfte Weine automatisch histaminfrei?"
+msgstr "Sind histamingeprüfte Weine automatisch histaminfrei?"
+
+#: inc/ratgeber.php:47
+msgid "Nein. Wein enthält von Natur aus geringe Mengen Histamin — histaminfrei gibt es nicht. „Geprüft\" heisst: der Gehalt ist bekannt und niedrig ausgewiesen. Bei diagnostizierter Histaminintoleranz halten Sie im Zweifel bitte Rücksprache mit Ihrer Ärztin oder Ihrem Arzt."
+msgstr "Nein. Wein enthält von Natur aus geringe Mengen Histamin — histaminfrei gibt es nicht. „Geprüft\" heisst: der Gehalt ist bekannt und niedrig ausgewiesen. Bei diagnostizierter Histaminintoleranz halten Sie im Zweifel bitte Rücksprache mit Ihrer Ärztin oder Ihrem Arzt."
+
+#: inc/ratgeber.php:50
+msgid "Wie erkenne ich vegane und alkoholfreie Weine im Shop?"
+msgstr "Wie erkenne ich vegane und alkoholfreie Weine im Shop?"
+
+#: inc/ratgeber.php:51
+msgid "Passende Weine sind mit den Merkmalen „vegan\" bzw. „alkoholfrei\" gekennzeichnet und lassen sich über die Filter im Shop gezielt anzeigen. Vegane Weine kommen ohne tierische Klärhilfsmittel aus; alkoholfreie Weine sind eine schonende Alternative für den unbeschwerten Genuss."
+msgstr "Passende Weine sind mit den Merkmalen „vegan\" bzw. „alkoholfrei\" gekennzeichnet und lassen sich über die Filter im Shop gezielt anzeigen. Vegane Weine kommen ohne tierische Klärhilfsmittel aus; alkoholfreie Weine sind eine schonende Alternative für den unbeschwerten Genuss."
+
+#: inc/ratgeber.php:54
+msgid "Wohin liefert Feinspitz und was kostet der Versand?"
+msgstr "Wohin liefert Feinspitz und was kostet der Versand?"
+
+#: inc/ratgeber.php:55
+msgid "Wir versenden schweizweit mit Schweizer Versandpartnern. Die Lieferung erfolgt sorgfältig verpackt in bruchsicheren Weinkartons. Die aktuellen Versandkosten und allfällige Freigrenzen sehen Sie transparent im Warenkorb, bevor Sie bestellen."
+msgstr "Wir versenden schweizweit mit Schweizer Versandpartnern. Die Lieferung erfolgt sorgfältig verpackt in bruchsicheren Weinkartons. Die aktuellen Versandkosten und allfällige Freigrenzen sehen Sie transparent im Warenkorb, bevor Sie bestellen."
+
+#: inc/ratgeber.php:58
+msgid "Wie lange dauert die Lieferung innerhalb der Schweiz?"
+msgstr "Wie lange dauert die Lieferung innerhalb der Schweiz?"
+
+#: inc/ratgeber.php:59
+msgid "Bestellungen bearbeiten wir in der Regel innerhalb von ein bis zwei Werktagen. Danach ist Ihr Wein üblicherweise innert weniger Werktage bei Ihnen — abhängig von Versandart und Region."
+msgstr "Bestellungen bearbeiten wir in der Regel innerhalb von ein bis zwei Werktagen. Danach ist Ihr Wein üblicherweise innert weniger Werktage bei Ihnen — abhängig von Versandart und Region."
+
+#: inc/ratgeber.php:62
+msgid "Kann ich meine Bestellung in Urdorf abholen?"
+msgstr "Kann ich meine Bestellung in Urdorf abholen?"
+
+#: inc/ratgeber.php:63
+msgid "Ja. Sie können Ihre Bestellung nach Absprache bei uns in Urdorf abholen und sparen so die Versandkosten. Bitte warten Sie unsere Abhol-Bestätigung ab, bevor Sie vorbeikommen, damit alles bereitsteht."
+msgstr "Ja. Sie können Ihre Bestellung nach Absprache bei uns in Urdorf abholen und sparen so die Versandkosten. Bitte warten Sie unsere Abhol-Bestätigung ab, bevor Sie vorbeikommen, damit alles bereitsteht."
+
+#: inc/ratgeber.php:66
+msgid "Ab welchem Alter kann ich Wein bestellen?"
+msgstr "Ab welchem Alter kann ich Wein bestellen?"
+
+#: inc/ratgeber.php:67
+msgid "Alkoholische Weine geben wir ausschliesslich an Personen ab 18 Jahren ab. Mit Ihrer Bestellung bestätigen Sie, dass Sie volljährig sind."
+msgstr "Alkoholische Weine geben wir ausschliesslich an Personen ab 18 Jahren ab. Mit Ihrer Bestellung bestätigen Sie, dass Sie volljährig sind."
+
+#: inc/ratgeber.php:70
+msgid "Berät mich Feinspitz auch persönlich bei der Auswahl?"
+msgstr "Berät mich Feinspitz auch persönlich bei der Auswahl?"
+
+#: inc/ratgeber.php:71
+msgid "Sehr gerne. Wir verkosten unser Sortiment selbst und beraten Sie ehrlich — ob zur Verträglichkeit, zu Speisekombinationen oder zum passenden Wein für einen Anlass. Nehmen Sie einfach über die Kontaktseite mit uns Kontakt auf."
+msgstr "Sehr gerne. Wir verkosten unser Sortiment selbst und beraten Sie ehrlich — ob zur Verträglichkeit, zu Speisekombinationen oder zum passenden Wein für einen Anlass. Nehmen Sie einfach über die Kontaktseite mit uns Kontakt auf."
 
 #: inc/shop.php:38
 msgid "Shop: Kopfbereich"
@@ -150,12 +272,12 @@ msgid "Entdecken Sie histamingeprüfte Weine und feine Delikatessen — handverl
 msgstr "Entdecken Sie histamingeprüfte Weine und feine Delikatessen — handverlesen und ehrlich beraten."
 
 #: patterns/checkout-empty-cart.php:32
-#: patterns/home-hero.php:34
+#: patterns/home-hero.php:37
 msgid "Zum Weinshop"
 msgstr "Zum Weinshop"
 
 #: patterns/checkout-empty-cart.php:36
-#: patterns/home-cta.php:28
+#: patterns/home-cta.php:44
 msgid "Weinprobe buchen"
 msgstr "Weinprobe buchen"
 
@@ -231,19 +353,40 @@ msgstr "Laborgeprüfte Weine für empfindliche Geniesser — unsere Spezialität
 msgid "Weine & Delikatessen ganz ohne tierische Hilfsstoffe."
 msgstr "Weine & Delikatessen ganz ohne tierische Hilfsstoffe."
 
-#: patterns/home-cta.php:14
+#: patterns/home-cta.php:20
 msgid "Gemeinsam geniessen"
 msgstr "Gemeinsam geniessen"
 
-#: patterns/home-cta.php:18
+#: patterns/home-cta.php:24
 msgid "Weinproben & Catering"
 msgstr "Weinproben & Catering"
 
-#: patterns/home-cta.php:22
-msgid "Ob geführte Weinprobe oder stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt. Auch histaminarm auf Wunsch."
-msgstr "Ob geführte Weinprobe oder stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt. Auch histaminarm auf Wunsch."
-
 #: patterns/home-cta.php:32
+msgid "Geführte Weinprobe an einem Messestand"
+msgstr "Geführte Weinprobe an einem Messestand"
+
+#: patterns/home-cta.php:34
+msgid "Geführte Weinproben"
+msgstr "Geführte Weinproben"
+
+#: patterns/home-cta.php:38
+msgid "Entdecken Sie unsere Weine bei einer geführten Probe — auch histaminarm auf Wunsch."
+msgstr "Entdecken Sie unsere Weine bei einer geführten Probe — auch histaminarm auf Wunsch."
+
+#: patterns/home-cta.php:56
+msgid "Catering mit Apéro und Canapés"
+msgstr "Catering mit Apéro und Canapés"
+
+#: patterns/home-cta.php:58
+msgid "Catering & Apéro"
+msgstr "Catering & Apéro"
+
+#: patterns/home-cta.php:62
+msgid "Stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt."
+msgstr "Stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt."
+
+#: patterns/home-cta.php:68
+#: patterns/page-catering.php:84
 msgid "Catering anfragen"
 msgstr "Catering anfragen"
 
@@ -259,61 +402,326 @@ msgstr "Ausgewählte Weine & Delikatessen"
 msgid "Alle Produkte ansehen"
 msgstr "Alle Produkte ansehen"
 
-#: patterns/home-hero.php:16
+#: patterns/home-hero.php:23
 msgid "Weine & Genuss aus Leidenschaft"
 msgstr "Weine & Genuss aus Leidenschaft"
 
-#: patterns/home-hero.php:24
-msgid "Weine & Genuss"
-msgstr "Weine & Genuss"
+#: patterns/home-hero.php:27
+msgid "Weine, die man wirklich geniessen kann"
+msgstr "Weine, die man wirklich geniessen kann"
 
-#: patterns/home-hero.php:28
-msgid "Der erste Anbieter histamingeprüfter Weine der Schweiz — seit über 20 Jahren Ihr Spezialist für ehrlichen, verträglichen Genuss."
-msgstr "Der erste Anbieter histamingeprüfter Weine der Schweiz — seit über 20 Jahren Ihr Spezialist für ehrlichen, verträglichen Genuss."
+#: patterns/home-hero.php:31
+msgid "Als erster Anbieter histamingeprüfter Weine der Schweiz stehen wir seit über 20 Jahren für ehrlichen, verträglichen Genuss — handverlesen und persönlich beraten."
+msgstr "Als erster Anbieter histamingeprüfter Weine der Schweiz stehen wir seit über 20 Jahren für ehrlichen, verträglichen Genuss — handverlesen und persönlich beraten."
 
-#: patterns/home-hero.php:38
+#: patterns/home-hero.php:41
+#: patterns/home-story.php:33
 msgid "Unsere Geschichte"
 msgstr "Unsere Geschichte"
 
-#: patterns/home-story.php:18
-msgid "Über Feinspitz"
-msgstr "Über Feinspitz"
+#: patterns/home-hero.php:47
+msgid "Austria Bio Garantie · Histamin 100 % geprüft · Vegan"
+msgstr "Austria Bio Garantie · Histamin 100 % geprüft · Vegan"
 
-#: patterns/home-story.php:22
-msgid "20 Jahre Leidenschaft für ehrlichen Genuss"
-msgstr "20 Jahre Leidenschaft für ehrlichen Genuss"
+#: patterns/home-story.php:25
+msgid "Winzer im Weinberg des Familienweinguts Steyrer im Traisental, mit Bio-, Histamin- und Vegan-Siegel"
+msgstr "Winzer im Weinberg des Familienweinguts Steyrer im Traisental, mit Bio-, Histamin- und Vegan-Siegel"
 
-#: patterns/home-story.php:26
-msgid "Feinspitz steht seit über zwei Jahrzehnten für sorgfältig ausgewählte Weine und feine Delikatessen. Als erster Anbieter histamingeprüfter Weine der Schweiz machen wir Genuss auch für empfindliche Weinliebhaberinnen und -liebhaber möglich — transparent, ehrlich und mit persönlicher Beratung."
-msgstr "Feinspitz steht seit über zwei Jahrzehnten für sorgfältig ausgewählte Weine und feine Delikatessen. Als erster Anbieter histamingeprüfter Weine der Schweiz machen wir Genuss auch für empfindliche Weinliebhaberinnen und -liebhaber möglich — transparent, ehrlich und mit persönlicher Beratung."
+#: patterns/home-story.php:37
+msgid "Vom Traisental in Ihr Glas"
+msgstr "Vom Traisental in Ihr Glas"
 
-#: patterns/home-story.php:32
+#: patterns/home-story.php:41
+msgid "Unsere Weine stammen vom Familienweingut Steyrer im niederösterreichischen Traisental. Auf sonnenverwöhnten Terrassen wächst dort, was uns am Herzen liegt: ehrlicher Wein, im Einklang mit der Natur gewachsen und mit tiefem Respekt vor ihr."
+msgstr "Unsere Weine stammen vom Familienweingut Steyrer im niederösterreichischen Traisental. Auf sonnenverwöhnten Terrassen wächst dort, was uns am Herzen liegt: ehrlicher Wein, im Einklang mit der Natur gewachsen und mit tiefem Respekt vor ihr."
+
+#: patterns/home-story.php:45
+msgid "Familie Steyrer bewirtschaftet ihre Reben nachhaltig — zertifiziert nach Austria Bio Garantie, zu 100 % histamingeprüft und vegan. Als erster Anbieter histamingeprüfter Weine der Schweiz bringen wir dieses Handwerk seit über 20 Jahren zu Ihnen."
+msgstr "Familie Steyrer bewirtschaftet ihre Reben nachhaltig — zertifiziert nach Austria Bio Garantie, zu 100 % histamingeprüft und vegan. Als erster Anbieter histamingeprüfter Weine der Schweiz bringen wir dieses Handwerk seit über 20 Jahren zu Ihnen."
+
+#: patterns/home-story.php:51
+msgid "„Wir machen Wein so, wie wir ihn selbst trinken möchten: rein, verträglich und mit Freude am Genuss.“"
+msgstr "„Wir machen Wein so, wie wir ihn selbst trinken möchten: rein, verträglich und mit Freude am Genuss.“"
+
+#: patterns/home-story.php:55
+msgid "— Familie Steyrer & das Feinspitz-Team"
+msgstr "— Familie Steyrer & das Feinspitz-Team"
+
+#: patterns/home-story.php:61
+msgid "Histamingeprüfte Weine mit mehr Vertrauen und Genuss erleben – für mehr Lebensqualität!"
+msgstr "Histamingeprüfte Weine mit mehr Vertrauen und Genuss erleben – für mehr Lebensqualität!"
+
+#: patterns/home-story.php:67
 msgid "Mehr über uns"
 msgstr "Mehr über uns"
 
-#: patterns/home-story.php:46
-msgid "20+"
-msgstr "20+"
+#: patterns/page-about.php:104
+msgid "Handverlesen"
+msgstr "Handverlesen"
 
-#: patterns/home-story.php:49
-msgid "Jahre Erfahrung im Weinhandel"
-msgstr "Jahre Erfahrung im Weinhandel"
+#: patterns/page-about.php:107
+msgid "Direkter Kontakt zu Winzern und Produzenten. Wir nehmen nur auf, was wir selbst verkostet und für gut befunden haben."
+msgstr "Direkter Kontakt zu Winzern und Produzenten. Wir nehmen nur auf, was wir selbst verkostet und für gut befunden haben."
 
-#: patterns/home-story.php:57
-msgid "Nr. 1"
-msgstr "Nr. 1"
+#: patterns/page-about.php:115
+msgid "Persönlich"
+msgstr "Persönlich"
 
-#: patterns/home-story.php:60
-msgid "für histamingeprüfte Weine in der Schweiz"
-msgstr "für histamingeprüfte Weine in der Schweiz"
+#: patterns/page-about.php:118
+msgid "Ehrliche Beratung ohne Schnickschnack — im Shop in Urdorf und bei jeder Empfehlung, die wir aussprechen."
+msgstr "Ehrliche Beratung ohne Schnickschnack — im Shop in Urdorf und bei jeder Empfehlung, die wir aussprechen."
 
-#: patterns/home-story.php:68
-msgid "100%"
-msgstr "100%"
+#: patterns/page-about.php:128
+msgid "Sortiment entdecken"
+msgstr "Sortiment entdecken"
 
-#: patterns/home-story.php:71
-msgid "handverlesen & ehrlich beraten"
-msgstr "handverlesen & ehrlich beraten"
+#: patterns/page-about.php:132
+msgid "Kontakt aufnehmen"
+msgstr "Kontakt aufnehmen"
+
+#: patterns/page-about.php:17
+msgid "Über uns · seit 2004"
+msgstr "Über uns · seit 2004"
+
+#: patterns/page-about.php:21
+msgid "20 Jahre Leidenschaft für ehrlichen Genuss"
+msgstr "20 Jahre Leidenschaft für ehrlichen Genuss"
+
+#: patterns/page-about.php:25
+msgid "Feinspitz steht für sorgfältig ausgewählte Weine und Spezialitäten — mit einer Überzeugung im Zentrum: Genuss soll bekömmlich sein. Als erster Anbieter histamingeprüfter Weine der Schweiz haben wir eine ganze Kategorie mitgeprägt."
+msgstr "Feinspitz steht für sorgfältig ausgewählte Weine und Spezialitäten — mit einer Überzeugung im Zentrum: Genuss soll bekömmlich sein. Als erster Anbieter histamingeprüfter Weine der Schweiz haben wir eine ganze Kategorie mitgeprägt."
+
+#: patterns/page-about.php:41
+msgid "Jahre Erfahrung"
+msgstr "Jahre Erfahrung"
+
+#: patterns/page-about.php:49
+msgid "Aus Überzeugung, nicht aus Trend"
+msgstr "Aus Überzeugung, nicht aus Trend"
+
+#: patterns/page-about.php:53
+msgid "Was vor zwei Jahrzehnten mit der Suche nach verträglichen Weinen begann, ist heute ein kuratiertes Sortiment aus Wein und Gourmet-Spezialitäten. Wir arbeiten direkt mit Winzern, verkosten selbst und nehmen nur auf, was uns überzeugt."
+msgstr "Was vor zwei Jahrzehnten mit der Suche nach verträglichen Weinen begann, ist heute ein kuratiertes Sortiment aus Wein und Gourmet-Spezialitäten. Wir arbeiten direkt mit Winzern, verkosten selbst und nehmen nur auf, was uns überzeugt."
+
+#: patterns/page-about.php:57
+msgid "Persönliche Beratung, ehrliche Qualität und ein Fokus auf Bekömmlichkeit — das ist der Kern von Feinspitz."
+msgstr "Persönliche Beratung, ehrliche Qualität und ein Fokus auf Bekömmlichkeit — das ist der Kern von Feinspitz."
+
+#: patterns/page-about.php:69
+msgid "Schweizer Premiere"
+msgstr "Schweizer Premiere"
+
+#: patterns/page-about.php:73
+msgid "Erster Anbieter histamingeprüfter Weine der Schweiz"
+msgstr "Erster Anbieter histamingeprüfter Weine der Schweiz"
+
+#: patterns/page-about.php:77
+msgid "Jeder histamingeprüfte Wein wird im Labor auf seinen Histamingehalt untersucht — für alle, die auf Verträglichkeit achten, ohne auf Genuss zu verzichten."
+msgstr "Jeder histamingeprüfte Wein wird im Labor auf seinen Histamingehalt untersucht — für alle, die auf Verträglichkeit achten, ohne auf Genuss zu verzichten."
+
+#: patterns/page-about.php:85
+msgid "Wofür wir stehen"
+msgstr "Wofür wir stehen"
+
+#: patterns/page-about.php:96
+msgid "Laborgeprüfte Weine für bewussten, bekömmlichen Genuss — unsere Kernkompetenz seit 20 Jahren."
+msgstr "Laborgeprüfte Weine für bewussten, bekömmlichen Genuss — unsere Kernkompetenz seit 20 Jahren."
+
+#: patterns/page-catering.php:17
+msgid "Catering"
+msgstr "Catering"
+
+#: patterns/page-catering.php:21
+msgid "Vom Apéro bis zum Grillevent"
+msgstr "Vom Apéro bis zum Grillevent"
+
+#: patterns/page-catering.php:25
+msgid "Wir gestalten Ihren Anlass kulinarisch — vom feinen Apéro riche bis zum entspannten Grillevent, immer mit der passenden Weinbegleitung."
+msgstr "Wir gestalten Ihren Anlass kulinarisch — vom feinen Apéro riche bis zum entspannten Grillevent, immer mit der passenden Weinbegleitung."
+
+#: patterns/page-catering.php:33
+msgid "Ein Gastgeber, jede Grösse"
+msgstr "Ein Gastgeber, jede Grösse"
+
+#: patterns/page-catering.php:37
+msgid "Ob kleine Feier oder Firmenanlass — wir passen Menü, Format und Weinauswahl an Ihren Rahmen an."
+msgstr "Ob kleine Feier oder Firmenanlass — wir passen Menü, Format und Weinauswahl an Ihren Rahmen an."
+
+#: patterns/page-catering.php:49
+msgid "Apéro & Apéro riche"
+msgstr "Apéro & Apéro riche"
+
+#: patterns/page-catering.php:52
+msgid "Feine Häppchen, Antipasti und Gourmet-Spezialitäten aus unserem Sortiment — der stilvolle Einstieg in jeden Anlass."
+msgstr "Feine Häppchen, Antipasti und Gourmet-Spezialitäten aus unserem Sortiment — der stilvolle Einstieg in jeden Anlass."
+
+#: patterns/page-catering.php:60
+msgid "Firmen- & Privatanlässe"
+msgstr "Firmen- & Privatanlässe"
+
+#: patterns/page-catering.php:63
+msgid "Jubiläen, Geschäftsessen oder private Feiern — abgestimmt auf Ihre Gästezahl und mit passender Weinbegleitung."
+msgstr "Jubiläen, Geschäftsessen oder private Feiern — abgestimmt auf Ihre Gästezahl und mit passender Weinbegleitung."
+
+#: patterns/page-catering.php:71
+msgid "Grillevent"
+msgstr "Grillevent"
+
+#: patterns/page-catering.php:74
+msgid "Entspannt draussen: vom Grill frisch auf den Teller, kombiniert mit unkomplizierten, verträglichen Weinen für laue Abende."
+msgstr "Entspannt draussen: vom Grill frisch auf den Teller, kombiniert mit unkomplizierten, verträglichen Weinen für laue Abende."
+
+#: patterns/page-catering.php:88
+msgid "Direkt anrufen"
+msgstr "Direkt anrufen"
+
+#: patterns/page-contact.php:21
+msgid "Sprechen Sie mit uns"
+msgstr "Sprechen Sie mit uns"
+
+#: patterns/page-contact.php:25
+msgid "Fragen zu Weinen, Bestellungen oder einer Verkostung? Wir sind persönlich für Sie da."
+msgstr "Fragen zu Weinen, Bestellungen oder einer Verkostung? Wir sind persönlich für Sie da."
+
+#: patterns/page-contact.php:41
+#: patterns/page-legal.php:61
+msgid "Feinspitz Weine & Genuss"
+msgstr "Feinspitz Weine & Genuss"
+
+#: patterns/page-contact.php:45
+#: patterns/page-legal.php:61
+msgid "Bahnhofstrasse 80"
+msgstr "Bahnhofstrasse 80"
+
+#: patterns/page-contact.php:45
+#: patterns/page-contact.php:77
+#: patterns/page-legal.php:61
+#: patterns/page-legal.php:65
+msgid "CH-8902 Urdorf"
+msgstr "CH-8902 Urdorf"
+
+#: patterns/page-contact.php:49
+#: patterns/page-legal.php:69
+msgid "Telefon"
+msgstr "Telefon"
+
+#: patterns/page-contact.php:53
+msgid "Öffnung nach Vereinbarung"
+msgstr "Öffnung nach Vereinbarung"
+
+#: patterns/page-contact.php:53
+msgid "Öffnungszeiten"
+msgstr "Öffnungszeiten"
+
+#: patterns/page-contact.php:59
+msgid "Anrufen"
+msgstr "Anrufen"
+
+#: patterns/page-contact.php:69
+#: patterns/page-legal.php:65
+msgid "Administration"
+msgstr "Administration"
+
+#: patterns/page-contact.php:73
+msgid "Büro & Verwaltung"
+msgstr "Büro & Verwaltung"
+
+#: patterns/page-contact.php:77
+#: patterns/page-legal.php:65
+msgid "Baumgartenstrasse 16"
+msgstr "Baumgartenstrasse 16"
+
+#: patterns/page-contact.php:81
+msgid "Für administrative Anliegen, Rechnungen und Partnerschaften. Ein Besuch ist nach Vereinbarung möglich."
+msgstr "Für administrative Anliegen, Rechnungen und Partnerschaften. Ein Besuch ist nach Vereinbarung möglich."
+
+#: patterns/page-contact.php:89
+msgid "Besuch & Abholung jederzeit nach Vereinbarung"
+msgstr "Besuch & Abholung jederzeit nach Vereinbarung"
+
+#: patterns/page-legal.php:17
+msgid "Rechtliches"
+msgstr "Rechtliches"
+
+#: patterns/page-legal.php:21
+msgid "Titel des Rechtstexts"
+msgstr "Titel des Rechtstexts"
+
+#: patterns/page-legal.php:25
+msgid "Zuletzt aktualisiert: TT.MM.JJJJ"
+msgstr "Zuletzt aktualisiert: TT.MM.JJJJ"
+
+#: patterns/page-legal.php:33
+msgid "Diese Seite hält die rechtlichen Rahmenbedingungen fest. Ersetzen Sie die folgenden Platzhalter durch den jeweiligen Text (AGB, Lieferbedingungen, Datenschutzerklärung oder Impressum)."
+msgstr "Diese Seite hält die rechtlichen Rahmenbedingungen fest. Ersetzen Sie die folgenden Platzhalter durch den jeweiligen Text (AGB, Lieferbedingungen, Datenschutzerklärung oder Impressum)."
+
+#: patterns/page-legal.php:37
+msgid "1. Abschnitt"
+msgstr "1. Abschnitt"
+
+#: patterns/page-legal.php:40
+msgid "Platzhaltertext. Beschreiben Sie hier den ersten Abschnitt des Rechtstexts. Nutzen Sie weitere Überschriften und Absätze für eine klare Gliederung."
+msgstr "Platzhaltertext. Beschreiben Sie hier den ersten Abschnitt des Rechtstexts. Nutzen Sie weitere Überschriften und Absätze für eine klare Gliederung."
+
+#: patterns/page-legal.php:44
+msgid "2. Abschnitt"
+msgstr "2. Abschnitt"
+
+#: patterns/page-legal.php:47
+msgid "Platzhaltertext. Ergänzen Sie so viele Abschnitte, wie der jeweilige Rechtstext benötigt."
+msgstr "Platzhaltertext. Ergänzen Sie so viele Abschnitte, wie der jeweilige Rechtstext benötigt."
+
+#: patterns/page-legal.php:55
+msgid "Angaben gemäss Impressum"
+msgstr "Angaben gemäss Impressum"
+
+#: patterns/page-tastings.php:17
+msgid "Weinproben"
+msgstr "Weinproben"
+
+#: patterns/page-tastings.php:21
+msgid "Verkosten, was verträglich ist"
+msgstr "Verkosten, was verträglich ist"
+
+#: patterns/page-tastings.php:25
+msgid "Erleben Sie histamingeprüfte Weine mit allen Sinnen — geführt, ehrlich und ohne Berührungsängste. Ob im Shop, an Ihrem Event oder privat bei Ihnen zu Hause."
+msgstr "Erleben Sie histamingeprüfte Weine mit allen Sinnen — geführt, ehrlich und ohne Berührungsängste. Ob im Shop, an Ihrem Event oder privat bei Ihnen zu Hause."
+
+#: patterns/page-tastings.php:40
+msgid "Im Shop"
+msgstr "Im Shop"
+
+#: patterns/page-tastings.php:43
+msgid "Geführte Degustation an der Bahnhofstrasse in Urdorf — kleine Runde, grosse Auswahl, persönliche Einordnung zu jedem Wein."
+msgstr "Geführte Degustation an der Bahnhofstrasse in Urdorf — kleine Runde, grosse Auswahl, persönliche Einordnung zu jedem Wein."
+
+#: patterns/page-tastings.php:54
+msgid "An Events"
+msgstr "An Events"
+
+#: patterns/page-tastings.php:57
+msgid "Firmenanlässe, Jubiläen oder Messen — wir bringen die Verkostung zu Ihnen und begleiten Ihre Gäste durch die Weine."
+msgstr "Firmenanlässe, Jubiläen oder Messen — wir bringen die Verkostung zu Ihnen und begleiten Ihre Gäste durch die Weine."
+
+#: patterns/page-tastings.php:68
+msgid "Privat zu Hause"
+msgstr "Privat zu Hause"
+
+#: patterns/page-tastings.php:71
+msgid "Die Weinprobe im eigenen Wohnzimmer — mit Freunden, in entspannter Runde und ganz auf Ihren Geschmack abgestimmt."
+msgstr "Die Weinprobe im eigenen Wohnzimmer — mit Freunden, in entspannter Runde und ganz auf Ihren Geschmack abgestimmt."
+
+#: patterns/page-tastings.php:81
+msgid "Bereit für Ihre Verkostung?"
+msgstr "Bereit für Ihre Verkostung?"
+
+#: patterns/page-tastings.php:85
+msgid "Erzählen Sie uns von Ihrem Anlass — wir stellen die passende Auswahl zusammen."
+msgstr "Erzählen Sie uns von Ihrem Anlass — wir stellen die passende Auswahl zusammen."
+
+#: patterns/page-tastings.php:91
+msgid "Termin anfragen"
+msgstr "Termin anfragen"
 
 #: patterns/product-details.php:19
 msgid "Gut zu wissen"
@@ -331,9 +739,13 @@ msgstr "Passt dazu"
 msgid "Das könnte Ihnen auch schmecken"
 msgstr "Das könnte Ihnen auch schmecken"
 
-#: patterns/shop-archive-header.php:14
-msgid "Shop"
-msgstr "Shop"
+#: patterns/ratgeber-intro.php:23
+msgid "Wein verstehen, bewusst geniessen"
+msgstr "Wein verstehen, bewusst geniessen"
+
+#: patterns/ratgeber-intro.php:27
+msgid "Fundiertes Wissen rund um histaminarmen Weingenuss, vegane Weine und die kleinen Dinge, die den grossen Unterschied machen — verständlich erklärt vom Team hinter Feinspitz."
+msgstr "Fundiertes Wissen rund um histaminarmen Weingenuss, vegane Weine und die kleinen Dinge, die den grossen Unterschied machen — verständlich erklärt vom Team hinter Feinspitz."
 
 #: patterns/shop-archive-header.php:18
 msgid "Unser gesamtes Sortiment"
@@ -354,3 +766,9 @@ msgstr "Filtern nach"
 #: patterns/shop-filter-flags.php:27
 msgid "Alle Produkte"
 msgstr "Alle Produkte"
+
+#: inc/pages.php:37
+#: inc/ratgeber.php:125
+msgctxt "Block pattern category"
+msgid "Feinspitz"
+msgstr "Feinspitz"

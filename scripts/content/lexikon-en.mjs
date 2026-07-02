@@ -72,7 +72,7 @@ const TRANSLATIONS = {
       ),
       h2('What to look for'),
       p(
-        `As a rule of thumb, white and rosé wines tend to show lower levels than powerful reds such as ${lk('zweigelt', 'Zweigelt')}, because they less often undergo a pronounced malolactic fermentation. There is, however, no such thing as a completely histamine-free wine. Real reassurance comes from ${lk('histamine-tested-wines', 'histamine-tested wines')}, whose content has been determined in the laboratory.`
+        `As a rule of thumb, white and rosé wines tend to show lower levels than powerful reds such as ${lk('zweigelt-grape', 'Zweigelt')}, because they less often undergo a pronounced malolactic fermentation. There is, however, no such thing as a completely histamine-free wine. Real reassurance comes from ${lk('histamine-tested-wines', 'histamine-tested wines')}, whose content has been determined in the laboratory.`
       )
     ),
   },
@@ -118,7 +118,7 @@ const TRANSLATIONS = {
   },
 
   'gruener-veltliner': {
-    slug: 'gruener-veltliner',
+    slug: 'gruener-veltliner-grape',
     title: 'Grüner Veltliner',
     excerpt:
       'Grüner Veltliner is Austria’s signature grape: a spicy, fresh white wine with a peppery note, a great companion to food and usually easy to enjoy.',
@@ -138,7 +138,7 @@ const TRANSLATIONS = {
   },
 
   zweigelt: {
-    slug: 'zweigelt',
+    slug: 'zweigelt-grape',
     title: 'Zweigelt',
     excerpt:
       'Zweigelt is Austria’s most-planted red grape: velvety and fruity with cherry notes, soft tannins and a pleasantly approachable character.',
@@ -158,7 +158,7 @@ const TRANSLATIONS = {
   },
 
   blaufraenkisch: {
-    slug: 'blaufraenkisch',
+    slug: 'blaufraenkisch-grape',
     title: 'Blaufränkisch',
     excerpt:
       'Blaufränkisch is a powerful, spicy Austrian red grape with dark fruit, marked acidity and a pronounced sense of terroir.',
@@ -172,13 +172,13 @@ const TRANSLATIONS = {
       ),
       h2('Kinship & origin'),
       p(
-        `As a parent of ${lk('zweigelt', 'Zweigelt')}, Blaufränkisch has shaped the Austrian red-wine landscape. It finds ideal conditions in Styria and Burgenland and is a reliable companion to hearty meat dishes.`
+        `As a parent of ${lk('zweigelt-grape', 'Zweigelt')}, Blaufränkisch has shaped the Austrian red-wine landscape. It finds ideal conditions in Styria and Burgenland and is a reliable companion to hearty meat dishes.`
       )
     ),
   },
 
   riesling: {
-    slug: 'riesling',
+    slug: 'riesling-grape',
     title: 'Riesling',
     excerpt:
       'Riesling is regarded as the king of white wines: delicate, mineral and long-lived, with racy acidity and aromas of peach, citrus and ripe apple.',

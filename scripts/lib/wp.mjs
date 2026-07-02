@@ -1,9 +1,10 @@
 // Zentrale REST-/HTTP-Bibliothek für die Feinspitz-WordPress-Automation.
-// Zugriff nur über HTTP: WP-REST (wp/v2), WooCommerce (wc/v3), plus cookie-auth
-// wp-admin-Upload fürs Theme (REST kennt keinen Custom-Theme-Zip-Upload).
+// Zugriff nur über HTTP.
 //
-// Auth: Application Password (Basic Auth). Das normale Login-Passwort funktioniert
-// per REST NICHT — dafür braucht es ein Anwendungspasswort (WP 5.6+).
+// WICHTIG: Der Server entfernt den Authorization-Header, bevor er PHP erreicht
+// (Basic-Auth mit Application Password → rest_not_logged_in). Daher authentifizieren
+// wir über den WordPress-Cookie-Login + X-WP-Nonce (funktioniert für wp/v2 UND wc/v3
+// bei eingeloggten Admins). Braucht WP_USER + WP_LOGIN_PASSWORD in .env.local.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -31,30 +32,76 @@ export function loadEnv() {
 const ENV = loadEnv();
 export const WP_BASE = (ENV.WP_BASE || 'https://feinspitz.alpenmesh.de').replace(/\/+$/, '');
 export const WP_USER = ENV.WP_USER || 'automation';
-const WP_APP_PASSWORD = (ENV.WP_APP_PASSWORD || '').trim();
 const WP_LOGIN_PASSWORD = (ENV.WP_LOGIN_PASSWORD || '').trim();
 
-function authHeader() {
-  if (!WP_APP_PASSWORD) {
+// --- Cookie-Session (Singleton) -------------------------------------------
+
+const jar = new Map();
+let restNonce = null;
+let loggedIn = false;
+
+function store(res) {
+  for (const c of res.headers.getSetCookie?.() ?? []) {
+    const [pair] = c.split(';');
+    const eq = pair.indexOf('=');
+    if (eq > -1) jar.set(pair.slice(0, eq).trim(), pair.slice(eq + 1).trim());
+  }
+}
+const cookieHeader = () => [...jar].map(([k, v]) => `${k}=${v}`).join('; ');
+
+async function login() {
+  if (loggedIn) return;
+  if (!WP_LOGIN_PASSWORD) {
     throw new Error(
-      'WP_APP_PASSWORD fehlt. Lege .env.local an (Vorlage: .env.local.example) und trage das ' +
-      'Application Password des Users "automation" ein (wp-admin → Profil → Anwendungspasswörter).'
+      'WP_LOGIN_PASSWORD fehlt in .env.local. Für die HTTP-Automation (Cookie+Nonce) ' +
+      'wird der wp-admin-Login des Users "' + WP_USER + '" benötigt.'
     );
   }
-  const token = Buffer.from(`${WP_USER}:${WP_APP_PASSWORD}`).toString('base64');
-  return `Basic ${token}`;
+  const form = new URLSearchParams({
+    log: WP_USER,
+    pwd: WP_LOGIN_PASSWORD,
+    'wp-submit': 'Log In',
+    redirect_to: `${WP_BASE}/wp-admin/`,
+    testcookie: '1',
+  });
+  const res = await fetch(`${WP_BASE}/wp-login.php`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Cookie: 'wordpress_test_cookie=WP+Cookie+check' },
+    body: form.toString(),
+    redirect: 'manual',
+  });
+  store(res);
+  if (![...jar.keys()].some((k) => k.startsWith('wordpress_logged_in'))) {
+    throw new Error(`wp-admin Login fehlgeschlagen (Status ${res.status}). WP_LOGIN_PASSWORD prüfen.`);
+  }
+  loggedIn = true;
 }
 
+async function ensureNonce() {
+  await login();
+  if (restNonce) return restNonce;
+  const res = await fetch(`${WP_BASE}/wp-admin/admin-ajax.php?action=rest-nonce`, {
+    headers: { Cookie: cookieHeader() },
+  });
+  store(res);
+  restNonce = (await res.text()).trim();
+  if (!/^[a-z0-9]+$/i.test(restNonce)) throw new Error('Konnte REST-Nonce nicht ermitteln.');
+  return restNonce;
+}
+
+// --- REST ------------------------------------------------------------------
+
 /**
- * REST-Call. `route` z. B. "/wp/v2/users/me" oder "/wc/v3/products".
- * Nutzt die ?rest_route=-Form, damit es auch ohne "hübsche" Permalinks funktioniert.
+ * REST-Call via Cookie+Nonce. `route` z. B. "/wp/v2/users/me" oder "/wc/v3/products".
+ * Nutzt ?rest_route= (funktioniert ohne "hübsche" Permalinks).
  */
 export async function wp(route, { method = 'GET', body, query } = {}) {
+  const nonce = await ensureNonce();
   const params = new URLSearchParams({ rest_route: route });
   if (query) for (const [k, v] of Object.entries(query)) params.set(k, String(v));
   const url = `${WP_BASE}/?${params.toString()}`;
 
-  const headers = { Authorization: authHeader() };
+  const headers = { Cookie: cookieHeader(), 'X-WP-Nonce': nonce };
   let payload;
   if (body !== undefined) {
     headers['Content-Type'] = 'application/json';
@@ -62,6 +109,7 @@ export async function wp(route, { method = 'GET', body, query } = {}) {
   }
 
   const res = await fetch(url, { method, headers, body: payload });
+  store(res);
   const text = await res.text();
   let data;
   try { data = text ? JSON.parse(text) : null; } catch { data = text; }
@@ -80,54 +128,21 @@ export async function wp(route, { method = 'GET', body, query } = {}) {
 export const wc = (route, opts) => wp(`/wc/v3${route}`, opts);
 
 /**
- * Cookie-basierter wp-admin-Login (für Theme-Upload, den REST nicht abdeckt).
- * Gibt { cookie, get, post } zurück. Braucht WP_LOGIN_PASSWORD in .env.local.
+ * Cookie-basierte wp-admin-Session (für Formular-Uploads wie den Theme-Upload,
+ * den REST nicht abdeckt). Teilt sich Cookie-Jar & Login mit dem REST-Client.
  */
 export async function wpAdminSession() {
-  if (!WP_LOGIN_PASSWORD) {
-    throw new Error('WP_LOGIN_PASSWORD fehlt in .env.local (für cookie-auth Theme-Upload nötig).');
-  }
-  const jar = new Map();
-  const store = (res) => {
-    for (const c of res.headers.getSetCookie?.() ?? []) {
-      const [pair] = c.split(';');
-      const eq = pair.indexOf('=');
-      if (eq > -1) jar.set(pair.slice(0, eq).trim(), pair.slice(eq + 1).trim());
-    }
-  };
-  const cookieHeader = () => [...jar].map(([k, v]) => `${k}=${v}`).join('; ');
-
-  // 1) Login-Cookie holen.
-  const form = new URLSearchParams({
-    log: WP_USER,
-    pwd: WP_LOGIN_PASSWORD,
-    'wp-submit': 'Log In',
-    redirect_to: `${WP_BASE}/wp-admin/`,
-    testcookie: '1',
-  });
-  const loginRes = await fetch(`${WP_BASE}/wp-login.php`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Cookie: 'wordpress_test_cookie=WP+Cookie+check' },
-    body: form.toString(),
-    redirect: 'manual',
-  });
-  store(loginRes);
-  if (![302, 200].includes(loginRes.status) || ![...jar.keys()].some((k) => k.startsWith('wordpress_logged_in'))) {
-    throw new Error(`wp-admin Login fehlgeschlagen (Status ${loginRes.status}). Passwort prüfen.`);
-  }
-
+  await login();
   const get = async (path) => {
     const res = await fetch(`${WP_BASE}${path}`, { headers: { Cookie: cookieHeader() } });
     store(res);
     return res.text();
   };
-  const post = async (path, formData) => {
-    const res = await fetch(`${WP_BASE}${path}`, {
-      method: 'POST',
-      headers: { Cookie: cookieHeader() },
-      body: formData,
-      redirect: 'manual',
-    });
+  const post = async (path, bodyData) => {
+    const headers = { Cookie: cookieHeader() };
+    let body = bodyData;
+    if (bodyData instanceof URLSearchParams) headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    const res = await fetch(`${WP_BASE}${path}`, { method: 'POST', headers, body, redirect: 'manual' });
     store(res);
     return res;
   };

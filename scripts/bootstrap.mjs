@@ -10,7 +10,14 @@ const has = (n) => ns.includes(n);
 console.log(`REST-Root: ${WP_BASE}`);
 console.log(`Namespaces: ${ns.join(', ') || '(keine)'}`);
 console.log(`  WooCommerce (wc/v3): ${has('wc/v3') ? '✓ aktiv' : '✗ fehlt → npm run plugins:install'}`);
-console.log(`  Polylang (pll/v1):   ${has('pll/v1') ? '✓ aktiv' : '✗ fehlt → npm run plugins:install'}`);
+
+// Polylang registriert keinen eigenen REST-Namespace → über Plugin-Status prüfen.
+let pllActive = false;
+try {
+  const plugins = await wp('/wp/v2/plugins', { query: { search: 'polylang' } });
+  pllActive = Array.isArray(plugins) && plugins.some((p) => p.textdomain === 'polylang' && p.status === 'active');
+} catch { /* ignore */ }
+console.log(`  Polylang:            ${pllActive ? '✓ aktiv' : '✗ fehlt → npm run plugins:install'}`);
 
 // WooCommerce-Grundseiten prüfen (werden bei Aktivierung automatisch erzeugt).
 if (has('wc/v3')) {

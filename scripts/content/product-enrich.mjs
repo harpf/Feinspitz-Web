@@ -294,7 +294,14 @@ const TASTE_SENTENCE = {
 
 function buildShortDescription(f) {
   const lead = f.rebsorte || 'Wein';
-  let s1 = `${lead} vom Weingut ${f.weingut}`;
+  // Trägt der Produzentenname bereits einen Betriebstyp (z. B. „Winzerhof"),
+  // kein zweites „Weingut" davorsetzen.
+  const producer = f.weingut
+    ? /^(Winzerhof|Weinhof|Weinbau|Weinkellerei|Kellerei|Weingut)\b/i.test(f.weingut)
+      ? `vom ${f.weingut}`
+      : `vom Weingut ${f.weingut}`
+    : '';
+  let s1 = producer ? `${lead} ${producer}` : lead;
   if (f.region) s1 += ` aus der Region ${f.region}`;
   if (f.jahrgang) s1 += `, Jahrgang ${f.jahrgang}`;
   if (f.volumen) s1 += ` (${f.volumen})`;

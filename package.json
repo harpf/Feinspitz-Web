@@ -8,6 +8,8 @@
     "wp:me": "node scripts/whoami.mjs",
     "plugins:install": "node scripts/plugins-install.mjs",
     "bootstrap": "node scripts/bootstrap.mjs",
+    "permalinks": "node scripts/set-permalinks.mjs",
+    "store:config": "node scripts/configure-store.mjs",
     "theme:zip": "node scripts/deploy/build-zip.mjs",
     "theme:deploy": "node scripts/deploy/deploy-theme.mjs",
     "content:import": "node migration/import.mjs"

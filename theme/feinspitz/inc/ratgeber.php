@@ -159,19 +159,115 @@ add_action( 'init', function () {
 } );
 
 /**
+ * FAQ-Fragen/Antworten aus geparstem Block-Inhalt ableiten (sprachunabhängig).
+ *
+ * Durchläuft die Blöcke rekursiv und sammelt jeden core/details-Block als
+ * Frage/Antwort-Paar: Frage = Summary (Block-Attribut, ersatzweise der Text im
+ * <summary>), Antwort = Text der inneren Blöcke (i. d. R. ein Paragraph). Damit
+ * bleibt das strukturierte Markup deckungsgleich mit dem sichtbaren Akkordeon —
+ * unabhängig von der Sprache. Die englische FAQ-Seite trägt literale
+ * core/details-Blöcke (siehe scripts/content/faq-en.mjs), sodass hier automatisch
+ * die englischen Fragen/Antworten erkannt werden.
+ *
+ * @param array $blocks Ergebnis von parse_blocks().
+ * @return array<int,array{q:string,a:string}> Frage/Antwort-Paare.
+ */
+function feinspitz_faq_items_from_blocks( $blocks ) {
+	$items = array();
+
+	foreach ( (array) $blocks as $block ) {
+		if ( empty( $block['blockName'] ) ) {
+			continue;
+		}
+
+		if ( 'core/details' === $block['blockName'] ) {
+			// Frage: bevorzugt das Summary-Attribut, sonst der <summary>-Text.
+			$q = isset( $block['attrs']['summary'] ) ? (string) $block['attrs']['summary'] : '';
+			if ( '' === $q && ! empty( $block['innerHTML'] )
+				&& preg_match( '/<summary\b[^>]*>(.*?)<\/summary>/is', $block['innerHTML'], $m ) ) {
+				$q = $m[1];
+			}
+
+			// Antwort: Text der inneren Blöcke (das <summary> steckt in innerHTML
+			// des details-Blocks selbst und wird daher NICHT mitgezählt).
+			$a = '';
+			foreach ( (array) $block['innerBlocks'] as $inner ) {
+				if ( ! empty( $inner['innerHTML'] ) ) {
+					$a .= ' ' . $inner['innerHTML'];
+				}
+			}
+
+			$q = trim( wp_strip_all_tags( $q ) );
+			$a = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $a ) ) );
+
+			if ( '' !== $q && '' !== $a ) {
+				$items[] = array( 'q' => $q, 'a' => $a );
+			}
+		}
+
+		if ( ! empty( $block['innerBlocks'] ) ) {
+			$items = array_merge( $items, feinspitz_faq_items_from_blocks( $block['innerBlocks'] ) );
+		}
+	}
+
+	return $items;
+}
+
+/**
+ * FAQ-Liste für das JSON-LD der aktuellen Seite bestimmen.
+ *
+ * Bevorzugt aus dem Seiteninhalt abgeleitet (DE wie EN). Bindet die Seite das
+ * gemeinsame Akkordeon-Pattern ein (statt literaler details-Blöcke), greift die
+ * kanonische Quelle feinspitz_faq_items() — genau die Liste, aus der das Pattern
+ * serverseitig rendert. So bleibt das Schema in beiden Fällen deckungsgleich.
+ *
+ * @param WP_Post $post Die aktuelle Seite.
+ * @return array<int,array{q:string,a:string}> Frage/Antwort-Paare.
+ */
+function feinspitz_faq_items_for_page( $post ) {
+	if ( ! ( $post instanceof WP_Post ) ) {
+		return array();
+	}
+
+	$items = feinspitz_faq_items_from_blocks( parse_blocks( $post->post_content ) );
+	if ( ! empty( $items ) ) {
+		return $items;
+	}
+
+	// Pattern-basierte Seite (z. B. die deutsche FAQ-Seite): kanonische Quelle.
+	if ( false !== strpos( $post->post_content, 'feinspitz/faq-accordion' ) ) {
+		return feinspitz_faq_items();
+	}
+
+	return array();
+}
+
+/**
  * FAQPage-JSON-LD (schema.org) im <head> ausgeben — NUR auf der FAQ-Seite.
  *
- * Speist sich aus derselben feinspitz_faq_items()-Liste wie das sichtbare
- * Akkordeon, damit strukturierte Daten und Seiteninhalt deckungsgleich sind
- * (Voraussetzung für ein gültiges FAQ-Rich-Snippet).
+ * Die Fragen/Antworten werden aus dem SEITENINHALT abgeleitet
+ * (feinspitz_faq_items_for_page()), damit die strukturierten Daten dem sichtbaren
+ * Inhalt entsprechen (Voraussetzung für ein gültiges Rich-Snippet) und die
+ * englische FAQ-Seite automatisch englisches Markup ausgibt.
  */
 add_action( 'wp_head', function () {
-	if ( ! is_page( 'faq' ) ) {
+	$post = get_queried_object();
+	if ( ! ( $post instanceof WP_Post ) || ! is_page() ) {
+		return;
+	}
+
+	// Nur auf der FAQ-Seite: deutsche Seite per Pattern-Referenz / Slug, englische
+	// Seite per literalem „feinspitz-faq"-Akkordeon. Bewusst eng gescoped, damit
+	// beliebige Seiten mit einem core/details-Block KEIN FAQPage-Schema erhalten.
+	$is_faq = is_page( 'faq' )
+		|| false !== strpos( $post->post_content, 'feinspitz/faq-accordion' )
+		|| false !== strpos( $post->post_content, 'feinspitz-faq' );
+	if ( ! $is_faq ) {
 		return;
 	}
 
 	$entities = array();
-	foreach ( feinspitz_faq_items() as $item ) {
+	foreach ( feinspitz_faq_items_for_page( $post ) as $item ) {
 		$entities[] = array(
 			'@type'          => 'Question',
 			'name'           => wp_strip_all_tags( $item['q'] ),

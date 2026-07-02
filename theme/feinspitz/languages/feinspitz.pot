@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feinspitz Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-02 17:03+0000\n"
+"POT-Creation-Date: 2026-07-02 17:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,7 @@ msgstr ""
 #: inc/homepage.php:28
 #: inc/product.php:115
 #: inc/shop.php:33
+#: inc/wine-finder.php:525
 msgid "Feinspitz"
 msgstr ""
 
@@ -126,19 +127,16 @@ msgstr ""
 #: patterns/checkout-trust.php:43
 #: patterns/home-categories.php:68
 #: patterns/page-about.php:93
-#: patterns/shop-filter-flags.php:31
 msgid "Histamingeprüft"
 msgstr ""
 
 #: inc/product.php:35
 #: patterns/home-categories.php:86
-#: patterns/shop-filter-flags.php:35
 msgid "Vegan"
 msgstr ""
 
 #: inc/product.php:36
 #: patterns/home-categories.php:104
-#: patterns/shop-filter-flags.php:39
 msgid "Alkoholfrei"
 msgstr ""
 
@@ -236,6 +234,10 @@ msgstr ""
 
 #: inc/shop.php:41
 msgid "Shop: Produkt-Grid (Sortierung + Pagination)"
+msgstr ""
+
+#: inc/wine-finder.php:538
+msgid "Wein-Finder: Teaser"
 msgstr ""
 
 #: patterns/checkout-cart-header.php:14
@@ -760,14 +762,6 @@ msgstr ""
 
 #: patterns/shop-category-header.php:18
 msgid "Kategorie"
-msgstr ""
-
-#: patterns/shop-filter-flags.php:21
-msgid "Filtern nach"
-msgstr ""
-
-#: patterns/shop-filter-flags.php:27
-msgid "Alle Produkte"
 msgstr ""
 
 #: inc/pages.php:37

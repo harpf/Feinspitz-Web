@@ -12,7 +12,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_x:1,2c;_ex:1,2c;esc_html_x:1,2c;esc_attr_x:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"PO-Revision-Date: 2026-07-02 17:04+0000\n"
+"PO-Revision-Date: 2026-07-02 17:19+0000\n"
 
 #: inc/branding.php:53
 msgid "Feinspitz · zur Startseite"
@@ -36,6 +36,7 @@ msgstr "Warenkorb"
 #: inc/homepage.php:28
 #: inc/product.php:115
 #: inc/shop.php:33
+#: inc/wine-finder.php:525
 msgid "Feinspitz"
 msgstr "Feinspitz"
 
@@ -127,19 +128,16 @@ msgstr "Produkt: Verwandte Produkte"
 #: patterns/checkout-trust.php:43
 #: patterns/home-categories.php:68
 #: patterns/page-about.php:93
-#: patterns/shop-filter-flags.php:31
 msgid "Histamingeprüft"
 msgstr "Histamingeprüft"
 
 #: inc/product.php:35
 #: patterns/home-categories.php:86
-#: patterns/shop-filter-flags.php:35
 msgid "Vegan"
 msgstr "Vegan"
 
 #: inc/product.php:36
 #: patterns/home-categories.php:104
-#: patterns/shop-filter-flags.php:39
 msgid "Alkoholfrei"
 msgstr "Alkoholfrei"
 
@@ -238,6 +236,10 @@ msgstr "Shop: Flag-Filter (histamingeprüft/vegan/alkoholfrei)"
 #: inc/shop.php:41
 msgid "Shop: Produkt-Grid (Sortierung + Pagination)"
 msgstr "Shop: Produkt-Grid (Sortierung + Pagination)"
+
+#: inc/wine-finder.php:538
+msgid "Wein-Finder: Teaser"
+msgstr "Wein-Finder: Teaser"
 
 #: patterns/checkout-cart-header.php:14
 msgid "Schritt 1 von 2"
@@ -762,14 +764,6 @@ msgstr "Histamingeprüfte Weine, Delikatessen und ausgesuchte Spezialitäten · 
 #: patterns/shop-category-header.php:18
 msgid "Kategorie"
 msgstr "Kategorie"
-
-#: patterns/shop-filter-flags.php:21
-msgid "Filtern nach"
-msgstr "Filtern nach"
-
-#: patterns/shop-filter-flags.php:27
-msgid "Alle Produkte"
-msgstr "Alle Produkte"
 
 #: inc/pages.php:37
 #: inc/ratgeber.php:125

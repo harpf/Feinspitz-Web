@@ -28,8 +28,8 @@
 		<div class="wp-block-group has-contrast-color has-wine-background-color has-text-color has-background" style="border-radius:18px;min-height:260px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:heading {"level":3,"fontSize":"large","fontFamily":"heading"} -->
-				<h3 class="wp-block-heading has-heading-font-family has-large-font-size"><?php esc_html_e( 'Weine', 'feinspitz' ); ?></h3>
+				<!-- wp:heading {"level":3,"fontSize":"medium","fontFamily":"heading"} -->
+				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Weine', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
 				<p class="has-small-font-size"><?php esc_html_e( 'Weiss, Rot, Rosé, Schaumwein & Süsswein — sorgfältig kuratiert.', 'feinspitz' ); ?></p>
@@ -46,8 +46,8 @@
 		<div class="wp-block-group has-base-color has-gold-background-color has-text-color has-background" style="border-radius:18px;min-height:260px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:heading {"level":3,"fontSize":"large","fontFamily":"heading"} -->
-				<h3 class="wp-block-heading has-heading-font-family has-large-font-size"><?php esc_html_e( 'Gourmet', 'feinspitz' ); ?></h3>
+				<!-- wp:heading {"level":3,"fontSize":"medium","fontFamily":"heading"} -->
+				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Gourmet', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
 				<p class="has-small-font-size"><?php esc_html_e( 'Essige & Verjus, Öle, Senf, Pesto, Chutney & Pasta für die feine Küche.', 'feinspitz' ); ?></p>
@@ -64,8 +64,8 @@
 		<div class="wp-block-group has-contrast-color has-wine-deep-background-color has-text-color has-background" style="border-radius:18px;min-height:260px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:heading {"level":3,"fontSize":"large","fontFamily":"heading"} -->
-				<h3 class="wp-block-heading has-heading-font-family has-large-font-size"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></h3>
+				<!-- wp:heading {"level":3,"fontSize":"medium","fontFamily":"heading"} -->
+				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
 				<p class="has-small-font-size"><?php esc_html_e( 'Laborgeprüfte Weine für empfindliche Geniesser — unsere Spezialität.', 'feinspitz' ); ?></p>
@@ -82,8 +82,8 @@
 		<div class="wp-block-group has-base-color has-sage-background-color has-text-color has-background" style="border-radius:18px;min-height:260px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:heading {"level":3,"fontSize":"large","fontFamily":"heading"} -->
-				<h3 class="wp-block-heading has-heading-font-family has-large-font-size"><?php esc_html_e( 'Vegan', 'feinspitz' ); ?></h3>
+				<!-- wp:heading {"level":3,"fontSize":"medium","fontFamily":"heading"} -->
+				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Vegan', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
 				<p class="has-small-font-size"><?php esc_html_e( 'Weine & Delikatessen ganz ohne tierische Hilfsstoffe.', 'feinspitz' ); ?></p>
@@ -100,8 +100,8 @@
 		<div class="wp-block-group has-border-color has-gold-border-color has-contrast-color has-text-color" style="border-width:2px;border-radius:18px;min-height:260px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:heading {"level":3,"fontSize":"large","fontFamily":"heading"} -->
-				<h3 class="wp-block-heading has-heading-font-family has-large-font-size"><?php esc_html_e( 'Alkoholfrei', 'feinspitz' ); ?></h3>
+				<!-- wp:heading {"level":3,"fontSize":"medium","fontFamily":"heading"} -->
+				<h3 class="wp-block-heading has-heading-font-family has-medium-font-size"><?php esc_html_e( 'Alkoholfrei', 'feinspitz' ); ?></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"fontSize":"small"} -->
 				<p class="has-small-font-size"><?php esc_html_e( 'Entalkoholisierte Weine & Alternativen mit vollem Geschmack.', 'feinspitz' ); ?></p>

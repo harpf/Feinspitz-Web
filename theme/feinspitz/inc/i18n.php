@@ -29,6 +29,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * gettext-Locale an die Polylang-Sprache angleichen.
+ *
+ * Beobachtet: Polylang setzt zwar sein internes `curlang` (pll_current_language()
+ * liefert 'en'), schaltet auf dem Frontend aber die WordPress-gettext-Locale NICHT
+ * zuverlässig um → esc_html_e()/__() und WooCommerce liefern die deutschen Quell-
+ * Strings, obwohl feinspitz-en_US.mo korrekt vorliegt.
+ *
+ * Fix: Auf Seiten, die Polylang als Englisch erkennt (z. B. /en/, Ratgeber, FAQ,
+ * übersetzte Seiten), die Locale explizit auf en_US umschalten — VOR dem Rendern
+ * (template_redirect, sehr früh), damit alle nachfolgend registrierten Patterns
+ * und Ausgaben in Englisch erscheinen. Läuft nur im Frontend.
+ *
+ * Hinweis: Tiefe WooCommerce-Seiten (/en/produkt-kategorie/…) erkennt freies
+ * Polylang mangels Produkt-Übersetzung als Deutsch → dort bleibt es (bewusst) DE.
+ */
+add_action( 'template_redirect', function () {
+	if ( is_admin() || ! function_exists( 'pll_current_language' ) ) {
+		return;
+	}
+	$slug = pll_current_language( 'slug' );
+	if ( ! $slug ) {
+		return;
+	}
+	$locale = pll_current_language( 'locale' );
+	if ( ! $locale ) {
+		return;
+	}
+	// Polylang setzt zwar die Locale (get_locale() == en_US), lädt aber die
+	// Theme-Textdomain NICHT für die Sprache → __()/esc_html_e() liefern die
+	// deutschen Quell-Strings. Daher die passende .mo IMMER explizit (mit vollem
+	// Pfad) laden — unabhängig davon, ob die Locale schon stimmt.
+	if ( get_locale() !== $locale ) {
+		switch_to_locale( $locale );
+	}
+	$mo = get_template_directory() . '/languages/feinspitz-' . $locale . '.mo';
+	if ( file_exists( $mo ) ) {
+		unload_textdomain( 'feinspitz' );
+		load_textdomain( 'feinspitz', $mo );
+	}
+}, 0 );
+
+/**
  * Sprachumschalter-Markup erzeugen.
  *
  * Nutzt Polylangs pll_the_languages(). Ist Polylang nicht aktiv, wird ein leerer

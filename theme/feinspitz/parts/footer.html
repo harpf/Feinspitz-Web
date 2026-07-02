@@ -1,48 +1,7 @@
 <!-- wp:group {"align":"full","className":"feinspitz-footer","backgroundColor":"base","textColor":"contrast","layout":{"type":"constrained","contentSize":"1280px"}} -->
 <div class="wp-block-group alignfull feinspitz-footer has-contrast-color has-base-background-color has-text-color has-background">
-	<!-- wp:columns {"className":"feinspitz-footer__cols"} -->
-	<div class="wp-block-columns feinspitz-footer__cols">
-		<!-- wp:column {"width":"34%"} -->
-		<div class="wp-block-column" style="flex-basis:34%">
-			<!-- Bold-Wortmarke via Shortcode aus inc/branding.php -->
-			<!-- wp:shortcode -->[feinspitz_logo]<!-- /wp:shortcode -->
-			<!-- wp:paragraph {"className":"feinspitz-footer__tag","fontSize":"small"} -->
-			<p class="feinspitz-footer__tag has-small-font-size">Histamingeprüfte Weine mit mehr Vertrauen und Genuss — für mehr Lebensqualität.</p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:heading {"level":2,"fontSize":"small"} -->
-			<h2 class="wp-block-heading has-small-font-size">Kontakt</h2>
-			<!-- /wp:heading -->
-			<!-- wp:paragraph {"className":"feinspitz-footer__contact"} -->
-			<p class="feinspitz-footer__contact">Feinspitz<br>Bahnhofstrasse 80<br>CH-8902 Urdorf<br><a href="tel:+41765888902">+41 76 588 89 02</a></p>
-			<!-- /wp:paragraph -->
-		</div>
-		<!-- /wp:column -->
-
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:heading {"level":2,"fontSize":"small"} -->
-			<h2 class="wp-block-heading has-small-font-size">Entdecken</h2>
-			<!-- /wp:heading -->
-			<!-- wp:navigation {"textColor":"contrast","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
-		</div>
-		<!-- /wp:column -->
-
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:heading {"level":2,"fontSize":"small"} -->
-			<h2 class="wp-block-heading has-small-font-size">Sprache</h2>
-			<!-- /wp:heading -->
-			<!-- Sprachumschalter (Polylang) via Shortcode aus theme/feinspitz/inc/i18n.php -->
-			<!-- wp:shortcode -->[pll_languages]<!-- /wp:shortcode -->
-		</div>
-		<!-- /wp:column -->
-	</div>
-	<!-- /wp:columns -->
+	<!-- Sprachbewusster Footer-Inhalt (4 Spalten) via Shortcode aus inc/branding.php -->
+	<!-- wp:shortcode -->[feinspitz_footer]<!-- /wp:shortcode -->
 
 	<!-- wp:paragraph {"className":"feinspitz-footer__bottom"} -->
 	<p class="feinspitz-footer__bottom">© Feinspitz — Weine &amp; Genuss · Bahnhofstrasse 80, CH-8902 Urdorf</p>

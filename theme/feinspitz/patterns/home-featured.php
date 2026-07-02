@@ -39,8 +39,6 @@
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:shortcode -->
-	[products limit="4" columns="4" orderby="popularity" class="feinspitz-featured-products"]
-	<!-- /wp:shortcode -->
+	<?php echo feinspitz_render_featured( 4 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </div>
 <!-- /wp:group -->

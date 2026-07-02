@@ -103,11 +103,75 @@ function feinspitz_cart_shortcode() {
 }
 
 /**
+ * Sprachbewusster Footer-Inhalt (4 Spalten).
+ *
+ * Block-Template-Parts (parts/footer.html) führen kein PHP aus, daher waren die
+ * Footer-Texte/-Links zuvor hartcodiert deutsch und zeigten sich auch auf /en/ in
+ * Deutsch (inkl. eines core/navigation-Blocks mit literalen deutschen Labels).
+ * Dieser Shortcode rendert Überschriften, Tagline und Quicklinks pro Sprache
+ * (analog zur Header-Navigation) und nutzt die vorhandenen Footer-CSS-Klassen.
+ *
+ * @return string
+ */
+function feinspitz_footer_shortcode() {
+	$is_en = function_exists( 'feinspitz_current_lang' ) && 'en' === feinspitz_current_lang();
+
+	$t = $is_en
+		? array(
+			'tagline'  => 'Histamine-tested wines for more trust and enjoyment — for a better quality of life.',
+			'contact'  => 'Contact',
+			'discover' => 'Discover',
+			'language' => 'Language',
+		)
+		: array(
+			'tagline'  => 'Histamingeprüfte Weine mit mehr Vertrauen und Genuss — für mehr Lebensqualität.',
+			'contact'  => 'Kontakt',
+			'discover' => 'Entdecken',
+			'language' => 'Sprache',
+		);
+
+	// Quicklinks aus der sprachbewussten Hauptnavigation ableiten.
+	$links = function_exists( 'feinspitz_nav_items' ) ? feinspitz_nav_items() : array();
+	$lis   = '';
+	foreach ( $links as $item ) {
+		list( $label, $url ) = $item;
+		$lis .= sprintf( '<li><a href="%s">%s</a></li>', esc_url( $url ), esc_html( $label ) );
+	}
+
+	$logo     = function_exists( 'feinspitz_logo_shortcode' ) ? feinspitz_logo_shortcode() : '';
+	$switcher = function_exists( 'feinspitz_language_switcher' ) ? feinspitz_language_switcher() : '';
+
+	ob_start();
+	?>
+<div class="wp-block-columns feinspitz-footer__cols is-layout-flex">
+	<div class="wp-block-column" style="flex-basis:34%">
+		<?php echo $logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<p class="feinspitz-footer__tag has-small-font-size"><?php echo esc_html( $t['tagline'] ); ?></p>
+	</div>
+	<div class="wp-block-column">
+		<h2 class="wp-block-heading has-small-font-size"><?php echo esc_html( $t['contact'] ); ?></h2>
+		<p class="feinspitz-footer__contact">Feinspitz<br>Bahnhofstrasse 80<br>CH-8902 Urdorf<br><a href="tel:+41765888902">+41 76 588 89 02</a></p>
+	</div>
+	<div class="wp-block-column">
+		<h2 class="wp-block-heading has-small-font-size"><?php echo esc_html( $t['discover'] ); ?></h2>
+		<ul class="feinspitz-footer__links"><?php echo $lis; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></ul>
+	</div>
+	<div class="wp-block-column">
+		<h2 class="wp-block-heading has-small-font-size"><?php echo esc_html( $t['language'] ); ?></h2>
+		<?php echo $switcher; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	</div>
+</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
  * Shortcodes registrieren.
  */
 add_action( 'init', function () {
 	add_shortcode( 'feinspitz_logo', 'feinspitz_logo_shortcode' );
 	add_shortcode( 'feinspitz_cart', 'feinspitz_cart_shortcode' );
+	add_shortcode( 'feinspitz_footer', 'feinspitz_footer_shortcode' );
 } );
 
 /**
@@ -175,6 +239,8 @@ add_action( 'wp_enqueue_scripts', function () {
 .feinspitz-footer a:hover,.feinspitz-footer a:focus{opacity:1;color:var(--wp--preset--color--gold)}
 .feinspitz-footer .wp-block-navigation{font-size:.92rem}
 .feinspitz-footer .wp-block-navigation ul{gap:.45rem}
+.feinspitz-footer__links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem;font-size:.92rem}
+.feinspitz-footer__links a{display:inline-block}
 .feinspitz-footer .feinspitz-lang-switcher__list{justify-content:flex-start}
 .feinspitz-footer__bottom{
 	margin-top:clamp(1.5rem,4vw,2.5rem);padding-top:1.1rem;

@@ -16,7 +16,8 @@
     "theme:zip": "node scripts/deploy/build-zip.mjs",
     "theme:deploy": "node scripts/deploy/deploy-theme.mjs",
     "content:import": "node migration/import.mjs",
-    "content:ratgeber": "node scripts/content/ratgeber.mjs"
+    "content:ratgeber": "node scripts/content/ratgeber.mjs",
+    "forms:setup": "node scripts/forms-setup.mjs"
   },
   "dependencies": {
     "adm-zip": "^0.5.16",

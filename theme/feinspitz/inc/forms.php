@@ -319,10 +319,12 @@ add_action( 'init', function () {
 	register_post_type(
 		'feinspitz_anfrage',
 		array(
+			// Backend-Labels bewusst als deutsche Literale (Admin-Sprache) — KEINE
+			// gettext-msgids, um die zentrale i18n-Build-Pipeline nicht zu erweitern.
 			'labels'              => array(
-				'name'          => __( 'Anfragen', 'feinspitz' ),
-				'singular_name' => __( 'Anfrage', 'feinspitz' ),
-				'menu_name'     => __( 'Anfragen', 'feinspitz' ),
+				'name'          => 'Anfragen',
+				'singular_name' => 'Anfrage',
+				'menu_name'     => 'Anfragen',
 			),
 			'public'              => false,
 			'show_ui'             => true,
@@ -365,7 +367,7 @@ function feinspitz_form_handle_submit() {
 	// Nonce.
 	$nonce = isset( $_POST['feinspitz_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['feinspitz_nonce'] ) ) : '';
 	if ( ! wp_verify_nonce( $nonce, 'feinspitz_form' ) ) {
-		return feinspitz_form_respond( $is_ajax, false, $type, $redirect, __( 'Sicherheitsprüfung fehlgeschlagen. Bitte laden Sie die Seite neu.', 'feinspitz' ) );
+		return feinspitz_form_respond( $is_ajax, false, $type, $redirect, feinspitz_form_t( 'Sicherheitsprüfung fehlgeschlagen. Bitte laden Sie die Seite neu.', 'Security check failed. Please reload the page.' ) );
 	}
 
 	// Spamschutz: Honeypot befüllt ODER zu schnell abgeschickt → still als „ok"
@@ -403,7 +405,7 @@ function feinspitz_form_handle_submit() {
 	}
 
 	if ( ! empty( $errors ) ) {
-		return feinspitz_form_respond( $is_ajax, false, $type, $redirect, __( 'Bitte prüfen Sie Ihre Eingaben.', 'feinspitz' ) );
+		return feinspitz_form_respond( $is_ajax, false, $type, $redirect, feinspitz_form_t( 'Bitte prüfen Sie Ihre Eingaben.', 'Please check your entries.' ) );
 	}
 
 	// Persistieren (Resilienz gegen fehlenden Mailversand) + mailen.
@@ -434,7 +436,7 @@ function feinspitz_form_store( $type, $config, $values ) {
 	$title = sprintf(
 		'%s · %s · %s',
 		ucfirst( $type ),
-		$name !== '' ? $name : __( 'Anfrage', 'feinspitz' ),
+		$name !== '' ? $name : 'Anfrage',
 		wp_date( 'Y-m-d H:i' )
 	);
 
@@ -527,12 +529,15 @@ function feinspitz_form_respond( $is_ajax, $ok, $type, $redirect, $message ) {
 		}
 	}
 
-	$arg      = $ok ? 'feinspitz_sent' : 'feinspitz_error';
-	$base     = remove_query_arg( array( 'feinspitz_sent', 'feinspitz_error' ), $redirect );
+	$arg = $ok ? 'feinspitz_sent' : 'feinspitz_error';
+
+	// Fragment (#anker) VOR remove_query_arg abtrennen (dieses kann es sonst
+	// verwerfen), damit der Redirect zum jeweiligen Formular scrollt.
 	$fragment = '';
-	if ( false !== strpos( $base, '#' ) ) {
-		list( $base, $fragment ) = explode( '#', $base, 2 );
+	if ( false !== strpos( $redirect, '#' ) ) {
+		list( $redirect, $fragment ) = explode( '#', $redirect, 2 );
 	}
+	$base   = remove_query_arg( array( 'feinspitz_sent', 'feinspitz_error' ), $redirect );
 	$target = add_query_arg( $arg, $type, $base );
 	if ( '' !== $fragment ) {
 		$target .= '#' . $fragment;

@@ -62,19 +62,15 @@ function feinspitz_nav_page_url( $slug, $fallback ) {
  * @param string $fallback Fallback-Pfad.
  * @return string
  */
-function feinspitz_nav_category_url( $slug, $fallback ) {
+function feinspitz_nav_category_url( $de_slug, $en_slug, $fallback ) {
+	// Auf /en/ filtert Polylang Term-Abfragen auf die aktuelle Sprache — daher
+	// direkt den sprachrichtigen Slug nachschlagen (ratgeber = DE, guide = EN).
+	$slug = ( 'en' === feinspitz_current_lang() ) ? $en_slug : $de_slug;
 	$term = get_term_by( 'slug', $slug, 'category' );
 	if ( ! $term ) {
 		return home_url( $fallback );
 	}
-	$id = $term->term_id;
-	if ( 'en' === feinspitz_current_lang() && function_exists( 'pll_get_term' ) ) {
-		$tr = pll_get_term( $id, 'en' );
-		if ( $tr ) {
-			$id = $tr;
-		}
-	}
-	$link = get_term_link( (int) $id, 'category' );
+	$link = get_term_link( (int) $term->term_id, 'category' );
 	return is_wp_error( $link ) ? home_url( $fallback ) : $link;
 }
 
@@ -87,7 +83,7 @@ function feinspitz_nav_items() {
 	if ( $is_en ) {
 		return array(
 			array( 'Shop', home_url( '/shop/' ) ),
-			array( 'Guide', feinspitz_nav_category_url( 'ratgeber', '/category/ratgeber/' ) ),
+			array( 'Guide', feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
 			array( 'FAQ', feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 			array( 'About us', feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 			array( 'Contact', feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),
@@ -96,7 +92,7 @@ function feinspitz_nav_items() {
 
 	return array(
 		array( __( 'Shop', 'feinspitz' ), home_url( '/shop/' ) ),
-		array( __( 'Ratgeber', 'feinspitz' ), feinspitz_nav_category_url( 'ratgeber', '/category/ratgeber/' ) ),
+		array( __( 'Ratgeber', 'feinspitz' ), feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
 		array( __( 'FAQ', 'feinspitz' ), feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 		array( __( 'Über uns', 'feinspitz' ), feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 		array( __( 'Kontakt', 'feinspitz' ), feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),

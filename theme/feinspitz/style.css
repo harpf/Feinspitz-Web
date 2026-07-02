@@ -1,0 +1,14 @@
+/*
+Theme Name: Feinspitz
+Theme URI: https://feinspitz.ch
+Author: Feinspitz / DevSwarm
+Description: Bold, zweisprachiges (DE/EN) WooCommerce Block-Theme für Feinspitz — Weine & Genuss. Spezialist für histamingeprüfte Weine.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 6.7
+Requires PHP: 8.0
+Text Domain: feinspitz
+Tags: block-theme, full-site-editing, e-commerce, woocommerce
+*/
+
+/* Globale Styles liegen primär in theme.json. Hier nur, was sich nicht über theme.json abbilden lässt. */

@@ -1,0 +1,4 @@
+# Erweiterungspunkt für DevSwarm-Feature-Branches.
+# Jeder Branch legt hier seine eigene inc/<branch>.php an (z. B. Pattern-Registrierung),
+# die von functions.php automatisch geladen wird. So besitzt jeder Branch seine eigene
+# Datei und es entstehen keine Merge-Konflikte in functions.php.

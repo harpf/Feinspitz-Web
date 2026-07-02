@@ -19,9 +19,11 @@ bold neu gestalteter, **zweisprachiger (DE/EN)** Online-Shop, dessen gesamter Zu
 | Inhalte | Echte Daten von feinspitz.ch migrieren (direkter Zugriff erlaubt) |
 | Design | Komplett neu / bold — nur Marke & Inhalte bleiben |
 | Tech | Custom Block-Theme (FSE) aus Code |
-| Parallelisierung | Ansatz A: isoliertes lokales WordPress pro Workspace |
+| Parallelisierung | **Angepasst (siehe Nachtrag):** kein lokales Docker/SSH → geteilte Server-Runtime, HTTP-only; DevSwarm parallelisiert Code-Branches |
 | Sprachen | Zweisprachig Deutsch + Englisch (Polylang) |
 | Zahlung | Test-Zahlung in dieser Phase (keine echte Gateway-Anbindung) |
+
+> **Nachtrag 2026-07-02 (Infrastruktur-Realität):** Auf dem Entwicklungs-PC ist **kein Docker** verfügbar und der Server hat **SSH (22) geschlossen**. Ansatz A (isoliertes wp-env pro Workspace) ist damit nicht umsetzbar. Neue Architektur: **eine geteilte Runtime** (bestehender Container `feinspitz.alpenmesh.de` / 192.168.30.10), Zugriff **nur über HTTP** (WP-REST `wp/v2`, WooCommerce `wc/v3`, cookie-auth wp-admin-Upload fürs Theme). Server-Automation erfordert ein **Application Password** des Users `automation`. DevSwarm parallelisiert weiterhin die **Code-Branches** (Theme, Migrations-/Deploy-Skripte); der Laufzeit-Zustand ist geteilt und wird bei Live-QA koordiniert. Details im aktualisierten Implementierungsplan.
 
 ## 2. Architektur
 

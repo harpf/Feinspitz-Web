@@ -1,1 +1,16 @@
 .devswarm-temp/
+
+# Secrets — never commit
+.env.local
+.env
+
+# Node
+node_modules/
+dist/
+
+# Build artifacts
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db

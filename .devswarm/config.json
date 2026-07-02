@@ -1,0 +1,8 @@
+{
+  "worktreeInclude": [
+    ".env.local"
+  ],
+  "scripts": {
+    "setup": "npm install"
+  }
+}

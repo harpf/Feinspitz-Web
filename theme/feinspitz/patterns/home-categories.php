@@ -37,7 +37,7 @@
 			</div>
 			<!-- /wp:group -->
 			<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"600"}}} -->
-			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/weine/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
+			<p class="has-small-font-size" style="font-weight:600"><a href="/shop/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -55,7 +55,7 @@
 			</div>
 			<!-- /wp:group -->
 			<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"600"}}} -->
-			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/gourmet/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
+			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/kulinarium/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -73,7 +73,7 @@
 			</div>
 			<!-- /wp:group -->
 			<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"600"}}} -->
-			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/histamingeprueft/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
+			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-schlagwort/histamingeprueft/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -91,7 +91,7 @@
 			</div>
 			<!-- /wp:group -->
 			<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"600"}}} -->
-			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/vegan/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
+			<p class="has-small-font-size" style="font-weight:600"><a href="/produkt-schlagwort/vegan/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -109,7 +109,7 @@
 			</div>
 			<!-- /wp:group -->
 			<!-- wp:paragraph {"fontSize":"small","textColor":"gold","style":{"typography":{"fontWeight":"600"}}} -->
-			<p class="has-gold-color has-text-color has-small-font-size" style="font-weight:600"><a href="/produkt-kategorie/alkoholfrei/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
+			<p class="has-gold-color has-text-color has-small-font-size" style="font-weight:600"><a href="/produkt-schlagwort/alkoholfrei/" style="color:inherit"><?php esc_html_e( 'Entdecken →', 'feinspitz' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->

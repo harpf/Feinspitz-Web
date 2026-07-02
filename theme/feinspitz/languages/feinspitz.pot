@@ -1,0 +1,355 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Feinspitz Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-02 09:53+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: scripts/i18n/make-pot.mjs\n"
+"X-Domain: feinspitz\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_x:1,2c;_ex:1,2c;esc_html_x:1,2c;esc_attr_x:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c\n"
+"Language: \n"
+
+#: inc/checkout.php:36
+#: inc/homepage.php:29
+#: inc/product.php:115
+#: inc/shop.php:33
+#: patterns/home-hero.php:20
+msgid "Feinspitz"
+msgstr ""
+
+#: inc/checkout.php:42
+msgid "Kasse: Warenkorb-Kopf"
+msgstr ""
+
+#: inc/checkout.php:43
+msgid "Kasse: Kassen-Kopf"
+msgstr ""
+
+#: inc/checkout.php:44
+msgid "Kasse: Trust-/USP-Leiste"
+msgstr ""
+
+#: inc/checkout.php:45
+msgid "Kasse: Leerer Warenkorb"
+msgstr ""
+
+#: inc/homepage.php:34
+msgid "Startseite: Hero"
+msgstr ""
+
+#: inc/homepage.php:35
+msgid "Startseite: Ausgewählte Produkte"
+msgstr ""
+
+#: inc/homepage.php:36
+msgid "Startseite: Kategorien-Teaser"
+msgstr ""
+
+#: inc/homepage.php:37
+msgid "Startseite: Über uns / Story"
+msgstr ""
+
+#: inc/homepage.php:38
+msgid "Startseite: Weinproben & Catering"
+msgstr ""
+
+#: inc/i18n.php:73
+msgid "Sprache wählen"
+msgstr ""
+
+#: inc/product.php:121
+msgid "Produkt: Galerie & Kaufbereich"
+msgstr ""
+
+#: inc/product.php:122
+msgid "Produkt: Beschreibung & Details"
+msgstr ""
+
+#: inc/product.php:123
+msgid "Produkt: Verwandte Produkte"
+msgstr ""
+
+#: inc/product.php:34
+#: patterns/checkout-trust.php:43
+#: patterns/home-categories.php:68
+#: patterns/shop-filter-flags.php:31
+msgid "Histamingeprüft"
+msgstr ""
+
+#: inc/product.php:35
+#: patterns/home-categories.php:86
+#: patterns/shop-filter-flags.php:35
+msgid "Vegan"
+msgstr ""
+
+#: inc/product.php:36
+#: patterns/home-categories.php:104
+#: patterns/shop-filter-flags.php:39
+msgid "Alkoholfrei"
+msgstr ""
+
+#: inc/product.php:80
+msgid "Produkt-Eigenschaften"
+msgstr ""
+
+#: inc/shop.php:38
+msgid "Shop: Kopfbereich"
+msgstr ""
+
+#: inc/shop.php:39
+msgid "Shop: Kategorie-Kopf"
+msgstr ""
+
+#: inc/shop.php:40
+msgid "Shop: Flag-Filter (histamingeprüft/vegan/alkoholfrei)"
+msgstr ""
+
+#: inc/shop.php:41
+msgid "Shop: Produkt-Grid (Sortierung + Pagination)"
+msgstr ""
+
+#: patterns/checkout-cart-header.php:14
+msgid "Schritt 1 von 2"
+msgstr ""
+
+#: patterns/checkout-cart-header.php:18
+msgid "Ihr Warenkorb"
+msgstr ""
+
+#: patterns/checkout-cart-header.php:22
+msgid "Prüfen Sie Ihre Auswahl, passen Sie Mengen an und lösen Sie einen Gutschein ein — bevor es zur Kasse geht."
+msgstr ""
+
+#: patterns/checkout-checkout-header.php:14
+msgid "Schritt 2 von 2"
+msgstr ""
+
+#: patterns/checkout-checkout-header.php:18
+msgid "Kasse"
+msgstr ""
+
+#: patterns/checkout-checkout-header.php:22
+msgid "Nur noch wenige Schritte bis zu Ihrem Genuss. Ihre Daten werden sicher übertragen."
+msgstr ""
+
+#: patterns/checkout-empty-cart.php:18
+msgid "Noch nichts ausgewählt"
+msgstr ""
+
+#: patterns/checkout-empty-cart.php:22
+msgid "Ihr Warenkorb ist noch leer"
+msgstr ""
+
+#: patterns/checkout-empty-cart.php:26
+msgid "Entdecken Sie histamingeprüfte Weine und feine Delikatessen — handverlesen und ehrlich beraten."
+msgstr ""
+
+#: patterns/checkout-empty-cart.php:32
+#: patterns/home-hero.php:34
+msgid "Zum Weinshop"
+msgstr ""
+
+#: patterns/checkout-empty-cart.php:36
+#: patterns/home-cta.php:28
+msgid "Weinprobe buchen"
+msgstr ""
+
+#: patterns/checkout-trust.php:21
+msgid "Sicher bezahlen"
+msgstr ""
+
+#: patterns/checkout-trust.php:24
+msgid "Verschlüsselte Übertragung und geprüfte Zahlungsarten — Ihre Daten bleiben geschützt."
+msgstr ""
+
+#: patterns/checkout-trust.php:32
+msgid "Schweizer Versand"
+msgstr ""
+
+#: patterns/checkout-trust.php:35
+msgid "Sorgfältig verpackt und zuverlässig in die ganze Schweiz geliefert."
+msgstr ""
+
+#: patterns/checkout-trust.php:46
+msgid "Der erste Anbieter histamingeprüfter Weine der Schweiz — Genuss auch für Empfindliche."
+msgstr ""
+
+#: patterns/checkout-trust.php:54
+msgid "Persönliche Beratung"
+msgstr ""
+
+#: patterns/checkout-trust.php:57
+msgid "Fragen zum Wein? Wir beraten Sie gerne persönlich — ehrlich und kompetent."
+msgstr ""
+
+#: patterns/home-categories.php:107
+msgid "Entalkoholisierte Weine & Alternativen mit vollem Geschmack."
+msgstr ""
+
+#: patterns/home-categories.php:18
+msgid "Entdecken"
+msgstr ""
+
+#: patterns/home-categories.php:22
+msgid "Unser Sortiment"
+msgstr ""
+
+#: patterns/home-categories.php:32
+msgid "Weine"
+msgstr ""
+
+#: patterns/home-categories.php:35
+msgid "Weiss, Rot, Rosé, Schaumwein & Süsswein — sorgfältig kuratiert."
+msgstr ""
+
+#: patterns/home-categories.php:40
+#: patterns/home-categories.php:58
+#: patterns/home-categories.php:76
+#: patterns/home-categories.php:94
+#: patterns/home-categories.php:112
+msgid "Entdecken →"
+msgstr ""
+
+#: patterns/home-categories.php:50
+msgid "Gourmet"
+msgstr ""
+
+#: patterns/home-categories.php:53
+msgid "Essige & Verjus, Öle, Senf, Pesto, Chutney & Pasta für die feine Küche."
+msgstr ""
+
+#: patterns/home-categories.php:71
+msgid "Laborgeprüfte Weine für empfindliche Geniesser — unsere Spezialität."
+msgstr ""
+
+#: patterns/home-categories.php:89
+msgid "Weine & Delikatessen ganz ohne tierische Hilfsstoffe."
+msgstr ""
+
+#: patterns/home-cta.php:14
+msgid "Gemeinsam geniessen"
+msgstr ""
+
+#: patterns/home-cta.php:18
+msgid "Weinproben & Catering"
+msgstr ""
+
+#: patterns/home-cta.php:22
+msgid "Ob geführte Weinprobe oder stilvolles Catering für Ihren Anlass — wir stellen ein Erlebnis zusammen, das schmeckt. Auch histaminarm auf Wunsch."
+msgstr ""
+
+#: patterns/home-cta.php:32
+msgid "Catering anfragen"
+msgstr ""
+
+#: patterns/home-featured.php:23
+msgid "Aus dem Keller"
+msgstr ""
+
+#: patterns/home-featured.php:27
+msgid "Ausgewählte Weine & Delikatessen"
+msgstr ""
+
+#: patterns/home-featured.php:35
+msgid "Alle Produkte ansehen"
+msgstr ""
+
+#: patterns/home-hero.php:16
+msgid "Weine & Genuss aus Leidenschaft"
+msgstr ""
+
+#: patterns/home-hero.php:24
+msgid "Weine & Genuss"
+msgstr ""
+
+#: patterns/home-hero.php:28
+msgid "Der erste Anbieter histamingeprüfter Weine der Schweiz — seit über 20 Jahren Ihr Spezialist für ehrlichen, verträglichen Genuss."
+msgstr ""
+
+#: patterns/home-hero.php:38
+msgid "Unsere Geschichte"
+msgstr ""
+
+#: patterns/home-story.php:18
+msgid "Über Feinspitz"
+msgstr ""
+
+#: patterns/home-story.php:22
+msgid "20 Jahre Leidenschaft für ehrlichen Genuss"
+msgstr ""
+
+#: patterns/home-story.php:26
+msgid "Feinspitz steht seit über zwei Jahrzehnten für sorgfältig ausgewählte Weine und feine Delikatessen. Als erster Anbieter histamingeprüfter Weine der Schweiz machen wir Genuss auch für empfindliche Weinliebhaberinnen und -liebhaber möglich — transparent, ehrlich und mit persönlicher Beratung."
+msgstr ""
+
+#: patterns/home-story.php:32
+msgid "Mehr über uns"
+msgstr ""
+
+#: patterns/home-story.php:46
+msgid "20+"
+msgstr ""
+
+#: patterns/home-story.php:49
+msgid "Jahre Erfahrung im Weinhandel"
+msgstr ""
+
+#: patterns/home-story.php:57
+msgid "Nr. 1"
+msgstr ""
+
+#: patterns/home-story.php:60
+msgid "für histamingeprüfte Weine in der Schweiz"
+msgstr ""
+
+#: patterns/home-story.php:68
+msgid "100%"
+msgstr ""
+
+#: patterns/home-story.php:71
+msgid "handverlesen & ehrlich beraten"
+msgstr ""
+
+#: patterns/product-details.php:19
+msgid "Gut zu wissen"
+msgstr ""
+
+#: patterns/product-details.php:23
+msgid "Über dieses Produkt"
+msgstr ""
+
+#: patterns/product-related.php:18
+msgid "Passt dazu"
+msgstr ""
+
+#: patterns/product-related.php:22
+msgid "Das könnte Ihnen auch schmecken"
+msgstr ""
+
+#: patterns/shop-archive-header.php:14
+msgid "Shop"
+msgstr ""
+
+#: patterns/shop-archive-header.php:18
+msgid "Unser gesamtes Sortiment"
+msgstr ""
+
+#: patterns/shop-archive-header.php:22
+msgid "Histamingeprüfte Weine, Delikatessen und ausgesuchte Spezialitäten — sorgfältig kuratiert für empfindliche Geniesserinnen und Geniesser."
+msgstr ""
+
+#: patterns/shop-category-header.php:18
+msgid "Kategorie"
+msgstr ""
+
+#: patterns/shop-filter-flags.php:21
+msgid "Filtern nach"
+msgstr ""
+
+#: patterns/shop-filter-flags.php:27
+msgid "Alle Produkte"
+msgstr ""

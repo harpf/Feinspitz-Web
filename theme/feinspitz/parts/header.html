@@ -4,7 +4,14 @@
 	<div class="wp-block-group">
 		<!-- wp:site-title {"style":{"typography":{"fontStyle":"normal","fontWeight":"700","textTransform":"uppercase","letterSpacing":"0.15em"}},"fontFamily":"heading"} /-->
 
-		<!-- wp:navigation {"textColor":"contrast","overlayBackgroundColor":"base","overlayTextColor":"contrast","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
+		<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"right","verticalAlignment":"center"}} -->
+		<div class="wp-block-group">
+			<!-- wp:navigation {"textColor":"contrast","overlayBackgroundColor":"base","overlayTextColor":"contrast","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
+
+			<!-- Sprachumschalter (Polylang) via Shortcode aus theme/feinspitz/inc/i18n.php -->
+			<!-- wp:shortcode -->[pll_languages]<!-- /wp:shortcode -->
+		</div>
+		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
 </div>

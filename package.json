@@ -10,11 +10,15 @@
     "bootstrap": "node scripts/bootstrap.mjs",
     "permalinks": "node scripts/set-permalinks.mjs",
     "store:config": "node scripts/configure-store.mjs",
+    "i18n:pot": "node scripts/i18n/make-pot.mjs",
+    "i18n:po": "node scripts/i18n/make-po.mjs",
+    "i18n": "node scripts/i18n/make-pot.mjs && node scripts/i18n/make-po.mjs",
     "theme:zip": "node scripts/deploy/build-zip.mjs",
     "theme:deploy": "node scripts/deploy/deploy-theme.mjs",
     "content:import": "node migration/import.mjs"
   },
   "dependencies": {
-    "adm-zip": "^0.5.16"
+    "adm-zip": "^0.5.16",
+    "gettext-parser": "^8.0.0"
   }
 }

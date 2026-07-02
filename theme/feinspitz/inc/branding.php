@@ -154,7 +154,7 @@ function feinspitz_footer_shortcode() {
 			array( 'Privacy', home_url( '/datenschutzerklaerung/' ) ),
 			array( 'Cookie Policy', home_url( '/cookie-richtlinie/' ) ),
 			array( 'Contact', $purl( 'kontakt', '/kontakt/' ) ),
-			array( 'Sitemap', home_url( '/wp-sitemap.xml' ) ),
+			array( 'Sitemap', home_url( '/sitemap/' ) ),
 		)
 		: array(
 			array( 'Impressum', $purl( 'about', '/about/' ) ),
@@ -163,7 +163,7 @@ function feinspitz_footer_shortcode() {
 			array( 'Datenschutz', home_url( '/datenschutzerklaerung/' ) ),
 			array( 'Cookie-Richtlinie', home_url( '/cookie-richtlinie/' ) ),
 			array( 'Kontakt', $purl( 'kontakt', '/kontakt/' ) ),
-			array( 'Sitemap', home_url( '/wp-sitemap.xml' ) ),
+			array( 'Sitemap', home_url( '/sitemap/' ) ),
 		);
 	$legal = '';
 	foreach ( $legal_items as $li ) {
@@ -176,6 +176,7 @@ function feinspitz_footer_shortcode() {
 	<div class="wp-block-column" style="flex-basis:34%">
 		<?php echo $logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<p class="feinspitz-footer__tag has-small-font-size"><?php echo esc_html( $t['tagline'] ); ?></p>
+		<?php echo function_exists( 'feinspitz_render_social' ) ? feinspitz_render_social() : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
 	<div class="wp-block-column">
 		<h2 class="wp-block-heading has-small-font-size"><?php echo esc_html( $t['contact'] ); ?></h2>

@@ -55,6 +55,30 @@ function feinspitz_nav_page_url( $slug, $fallback ) {
 }
 
 /**
+ * Term-Link (Kategorie) in der aktuellen Sprache. Existiert eine Übersetzung
+ * des Terms, wird deren Archiv-URL zurückgegeben (z. B. ratgeber → guide auf /en/).
+ *
+ * @param string $slug     DE-Kategorie-Slug.
+ * @param string $fallback Fallback-Pfad.
+ * @return string
+ */
+function feinspitz_nav_category_url( $slug, $fallback ) {
+	$term = get_term_by( 'slug', $slug, 'category' );
+	if ( ! $term ) {
+		return home_url( $fallback );
+	}
+	$id = $term->term_id;
+	if ( 'en' === feinspitz_current_lang() && function_exists( 'pll_get_term' ) ) {
+		$tr = pll_get_term( $id, 'en' );
+		if ( $tr ) {
+			$id = $tr;
+		}
+	}
+	$link = get_term_link( (int) $id, 'category' );
+	return is_wp_error( $link ) ? home_url( $fallback ) : $link;
+}
+
+/**
  * Navigations-Items der aktuellen Sprache: array of [ label, url ].
  */
 function feinspitz_nav_items() {
@@ -63,7 +87,7 @@ function feinspitz_nav_items() {
 	if ( $is_en ) {
 		return array(
 			array( 'Shop', home_url( '/shop/' ) ),
-			array( 'Guide', home_url( '/category/ratgeber/' ) ),
+			array( 'Guide', feinspitz_nav_category_url( 'ratgeber', '/category/ratgeber/' ) ),
 			array( 'FAQ', feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 			array( 'About us', feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 			array( 'Contact', feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),
@@ -72,7 +96,7 @@ function feinspitz_nav_items() {
 
 	return array(
 		array( __( 'Shop', 'feinspitz' ), home_url( '/shop/' ) ),
-		array( __( 'Ratgeber', 'feinspitz' ), home_url( '/category/ratgeber/' ) ),
+		array( __( 'Ratgeber', 'feinspitz' ), feinspitz_nav_category_url( 'ratgeber', '/category/ratgeber/' ) ),
 		array( __( 'FAQ', 'feinspitz' ), feinspitz_nav_page_url( 'faq', '/faq/' ) ),
 		array( __( 'Über uns', 'feinspitz' ), feinspitz_nav_page_url( 'ueber-uns', '/ueber-uns/' ) ),
 		array( __( 'Kontakt', 'feinspitz' ), feinspitz_nav_page_url( 'kontakt', '/kontakt/' ) ),

@@ -1,0 +1,53 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group alignfull">
+
+	<!-- wp:pattern {"slug":"feinspitz/ratgeber-intro"} /-->
+
+	<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50)">
+
+		<!-- wp:query {"queryId":0,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"align":"wide"} -->
+		<div class="wp-block-query alignwide">
+
+			<!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|60"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"18rem"}} -->
+
+				<!-- wp:group {"className":"feinspitz-ratgeber-card","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group feinspitz-ratgeber-card">
+					<!-- wp:post-featured-image {"isLink":true,"style":{"border":{"radius":"14px"}}} /-->
+
+					<!-- wp:post-terms {"term":"category","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.18em","fontWeight":"600"},"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"textColor":"wine","fontSize":"small"} /-->
+
+					<!-- wp:post-title {"isLink":true,"style":{"typography":{"lineHeight":"1.25"}},"fontSize":"large","fontFamily":"heading"} /-->
+
+					<!-- wp:post-excerpt {"moreText":"","showMoreOnNewLine":false,"excerptLength":28,"fontSize":"small"} /-->
+
+					<!-- wp:read-more {"content":"Weiterlesen","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.14em","fontWeight":"600","textDecoration":"none"},"spacing":{"margin":{"top":"var:preset|spacing|30"}}},"textColor":"wine","fontSize":"small"} /-->
+				</div>
+				<!-- /wp:group -->
+
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-no-results -->
+				<!-- wp:paragraph {"align":"center","fontSize":"medium"} -->
+				<p class="has-text-align-center has-medium-font-size">Bald finden Sie hier unsere Ratgeber-Artikel rund um histaminarmen Weingenuss.</p>
+				<!-- /wp:paragraph -->
+			<!-- /wp:query-no-results -->
+
+			<!-- wp:query-pagination {"paginationArrow":"arrow","style":{"spacing":{"margin":{"top":"var:preset|spacing|70"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
+				<!-- wp:query-pagination-previous /-->
+				<!-- wp:query-pagination-numbers /-->
+				<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+
+		</div>
+		<!-- /wp:query -->
+
+	</div>
+	<!-- /wp:group -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

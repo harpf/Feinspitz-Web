@@ -1,44 +1,28 @@
 <?php
 /**
- * Shop-Pattern: Flag-Filter (histamingeprüft / vegan / alkoholfrei).
+ * Shop-Pattern: Filterleiste (Weintyp · Geschmack · Eigenschaften).
  *
- * Registriert in inc/shop.php als feinspitz/shop-filter-flags.
- * Reines Block-Markup (kein Pattern-Header) - Strings via Textdomain feinspitz.
+ * Registriert in inc/shop.php als feinspitz/shop-filter-flags und von
+ * templates/archive-product.html sowie templates/taxonomy-product_cat.html
+ * referenziert.
  *
- * Die Flags sind als Produkt-Tags mit den Slugs histamingeprueft / vegan /
- * alkoholfrei angelegt. Gefiltert wird über den registrierten Query-Var
- * `product_tag` auf der Shop-Seite (/shop/?product_tag=<slug>) - das funktioniert
- * unabhängig vom Tag-Permalink-Base und respektiert die Haupt-Query, sodass der
- * WooCommerce-"Classic Template"-Grid automatisch nur die getaggten Produkte
- * zeigt. "Alle Produkte" setzt den Filter zurück (/shop/).
+ * Reines Block-Markup: EIN Shortcode-Block, der die Filterleiste zur RENDER-Zeit
+ * erzeugt (inc/shop.php → feinspitz_shop_filters_shortcode). Das ist bewusst so,
+ * weil die Filter dadurch (a) den aktiven Zustand serverseitig aus der aktuellen
+ * Query ableiten (funktioniert ohne JavaScript) und (b) die DE/EN-Labels inline
+ * zur Render-Zeit wählen können, ohne neue gettext-msgids einzuführen.
+ *
+ * Gefiltert wird über WooCommerce-Query-Vars:
+ *   - Weintyp        → product_cat   (weissweine/rotweine/rose/schaumweine/suessweine)
+ *   - Eigenschaften  → product_tag   (histamingeprueft/vegan/alkoholfrei)
+ *   - Geschmack      → filter_suesse (Layered-Nav des Attributs pa_suesse)
+ * Alle drei kombinieren sich; „Alle zurücksetzen" leert die Filter (/shop/).
  *
  * @package Feinspitz
  */
 ?>
-<!-- wp:group {"align":"wide","className":"feinspitz-shop-filter","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|30"},"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
-<div class="wp-block-group alignwide feinspitz-shop-filter" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--30)">
-	<!-- wp:paragraph {"textColor":"wine","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.2em","fontWeight":"600"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}},"fontSize":"small"} -->
-	<p class="has-wine-color has-text-color has-small-font-size" style="margin-bottom:var(--wp--preset--spacing--20);font-weight:600;letter-spacing:0.2em;text-transform:uppercase"><?php esc_html_e( 'Filtern nach', 'feinspitz' ); ?></p>
-	<!-- /wp:paragraph -->
-
-	<!-- wp:buttons {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|20","left":"var:preset|spacing|20"}}}} -->
-	<div class="wp-block-buttons">
-		<!-- wp:button {"className":"is-active"} -->
-		<div class="wp-block-button is-active"><a class="wp-block-button__link wp-element-button" href="/shop/"><?php esc_html_e( 'Alle Produkte', 'feinspitz' ); ?></a></div>
-		<!-- /wp:button -->
-
-		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/shop/?product_tag=histamingeprueft"><?php esc_html_e( 'Histamingeprüft', 'feinspitz' ); ?></a></div>
-		<!-- /wp:button -->
-
-		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/shop/?product_tag=vegan"><?php esc_html_e( 'Vegan', 'feinspitz' ); ?></a></div>
-		<!-- /wp:button -->
-
-		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/shop/?product_tag=alkoholfrei"><?php esc_html_e( 'Alkoholfrei', 'feinspitz' ); ?></a></div>
-		<!-- /wp:button -->
-	</div>
-	<!-- /wp:buttons -->
+<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|30"}}},"layout":{"type":"constrained","contentSize":"1280px"}} -->
+<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--30)">
+	<!-- wp:shortcode -->[feinspitz_shop_filters]<!-- /wp:shortcode -->
 </div>
 <!-- /wp:group -->

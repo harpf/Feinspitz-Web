@@ -154,6 +154,17 @@ add_action( 'wp_enqueue_scripts', function () {
 .feinspitz-shop-filter .wp-block-button__link:hover,.feinspitz-shop-filter .wp-block-button__link:focus-visible{background:rgba(123,31,43,.07);border-color:var(--wp--preset--color--wine)}
 .feinspitz-shop-filter .wp-block-button.is-active .wp-block-button__link{background:var(--wp--preset--color--wine);color:var(--wp--preset--color--contrast);border-color:var(--wp--preset--color--wine)}
 .feinspitz-shop-filter .wp-block-button.is-active .wp-block-button__link:hover{background:var(--wp--preset--color--wine-deep)}
+
+/* ---------- Gruppierte Filter (Weintyp · Geschmack · Eigenschaften) ---------- */
+.feinspitz-shop-filter__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 1rem;margin:0 0 var(--wp--preset--spacing--30,1rem)}
+.feinspitz-shop-filter__title{margin:0;font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wp--preset--color--wine)}
+.feinspitz-shop-filter__reset{font-size:.8rem;font-weight:600;color:rgba(14,11,8,.55);text-decoration:none;border-bottom:1px solid rgba(14,11,8,.25);padding-bottom:1px;transition:color .16s ease,border-color .16s ease}
+.feinspitz-shop-filter__reset:hover{color:var(--wp--preset--color--wine);border-color:var(--wp--preset--color--wine)}
+.feinspitz-shop-filter__group{display:grid;grid-template-columns:minmax(0,7rem) 1fr;align-items:start;gap:.35rem 1rem;margin:0 0 .85rem}
+.feinspitz-shop-filter__group:last-child{margin-bottom:0}
+.feinspitz-shop-filter__label{margin:.55rem 0 0;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(14,11,8,.5)}
+.feinspitz-shop-filter__group .wp-block-buttons{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+@media(max-width:640px){.feinspitz-shop-filter__group{grid-template-columns:1fr;gap:.3rem}.feinspitz-shop-filter__label{margin:.25rem 0 .1rem}}
 CSS;
 
 	if ( wp_style_is( 'feinspitz-style', 'registered' ) || wp_style_is( 'feinspitz-style', 'enqueued' ) ) {
@@ -164,32 +175,10 @@ CSS;
 		wp_add_inline_style( 'feinspitz-shop-inline', $css );
 	}
 
-	// Aktiven Flag-Filter markieren (Progressive Enhancement). Der Filter selbst
-	// funktioniert serverseitig über ?product_tag; dieses Skript hebt lediglich
-	// den zur aktuellen URL passenden Button hervor. Nur auf Shop-/Kategorie-
-	// Archiven laden · das Markup existiert nur dort.
-	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
-		$js = <<<'JS'
-(function(){
-	var bar=document.querySelector('.feinspitz-shop-filter');
-	if(!bar)return;
-	var current=new URLSearchParams(window.location.search).get('product_tag');
-	Array.prototype.forEach.call(bar.querySelectorAll('.wp-block-button__link'),function(a){
-		var wrap=a.closest('.wp-block-button');
-		if(!wrap)return;
-		var tag=null;
-		try{tag=new URL(a.href,window.location.origin).searchParams.get('product_tag');}catch(e){}
-		var active=(tag||null)===(current||null);
-		wrap.classList.toggle('is-active',active);
-		if(active){a.setAttribute('aria-current','true');}else{a.removeAttribute('aria-current');}
-	});
-})();
-JS;
-
-		wp_register_script( 'feinspitz-shop', false, array(), null, true );
-		wp_enqueue_script( 'feinspitz-shop' );
-		wp_add_inline_script( 'feinspitz-shop', $js );
-	}
+	// Der aktive Filter-Zustand wird serverseitig gesetzt (die Filterleiste rendert
+	// über feinspitz_shop_filters_shortcode und markiert die passenden Buttons per
+	// is-active/aria-current). Es ist kein JavaScript nötig, damit die Filter
+	// funktionieren · die Filterleiste ist reines HTML mit echten Links.
 }, 20 );
 
 /**
@@ -307,3 +296,183 @@ add_filter( 'ngettext', function ( $t, $single, $plural, $number, $domain ) use 
 add_filter( 'ngettext_with_context', function ( $t, $single, $plural, $number, $ctx, $domain ) use ( $feinspitz_dash_fix ) {
 	return ( 'woocommerce' === $domain && ( false !== strpos( $single, '&ndash;' ) || false !== strpos( $plural, '&ndash;' ) ) ) ? $feinspitz_dash_fix( $t ) : $t;
 }, 20, 6 );
+
+/**
+ * ---------------------------------------------------------------------------
+ * Filterleiste (Shortcode [feinspitz_shop_filters])
+ * ---------------------------------------------------------------------------
+ *
+ * Rendert die gruppierte Filterleiste (Weintyp · Geschmack · Eigenschaften) zur
+ * RENDER-Zeit — eingebunden über das Pattern feinspitz/shop-filter-flags. Dadurch
+ * lässt sich (a) der aktive Zustand serverseitig aus der aktuellen Query ableiten
+ * (kein JavaScript nötig) und (b) die DE/EN-Labels inline wählen, ohne neue
+ * gettext-msgids einzuführen.
+ *
+ * Jeder Button ist ein echter Link auf /shop/ mit den zusammengeführten Filtern.
+ * Ein aktiver Button verlinkt „zurück" (Filter aus) — so lässt sich jeder Filter
+ * per Klick togglen, auch ohne JavaScript. Weintyp → product_cat, Eigenschaften →
+ * product_tag, Geschmack → filter_suesse (WooCommerce Layered-Nav auf pa_suesse).
+ */
+
+/**
+ * Sprachbewusste Textauswahl für die Filterleiste (DE Standard, EN auf /en/).
+ *
+ * @param string $de Deutscher Text.
+ * @param string $en Englischer Text.
+ * @return string
+ */
+function feinspitz_shop_t( $de, $en ) {
+	if ( function_exists( 'feinspitz_current_lang' ) && 'en' === feinspitz_current_lang() ) {
+		return $en;
+	}
+	return $de;
+}
+
+/**
+ * Aktueller Filter-Zustand aus der Query.
+ *
+ * @return array{cat:string,tag:string,suesse:string[]}
+ */
+function feinspitz_shop_filter_state() {
+	$cat = sanitize_title( (string) get_query_var( 'product_cat' ) );
+	$tag = sanitize_title( (string) get_query_var( 'product_tag' ) );
+
+	$suesse_raw = isset( $_GET['filter_suesse'] ) ? wp_unslash( $_GET['filter_suesse'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$suesse     = array_values( array_filter( array_map( 'sanitize_title', explode( ',', (string) $suesse_raw ) ) ) );
+
+	return array( 'cat' => $cat, 'tag' => $tag, 'suesse' => $suesse );
+}
+
+/**
+ * Root-relative Shop-URL für einen (bereits zusammengeführten) Filter-Zustand.
+ *
+ * @param string   $cat    product_cat-Slug oder ''.
+ * @param string   $tag    product_tag-Slug oder ''.
+ * @param string[] $suesse pa_suesse-Term-Slugs.
+ * @return string
+ */
+function feinspitz_shop_filter_url( $cat, $tag, $suesse ) {
+	$args = array();
+	if ( '' !== $cat ) {
+		$args['product_cat'] = $cat;
+	}
+	if ( '' !== $tag ) {
+		$args['product_tag'] = $tag;
+	}
+	if ( ! empty( $suesse ) ) {
+		$args['filter_suesse'] = implode( ',', $suesse );
+		if ( count( $suesse ) > 1 ) {
+			$args['query_type_suesse'] = 'or';
+		}
+	}
+	return empty( $args ) ? '/shop/' : add_query_arg( $args, '/shop/' );
+}
+
+/**
+ * Eine Button-Gruppe (Label + Buttons) rendern.
+ *
+ * @param string $label   Gruppen-Label.
+ * @param array  $buttons Liste von [ 'label' => string, 'url' => string, 'active' => bool ].
+ * @return string
+ */
+function feinspitz_shop_filter_group( $label, $buttons ) {
+	$html  = '<div class="feinspitz-shop-filter__group">';
+	$html .= '<p class="feinspitz-shop-filter__label">' . esc_html( $label ) . '</p>';
+	$html .= '<div class="wp-block-buttons">';
+	foreach ( $buttons as $btn ) {
+		$active   = ! empty( $btn['active'] );
+		$cls      = 'wp-block-button' . ( $active ? ' is-active' : '' );
+		$curr     = $active ? ' aria-current="true"' : '';
+		$html    .= '<div class="' . esc_attr( $cls ) . '">'
+			. '<a class="wp-block-button__link wp-element-button" href="' . esc_url( $btn['url'] ) . '"' . $curr . '>'
+			. esc_html( $btn['label'] ) . '</a></div>';
+	}
+	$html .= '</div></div>';
+	return $html;
+}
+
+/**
+ * Shortcode [feinspitz_shop_filters] — die gruppierte Filterleiste.
+ *
+ * @return string HTML.
+ */
+function feinspitz_shop_filters_shortcode() {
+	$state  = feinspitz_shop_filter_state();
+	$cat    = $state['cat'];
+	$tag    = $state['tag'];
+	$suesse = $state['suesse'];
+
+	$has_filter = ( '' !== $cat || '' !== $tag || ! empty( $suesse ) );
+
+	// Weintyp (product_cat): Klick setzt die Kategorie; aktive Kategorie schaltet ab.
+	$weintyp_defs = array(
+		'weissweine'  => feinspitz_shop_t( 'Weissweine', 'White wines' ),
+		'rotweine'    => feinspitz_shop_t( 'Rotweine', 'Red wines' ),
+		'rose'        => feinspitz_shop_t( 'Rosé', 'Rosé' ),
+		'schaumweine' => feinspitz_shop_t( 'Schaumweine', 'Sparkling' ),
+		'suessweine'  => feinspitz_shop_t( 'Süssweine', 'Dessert wines' ),
+	);
+	$weintyp = array();
+	foreach ( $weintyp_defs as $slug => $label ) {
+		$active    = ( $slug === $cat );
+		$weintyp[] = array(
+			'label'  => $label,
+			'active' => $active,
+			'url'    => feinspitz_shop_filter_url( $active ? '' : $slug, $tag, $suesse ),
+		);
+	}
+
+	// Geschmack (filter_suesse): Klick setzt einen einzelnen Term; aktiver schaltet ab.
+	$suesse_defs = array(
+		'trocken'     => feinspitz_shop_t( 'Trocken', 'Dry' ),
+		'halbtrocken' => feinspitz_shop_t( 'Halbtrocken', 'Off-dry' ),
+		'lieblich'    => feinspitz_shop_t( 'Lieblich', 'Medium-sweet' ),
+		'suess'       => feinspitz_shop_t( 'Süss', 'Sweet' ),
+	);
+	$geschmack = array();
+	foreach ( $suesse_defs as $slug => $label ) {
+		$active      = in_array( $slug, $suesse, true );
+		$geschmack[] = array(
+			'label'  => $label,
+			'active' => $active,
+			'url'    => feinspitz_shop_filter_url( $cat, $tag, $active ? array() : array( $slug ) ),
+		);
+	}
+
+	// Eigenschaften (product_tag): Klick setzt ein Flag; aktives schaltet ab.
+	$flag_defs = array(
+		'histamingeprueft' => feinspitz_shop_t( 'Histamingeprüft', 'Histamine-checked' ),
+		'vegan'            => feinspitz_shop_t( 'Vegan', 'Vegan' ),
+		'alkoholfrei'      => feinspitz_shop_t( 'Alkoholfrei', 'Alcohol-free' ),
+	);
+	$flags = array();
+	foreach ( $flag_defs as $slug => $label ) {
+		$active  = ( $slug === $tag );
+		$flags[] = array(
+			'label'  => $label,
+			'active' => $active,
+			'url'    => feinspitz_shop_filter_url( $cat, $active ? '' : $slug, $suesse ),
+		);
+	}
+
+	$out  = '<div class="feinspitz-shop-filter">';
+
+	$out .= '<div class="feinspitz-shop-filter__head">';
+	$out .= '<p class="feinspitz-shop-filter__title">' . esc_html( feinspitz_shop_t( 'Filtern nach', 'Filter by' ) ) . '</p>';
+	if ( $has_filter ) {
+		$out .= '<a class="feinspitz-shop-filter__reset" href="/shop/">'
+			. esc_html( feinspitz_shop_t( 'Alle zurücksetzen', 'Reset all' ) ) . '</a>';
+	}
+	$out .= '</div>';
+
+	$out .= feinspitz_shop_filter_group( feinspitz_shop_t( 'Weintyp', 'Wine type' ), $weintyp );
+	$out .= feinspitz_shop_filter_group( feinspitz_shop_t( 'Geschmack', 'Taste' ), $geschmack );
+	$out .= feinspitz_shop_filter_group( feinspitz_shop_t( 'Eigenschaften', 'Attributes' ), $flags );
+
+	$out .= '</div>';
+	return $out;
+}
+
+add_action( 'init', function () {
+	add_shortcode( 'feinspitz_shop_filters', 'feinspitz_shop_filters_shortcode' );
+} );

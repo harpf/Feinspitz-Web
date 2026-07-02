@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" width="300" height="72" role="img" aria-labelledby="fs-logo-title fs-logo-desc" preserveAspectRatio="xMinYMid meet">
+  <title id="fs-logo-title">Feinspitz</title>
+  <desc id="fs-logo-desc">Feinspitz — Weine &amp; Genuss</desc>
+
+  <!-- Brand bug: gold roundel carrying a wine drop (readable on light or dark bands) -->
+  <circle cx="27" cy="29" r="24" fill="#c9a24b"/>
+  <path d="M27 12c6 8 11.5 13.5 11.5 19.5a11.5 11.5 0 0 1-23 0C15.5 25.5 21 20 27 12Z" fill="#7b1f2b"/>
+  <path d="M22.5 33.5c-.4 3 1 5.6 3.6 6.9" fill="none" stroke="#f6f1e7" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Wordmark: robust generic serif (falls back cleanly without a webfont) -->
+  <text x="66" y="40" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="40" font-weight="700" letter-spacing="0.4" fill="#c9a24b">Feinspitz</text>
+
+  <!-- Subline -->
+  <text x="68" y="59.5" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="12" font-weight="500" letter-spacing="5.5" fill="#f6f1e7">WEINE &amp; GENUSS</text>
+</svg>

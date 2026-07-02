@@ -1,12 +1,16 @@
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"1rem","bottom":"1rem","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"base","textColor":"contrast","layout":{"type":"constrained","contentSize":"1280px"}} -->
-<div class="wp-block-group alignfull has-contrast-color has-base-background-color has-text-color has-background" style="padding-top:1rem;padding-bottom:1rem;padding-left:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50)">
-	<!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-	<div class="wp-block-group">
-		<!-- wp:site-title {"style":{"typography":{"fontStyle":"normal","fontWeight":"700","textTransform":"uppercase","letterSpacing":"0.15em"}},"fontFamily":"heading"} /-->
+<!-- wp:group {"align":"full","className":"feinspitz-header","backgroundColor":"base","textColor":"contrast","layout":{"type":"constrained","contentSize":"1280px"}} -->
+<div class="wp-block-group alignfull feinspitz-header has-contrast-color has-base-background-color has-text-color has-background">
+	<!-- wp:group {"className":"feinspitz-header__bar","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+	<div class="wp-block-group feinspitz-header__bar">
+		<!-- Bold-Wortmarke (assets/logo.svg) via Shortcode aus theme/feinspitz/inc/branding.php -->
+		<!-- wp:shortcode -->[feinspitz_logo]<!-- /wp:shortcode -->
 
-		<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"right","verticalAlignment":"center"}} -->
-		<div class="wp-block-group">
-			<!-- wp:navigation {"textColor":"contrast","overlayBackgroundColor":"base","overlayTextColor":"contrast","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
+		<!-- wp:group {"className":"feinspitz-header__nav","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right","verticalAlignment":"center"}} -->
+		<div class="wp-block-group feinspitz-header__nav">
+			<!-- wp:navigation {"textColor":"contrast","overlayBackgroundColor":"base","overlayTextColor":"contrast","overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right","flexWrap":"wrap"}} /-->
+
+			<!-- Warenkorb-Icon (Link auf /cart/) via Shortcode aus inc/branding.php -->
+			<!-- wp:shortcode -->[feinspitz_cart]<!-- /wp:shortcode -->
 
 			<!-- Sprachumschalter (Polylang) via Shortcode aus theme/feinspitz/inc/i18n.php -->
 			<!-- wp:shortcode -->[pll_languages]<!-- /wp:shortcode -->

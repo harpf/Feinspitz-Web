@@ -1,33 +1,51 @@
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"backgroundColor":"base","textColor":"contrast","layout":{"type":"constrained","contentSize":"1280px"}} -->
-<div class="wp-block-group alignfull has-contrast-color has-base-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)">
-	<!-- wp:columns -->
-	<div class="wp-block-columns">
-		<!-- wp:column -->
-		<div class="wp-block-column">
-			<!-- wp:site-title {"style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.15em","fontWeight":"700"}},"fontFamily":"heading"} /-->
-			<!-- wp:paragraph {"fontSize":"small"} -->
-			<p class="has-small-font-size">Weine &amp; Genuss — histamingeprüft. Bahnhofstrasse 80, CH-8902 Urdorf.</p>
+<!-- wp:group {"align":"full","className":"feinspitz-footer","backgroundColor":"base","textColor":"contrast","layout":{"type":"constrained","contentSize":"1280px"}} -->
+<div class="wp-block-group alignfull feinspitz-footer has-contrast-color has-base-background-color has-text-color has-background">
+	<!-- wp:columns {"className":"feinspitz-footer__cols"} -->
+	<div class="wp-block-columns feinspitz-footer__cols">
+		<!-- wp:column {"width":"34%"} -->
+		<div class="wp-block-column" style="flex-basis:34%">
+			<!-- Bold-Wortmarke via Shortcode aus inc/branding.php -->
+			<!-- wp:shortcode -->[feinspitz_logo]<!-- /wp:shortcode -->
+			<!-- wp:paragraph {"className":"feinspitz-footer__tag","fontSize":"small"} -->
+			<p class="feinspitz-footer__tag has-small-font-size">Histamingeprüfte Weine mit mehr Vertrauen und Genuss — für mehr Lebensqualität.</p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
+			<!-- wp:heading {"level":2,"fontSize":"small"} -->
+			<h2 class="wp-block-heading has-small-font-size">Kontakt</h2>
+			<!-- /wp:heading -->
+			<!-- wp:paragraph {"className":"feinspitz-footer__contact"} -->
+			<p class="feinspitz-footer__contact">Feinspitz<br>Bahnhofstrasse 80<br>CH-8902 Urdorf<br><a href="tel:+41765888902">+41 76 588 89 02</a></p>
+			<!-- /wp:paragraph -->
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:heading {"level":2,"fontSize":"small"} -->
+			<h2 class="wp-block-heading has-small-font-size">Entdecken</h2>
+			<!-- /wp:heading -->
 			<!-- wp:navigation {"textColor":"contrast","overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"}} /-->
+		</div>
+		<!-- /wp:column -->
+
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:heading {"level":2,"fontSize":"small"} -->
+			<h2 class="wp-block-heading has-small-font-size">Sprache</h2>
+			<!-- /wp:heading -->
+			<!-- Sprachumschalter (Polylang) via Shortcode aus theme/feinspitz/inc/i18n.php -->
+			<!-- wp:shortcode -->[pll_languages]<!-- /wp:shortcode -->
 		</div>
 		<!-- /wp:column -->
 	</div>
 	<!-- /wp:columns -->
 
-	<!-- Sprachumschalter (Polylang) via Shortcode aus theme/feinspitz/inc/i18n.php -->
-	<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","justifyContent":"center"}} -->
-	<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--40)">
-		<!-- wp:shortcode -->[pll_languages]<!-- /wp:shortcode -->
-	</div>
-	<!-- /wp:group -->
-
-	<!-- wp:paragraph {"align":"center","fontSize":"small"} -->
-	<p class="has-text-align-center has-small-font-size">© Feinspitz</p>
+	<!-- wp:paragraph {"className":"feinspitz-footer__bottom"} -->
+	<p class="feinspitz-footer__bottom">© Feinspitz — Weine &amp; Genuss · Bahnhofstrasse 80, CH-8902 Urdorf</p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

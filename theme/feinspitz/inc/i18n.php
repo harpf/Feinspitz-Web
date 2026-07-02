@@ -107,3 +107,84 @@ add_action( 'wp_enqueue_scripts', function () {
 		wp_add_inline_style( 'feinspitz-i18n-inline', $css );
 	}
 }, 20 );
+
+/**
+ * REST-Brücke für Polylang (Sprachzuordnung & Verknüpfung).
+ *
+ * Das freie Polylang legt über REST zwar die Sprachen an (pll/v1/languages),
+ * bietet aber KEINEN REST-Weg, um einzelnen Beiträgen/Seiten eine Sprache
+ * zuzuweisen oder Übersetzungen zu verknüpfen (das kann sonst nur Polylang Pro).
+ *
+ * Diese Brücke registriert daher zwei REST-Felder auf post/page/product:
+ *   - `lang`            : liest/setzt die Polylang-Sprache (Slug, z. B. "de"/"en").
+ *   - `pll_translations`: liest/setzt die Übersetzungs-Verknüpfung ({slug: post_id}).
+ *
+ * Damit wird die Sprachzuordnung über wp/v2 (Cookie+Nonce als Admin) skriptbar —
+ * genutzt von scripts/i18n/polylang-content.mjs. Die Felder existieren nur, wenn
+ * Polylang aktiv ist; die Schreib-Callbacks erfordern reguläre Bearbeitungsrechte
+ * (REST prüft das ohnehin), sind also nicht öffentlich missbrauchbar.
+ */
+add_action( 'rest_api_init', function () {
+	if ( ! function_exists( 'pll_set_post_language' ) ) {
+		return; // Polylang nicht aktiv — keine Brücke.
+	}
+
+	$types = array( 'post', 'page', 'product' );
+
+	foreach ( $types as $type ) {
+		register_rest_field(
+			$type,
+			'lang',
+			array(
+				'schema'          => array(
+					'description' => 'Polylang language slug.',
+					'type'        => array( 'string', 'null' ),
+					'context'     => array( 'view', 'edit' ),
+				),
+				'get_callback'    => function ( $obj ) {
+					if ( ! function_exists( 'pll_get_post_language' ) ) {
+						return null;
+					}
+					$slug = pll_get_post_language( (int) $obj['id'], 'slug' );
+					return $slug ? $slug : null;
+				},
+				'update_callback' => function ( $value, $post ) {
+					if ( is_string( $value ) && '' !== $value ) {
+						pll_set_post_language( $post->ID, sanitize_key( $value ) );
+					}
+					return true;
+				},
+			)
+		);
+
+		register_rest_field(
+			$type,
+			'pll_translations',
+			array(
+				'schema'          => array(
+					'description' => 'Polylang translations as {language-slug: post-id}.',
+					'type'        => 'object',
+					'context'     => array( 'view', 'edit' ),
+				),
+				'get_callback'    => function ( $obj ) {
+					if ( ! function_exists( 'pll_get_post_translations' ) ) {
+						return array();
+					}
+					return pll_get_post_translations( (int) $obj['id'] );
+				},
+				'update_callback' => function ( $value, $post ) {
+					if ( is_array( $value ) && function_exists( 'pll_save_post_translations' ) ) {
+						$map = array();
+						foreach ( $value as $slug => $id ) {
+							$map[ sanitize_key( $slug ) ] = (int) $id;
+						}
+						if ( $map ) {
+							pll_save_post_translations( $map );
+						}
+					}
+					return true;
+				},
+			)
+		);
+	}
+} );

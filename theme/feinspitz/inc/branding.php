@@ -141,6 +141,35 @@ function feinspitz_footer_shortcode() {
 	$logo     = function_exists( 'feinspitz_logo_shortcode' ) ? feinspitz_logo_shortcode() : '';
 	$switcher = function_exists( 'feinspitz_language_switcher' ) ? feinspitz_language_switcher() : '';
 
+	// Rechtslinks (Impressum/AGB/Kontakt sprachlokalisiert; Datenschutz/Cookie/
+	// Liefer nur DE; Sitemap = automatische WP-XML-Sitemap).
+	$purl = function ( $slug, $fallback ) {
+		return function_exists( 'feinspitz_nav_page_url' ) ? feinspitz_nav_page_url( $slug, $fallback ) : home_url( $fallback );
+	};
+	$legal_items = $is_en
+		? array(
+			array( 'Imprint', $purl( 'about', '/about/' ) ),
+			array( 'Terms', $purl( 'agb', '/agb/' ) ),
+			array( 'Delivery & Payment', home_url( '/liefer-und-zahlungsbedingungen/' ) ),
+			array( 'Privacy', home_url( '/datenschutzerklaerung/' ) ),
+			array( 'Cookie Policy', home_url( '/cookie-richtlinie/' ) ),
+			array( 'Contact', $purl( 'kontakt', '/kontakt/' ) ),
+			array( 'Sitemap', home_url( '/wp-sitemap.xml' ) ),
+		)
+		: array(
+			array( 'Impressum', $purl( 'about', '/about/' ) ),
+			array( 'AGB', $purl( 'agb', '/agb/' ) ),
+			array( 'Liefer- und Zahlungsbedingungen', home_url( '/liefer-und-zahlungsbedingungen/' ) ),
+			array( 'Datenschutz', home_url( '/datenschutzerklaerung/' ) ),
+			array( 'Cookie-Richtlinie', home_url( '/cookie-richtlinie/' ) ),
+			array( 'Kontakt', $purl( 'kontakt', '/kontakt/' ) ),
+			array( 'Sitemap', home_url( '/wp-sitemap.xml' ) ),
+		);
+	$legal = '';
+	foreach ( $legal_items as $li ) {
+		$legal .= sprintf( '<li><a href="%s">%s</a></li>', esc_url( $li[1] ), esc_html( $li[0] ) );
+	}
+
 	ob_start();
 	?>
 <div class="wp-block-columns feinspitz-footer__cols is-layout-flex">
@@ -161,6 +190,7 @@ function feinspitz_footer_shortcode() {
 		<?php echo $switcher; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
 </div>
+<ul class="feinspitz-footer__legal"><?php echo $legal; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></ul>
 	<?php
 	return ob_get_clean();
 }
@@ -241,6 +271,9 @@ add_action( 'wp_enqueue_scripts', function () {
 .feinspitz-footer .wp-block-navigation ul{gap:.45rem}
 .feinspitz-footer__links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem;font-size:.92rem}
 .feinspitz-footer__links a{display:inline-block}
+.feinspitz-footer__legal{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem 0;margin:clamp(1.5rem,4vw,2.25rem) 0 0;padding:0;font-size:.76rem;opacity:.72}
+.feinspitz-footer__legal li:not(:last-child)::after{content:"|";margin:0 .6rem;opacity:.4}
+.feinspitz-footer__legal a{opacity:1}
 .feinspitz-footer .feinspitz-lang-switcher__list{justify-content:flex-start}
 .feinspitz-footer__bottom{
 	margin-top:clamp(1.5rem,4vw,2.5rem);padding-top:1.1rem;

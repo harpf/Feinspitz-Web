@@ -98,18 +98,41 @@ function parsePrice(text = '') {
 
 // --- Statische Seite parsen ------------------------------------------------
 
+const escapeHtml = (s = '') => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
 function parsePage(html) {
-  const title = meta(html, 'og:title') || (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || '';
-  // Hauptinhalt: Content-Spalte, ohne Header/Footer/Skripte.
-  let body = html;
-  const main = html.match(/<div[^>]+class="[^"]*cc-m-content[^"]*"[\s\S]*?<\/div>\s*<\/div>/i)
-    || html.match(/<main[\s\S]*?<\/main>/i)
-    || html.match(/<div[^>]+id="content"[\s\S]*?<\/div>/i);
-  if (main) body = main[0];
+  // Titel: aus <title>, Site-Suffix entfernen, spezifischsten Teil nehmen.
+  let raw = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || meta(html, 'og:title');
+  raw = decodeEntities(raw).replace(/\s*[-|]\s*Feinspitz\s+Weine\s+und\s+Genuss\s*$/i, '').trim();
+  const parts = raw.split(/\s+[-|]\s+/).map((s) => s.trim()).filter(Boolean);
+  let title = parts[parts.length - 1] || raw;
+  title = title.charAt(0).toUpperCase() + title.slice(1);
+
+  // Inhalt: nur die Jimdo-Content-Module (j-header / j-text) ab #content_start,
+  // ohne Navigation/Breadcrumb/Footer.
+  const s = html.indexOf('content_start');
+  const e = html.indexOf('content_end');
+  const region = s > -1 ? html.slice(s, e > s ? e : html.length) : html;
+  const mods = [...region.matchAll(
+    /<div[^>]*class="[^"]*j-module\b[^"]*\b(j-header|j-text)\b[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?=<div|<\/div|$)/gi,
+  )];
+
+  const htmlParts = [];
+  const textParts = [];
+  for (const m of mods) {
+    const kind = m[1];
+    const inner = stripHtml(m[2]);
+    if (!inner) continue;
+    textParts.push(inner);
+    if (kind === 'j-header') htmlParts.push(`<h2>${escapeHtml(inner)}</h2>`);
+    else for (const para of inner.split(/\n{1,}/).filter(Boolean)) htmlParts.push(`<p>${escapeHtml(para)}</p>`);
+  }
+
   return {
-    title: decodeEntities(title).replace(/\s*[-|].*$/, '').trim() || title.trim(),
+    title,
     description: meta(html, 'og:description'),
-    content_text: stripHtml(body).slice(0, 8000),
+    content_html: htmlParts.join('\n'),
+    content_text: textParts.join('\n\n').slice(0, 12000),
   };
 }
 
@@ -311,10 +334,19 @@ function titleCase(s = '') {
   return decodeEntities(s).replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()).trim();
 }
 
-/** Kategorie-Name: sauberer og:title bevorzugt, sonst titleCase des URL-Segments. */
+/**
+ * Kategorie-Name: sauberer og:title nur, wenn er thematisch zum URL-Segment passt
+ * (gemeinsames Token) — sonst titleCase des Segments. Verhindert, dass Jimdo-
+ * Marketing-/Produkt-og:titles (z. B. "W-Zero alkoholfreier Wein") Kategorienamen
+ * überschreiben.
+ */
 function cleanCatName(segment, ogTitle = '') {
   const t = (ogTitle || '').trim();
-  if (t && t.length <= 35 && !/willkommen|home|feinspitz|^shop$/i.test(t)) return t;
+  if (t && t.length <= 35 && !/willkommen|home|feinspitz|^shop$/i.test(t)) {
+    const segTokens = slugify(segment).split('-').filter((x) => x.length >= 4);
+    const ogSlug = slugify(t);
+    if (segTokens.length === 0 || segTokens.some((tok) => ogSlug.includes(tok))) return t;
+  }
   return titleCase(segment);
 }
 

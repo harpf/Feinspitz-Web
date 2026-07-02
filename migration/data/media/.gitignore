@@ -1,0 +1,8 @@
+# Gescrapte Produktbilder (Vendor-Fotos) werden NICHT versioniert:
+#  - per `node migration/scrape/scrape.mjs` reproduzierbar
+#  - der Import (migration/import.mjs) lädt bei fehlender lokaler Datei sonst
+#    per Quell-URL (media.src / image) nach (WooCommerce-Sideload).
+# Verzeichnis bleibt via .gitkeep im Repo bestehen.
+*
+!.gitignore
+!.gitkeep

@@ -38,10 +38,6 @@
 
 			<!-- wp:post-title {"level":1,"style":{"typography":{"lineHeight":"1.05","fontWeight":"600"}},"fontSize":"x-large","fontFamily":"heading"} /-->
 
-			<!-- wp:shortcode -->
-			[feinspitz_product_badges]
-			<!-- /wp:shortcode -->
-
 			<!-- wp:woocommerce/product-price {"fontSize":"large","textColor":"wine","style":{"typography":{"fontWeight":"700"},"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}}} /-->
 
 			<!-- wp:post-excerpt {"excerptLength":40,"showMoreOnNewLine":false,"style":{"typography":{"lineHeight":"1.7"},"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->

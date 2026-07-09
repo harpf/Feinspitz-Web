@@ -549,6 +549,15 @@ add_action( 'init', function () {
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$css = <<<'CSS'
+/* ---------- Sticky Footer auf Finder-Seiten ---------- */
+/* Der Wein-Finder ist eine kurze Seite · ohne diese Regel reicht der Inhalt nicht
+   bis zum unteren Viewport-Rand und unter dem (dunklen) Footer bleibt der weisse
+   html-Hintergrund als „Block" sichtbar. Wir lassen den Seiten-Wrapper die volle
+   Höhe füllen und den Hauptbereich wachsen, sodass der Footer sauber abschliesst.
+   Gescopt via :has() auf Seiten MIT dem Finder · andere Seiten bleiben unberührt. */
+.wp-site-blocks:has(.feinspitz-wf){display:flex;flex-direction:column;min-height:100vh}
+.wp-site-blocks:has(.feinspitz-wf) > main{flex:1 0 auto}
+
 /* ---------- Wein-Finder ---------- */
 .feinspitz-wf{--wf-wine:var(--wp--preset--color--wine,#7b1f2b);--wf-gold:var(--wp--preset--color--gold,#c9a24b);--wf-ink:var(--wp--preset--color--base,#0e0b08);background:#fff;border:1px solid rgba(14,11,8,.1);border-top:4px solid var(--wf-wine);border-radius:18px;padding:clamp(1.5rem,4vw,2.75rem);margin:2rem auto;max-width:860px;box-shadow:0 24px 60px -48px rgba(14,11,8,.6)}
 .feinspitz-wf__eyebrow{text-transform:uppercase;letter-spacing:.28em;font-weight:600;font-size:.72rem;color:var(--wf-wine);margin:0 0 .5rem}

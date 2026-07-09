@@ -83,6 +83,7 @@ function feinspitz_nav_items() {
 	if ( $is_en ) {
 		return array(
 			array( 'Shop', home_url( '/shop/' ) ),
+			array( 'Wine finder', feinspitz_nav_page_url( 'wein-finder', '/wein-finder/' ) ),
 			array( 'Guide', feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
 			array( 'Glossary', feinspitz_nav_category_url( 'weinlexikon', 'glossary', '/category/weinlexikon/' ) ),
 			array( 'FAQ', feinspitz_nav_page_url( 'faq', '/faq/' ) ),
@@ -93,6 +94,9 @@ function feinspitz_nav_items() {
 
 	return array(
 		array( __( 'Shop', 'feinspitz' ), home_url( '/shop/' ) ),
+		// „Wein-Finder" bewusst als Literal (kein __()) — keine neue gettext-msgid,
+		// damit die i18n-Build-Pipeline nicht erweitert werden muss (siehe inc/wine-finder.php).
+		array( 'Wein-Finder', feinspitz_nav_page_url( 'wein-finder', '/wein-finder/' ) ),
 		array( __( 'Ratgeber', 'feinspitz' ), feinspitz_nav_category_url( 'ratgeber', 'guide', '/category/ratgeber/' ) ),
 		array( __( 'Weinlexikon', 'feinspitz' ), feinspitz_nav_category_url( 'weinlexikon', 'glossary', '/category/weinlexikon/' ) ),
 		array( __( 'FAQ', 'feinspitz' ), feinspitz_nav_page_url( 'faq', '/faq/' ) ),

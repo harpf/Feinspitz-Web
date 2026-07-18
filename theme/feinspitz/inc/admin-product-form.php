@@ -55,15 +55,16 @@ function feinspitz_product_form_render() {
 		wp_die( 'Keine Berechtigung.' );
 	}
 
-	echo '<div class="wrap"><h1>Neues Produkt</h1>';
+	$id = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+	$heading = $id ? 'Produkt bearbeiten' : 'Neues Produkt';
+	echo '<div class="wrap"><h1>' . esc_html( $heading ) . '</h1>';
 	feinspitz_forms_notice();
 
 	if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'wc_get_product' ) ) {
 		echo '<p>WooCommerce ist nicht aktiv — Produkte können derzeit nicht angelegt werden.</p></div>';
 		return;
 	}
-
-	$id      = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$product = $id ? wc_get_product( $id ) : null;
 
 	// Vorbelegung.
@@ -94,9 +95,12 @@ function feinspitz_product_form_render() {
 	echo '<h2>Einordnung</h2>';
 	// Kategorie-Dropdown.
 	$cat_options = array();
-	foreach ( get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) ) as $term ) {
-		if ( ! is_wp_error( $term ) ) {
-			$cat_options[ (string) $term->term_id ] = $term->name;
+	$terms = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) );
+	if ( ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $term ) {
+			if ( ! is_wp_error( $term ) ) {
+				$cat_options[ (string) $term->term_id ] = $term->name;
+			}
 		}
 	}
 	feinspitz_forms_select( 'feinspitz_category', 'Kategorie', $cat_options, $cat_id );
@@ -106,9 +110,12 @@ function feinspitz_product_form_render() {
 		list( $taxonomy, $label ) = $meta;
 		$options  = array();
 		$selected = '';
-		foreach ( get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) ) as $term ) {
-			if ( ! is_wp_error( $term ) ) {
-				$options[ (string) $term->term_id ] = $term->name;
+		$attr_terms = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
+		if ( ! is_wp_error( $attr_terms ) ) {
+			foreach ( $attr_terms as $term ) {
+				if ( ! is_wp_error( $term ) ) {
+					$options[ (string) $term->term_id ] = $term->name;
+				}
 			}
 		}
 		if ( $product ) {
@@ -145,7 +152,7 @@ function feinspitz_product_form_render() {
 /**
  * Attribut-Objekte aus dem POST bauen (Select-Term-ID oder neuer Freitext-Term).
  *
- * @param array $post $_POST (unslashed durch Aufrufer).
+ * @param array $post $_POST (roh; Felder werden hier einzeln unslashed/absint-verarbeitet).
  * @return WC_Product_Attribute[]
  */
 function feinspitz_product_build_attributes( array $post ) {
@@ -221,6 +228,7 @@ function feinspitz_product_form_save() {
 
 	if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'wc_get_product' ) ) {
 		feinspitz_forms_redirect( FEINSPITZ_PRODUCT_FORM_SLUG, array( 'feinspitz_notice' => 'nowc' ) );
+		return;
 	}
 
 	$id      = isset( $_POST['feinspitz_id'] ) ? absint( $_POST['feinspitz_id'] ) : 0;
@@ -232,6 +240,7 @@ function feinspitz_product_form_save() {
 	$name = isset( $_POST['feinspitz_name'] ) ? sanitize_text_field( wp_unslash( $_POST['feinspitz_name'] ) ) : '';
 	if ( '' === $name ) {
 		feinspitz_forms_redirect( FEINSPITZ_PRODUCT_FORM_SLUG, array( 'id' => $id, 'feinspitz_notice' => 'error' ) );
+		return;
 	}
 
 	$product->set_name( $name );
@@ -252,6 +261,7 @@ function feinspitz_product_form_save() {
 	$product_id = $product->save();
 	if ( ! $product_id ) {
 		feinspitz_forms_redirect( FEINSPITZ_PRODUCT_FORM_SLUG, array( 'id' => $id, 'feinspitz_notice' => 'error' ) );
+		return;
 	}
 
 	feinspitz_product_apply_flags( $product_id, $_POST ); // phpcs:ignore WordPress.Security.NonceVerification.Missing

@@ -120,8 +120,8 @@ function feinspitz_admin_action_card( $url, $icon, $title, $desc ) {
  * Startseite des Feinspitz-Menüs rendern.
  */
 function feinspitz_admin_render_dashboard() {
-	$new_product = admin_url( 'post-new.php?post_type=product' );
-	$new_post    = admin_url( 'post-new.php?post_type=post' );
+	$new_product = defined( 'FEINSPITZ_PRODUCT_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_PRODUCT_FORM_SLUG ) : admin_url( 'post-new.php?post_type=product' );
+	$new_post    = defined( 'FEINSPITZ_ARTICLE_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_ARTICLE_FORM_SLUG ) : admin_url( 'post-new.php?post_type=post' );
 	$anfragen    = admin_url( 'edit.php?post_type=feinspitz_anfrage' );
 	$products    = admin_url( 'edit.php?post_type=product' );
 
@@ -473,8 +473,8 @@ function feinspitz_admin_render_overview_widget() {
 	$count_anfragen = feinspitz_admin_count_anfragen();
 
 	$dashboard   = admin_url( 'admin.php?page=' . FEINSPITZ_ADMIN_SLUG );
-	$new_product = admin_url( 'post-new.php?post_type=product' );
-	$new_post    = admin_url( 'post-new.php?post_type=post' );
+	$new_product = defined( 'FEINSPITZ_PRODUCT_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_PRODUCT_FORM_SLUG ) : admin_url( 'post-new.php?post_type=product' );
+	$new_post    = defined( 'FEINSPITZ_ARTICLE_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_ARTICLE_FORM_SLUG ) : admin_url( 'post-new.php?post_type=post' );
 	$anfragen    = admin_url( 'edit.php?post_type=feinspitz_anfrage' );
 	?>
 	<div class="feinspitz-widget">

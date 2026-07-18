@@ -166,8 +166,9 @@ function feinspitz_article_form_save() {
 		delete_post_thumbnail( $post_id );
 	}
 
-	// Polylang: neue Beiträge der Standardsprache DE zuordnen.
-	if ( function_exists( 'pll_set_post_language' ) ) {
+	// Polylang: NUR neu angelegte Beiträge der Standardsprache DE zuordnen —
+	// eine bestehende (evtl. EN) Übersetzung darf beim Bearbeiten nicht umgehängt werden.
+	if ( ! $id && function_exists( 'pll_set_post_language' ) ) {
 		pll_set_post_language( $post_id, 'de' );
 	}
 

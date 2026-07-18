@@ -29,7 +29,7 @@ add_filter( 'post_row_actions', function ( $actions, $post ) {
 		$url                       = admin_url( 'admin.php?page=' . FEINSPITZ_ARTICLE_FORM_SLUG . '&id=' . (int) $post->ID );
 		$actions['feinspitz_edit'] = sprintf( '<a href="%s">Einfach bearbeiten</a>', esc_url( $url ) );
 	}
-	if ( 'product' === $post->post_type && current_user_can( 'edit_post', $post->ID ) ) {
+	if ( 'product' === $post->post_type && current_user_can( 'edit_product', $post->ID ) ) {
 		$url                       = admin_url( 'admin.php?page=' . FEINSPITZ_PRODUCT_FORM_SLUG . '&id=' . (int) $post->ID );
 		$actions['feinspitz_edit'] = sprintf( '<a href="%s">Einfach bearbeiten</a>', esc_url( $url ) );
 	}

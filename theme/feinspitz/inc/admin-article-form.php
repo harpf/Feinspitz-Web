@@ -38,11 +38,12 @@ function feinspitz_article_form_render() {
 		wp_die( 'Keine Berechtigung.' );
 	}
 
-	echo '<div class="wrap"><h1>Neuer Artikel</h1>';
-	feinspitz_forms_notice();
-
 	$id   = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$post = $id ? get_post( $id ) : null;
+
+	$heading = $post ? 'Artikel bearbeiten' : 'Neuer Artikel';
+	echo '<div class="wrap"><h1>' . esc_html( $heading ) . '</h1>';
+	feinspitz_forms_notice();
 
 	$title   = $post ? $post->post_title : '';
 	$excerpt = $post ? $post->post_excerpt : '';
@@ -117,6 +118,7 @@ function feinspitz_article_form_save() {
 
 	if ( '' === $title ) {
 		feinspitz_forms_redirect( FEINSPITZ_ARTICLE_FORM_SLUG, array( 'id' => $id, 'feinspitz_notice' => 'error' ) );
+		return;
 	}
 
 	$postarr = array(
@@ -136,6 +138,7 @@ function feinspitz_article_form_save() {
 
 	if ( is_wp_error( $post_id ) || ! $post_id ) {
 		feinspitz_forms_redirect( FEINSPITZ_ARTICLE_FORM_SLUG, array( 'id' => $id, 'feinspitz_notice' => 'error' ) );
+		return;
 	}
 
 	// Kategorie aus Typ (über Term-ID).
@@ -157,4 +160,5 @@ function feinspitz_article_form_save() {
 	}
 
 	feinspitz_forms_redirect( FEINSPITZ_ARTICLE_FORM_SLUG, array( 'id' => $post_id, 'feinspitz_notice' => 'saved' ) );
+	return;
 }

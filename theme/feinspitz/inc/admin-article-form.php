@@ -39,6 +39,10 @@ function feinspitz_article_form_render() {
 	}
 
 	$id   = isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	// Bearbeiten nur echter Beiträge und nur mit Objekt-Berechtigung (kein IDOR/Fremdtyp-Zugriff).
+	if ( $id && ( 'post' !== get_post_type( $id ) || ! current_user_can( 'edit_post', $id ) ) ) {
+		wp_die( 'Keine Berechtigung, diesen Beitrag zu bearbeiten.' );
+	}
 	$post = $id ? get_post( $id ) : null;
 
 	$heading = $post ? 'Artikel bearbeiten' : 'Neuer Artikel';
@@ -109,11 +113,19 @@ function feinspitz_article_form_save() {
 	check_admin_referer( 'feinspitz_save_article' );
 
 	$id      = isset( $_POST['feinspitz_id'] ) ? absint( $_POST['feinspitz_id'] ) : 0;
+	// Bearbeiten nur echter Beiträge und nur mit Objekt-Berechtigung (kein IDOR/Fremdtyp-Zugriff).
+	if ( $id && ( 'post' !== get_post_type( $id ) || ! current_user_can( 'edit_post', $id ) ) ) {
+		wp_die( 'Keine Berechtigung, diesen Beitrag zu bearbeiten.' );
+	}
 	$type    = feinspitz_forms_choice( isset( $_POST['feinspitz_type'] ) ? wp_unslash( $_POST['feinspitz_type'] ) : '', array_keys( feinspitz_article_types() ), 'ratgeber' );
 	$title   = isset( $_POST['feinspitz_title'] ) ? sanitize_text_field( wp_unslash( $_POST['feinspitz_title'] ) ) : '';
 	$excerpt = isset( $_POST['feinspitz_excerpt'] ) ? sanitize_textarea_field( wp_unslash( $_POST['feinspitz_excerpt'] ) ) : '';
 	$content = isset( $_POST['feinspitz_content'] ) ? wp_kses_post( wp_unslash( $_POST['feinspitz_content'] ) ) : '';
 	$status  = feinspitz_forms_choice( isset( $_POST['feinspitz_status'] ) ? wp_unslash( $_POST['feinspitz_status'] ) : '', array( 'publish', 'draft' ), 'draft' );
+	// Veröffentlichen nur mit publish-Berechtigung; sonst zur Freigabe vormerken.
+	if ( 'publish' === $status && ! current_user_can( 'publish_posts' ) ) {
+		$status = 'pending';
+	}
 	$image   = isset( $_POST['feinspitz_image'] ) ? absint( $_POST['feinspitz_image'] ) : 0;
 
 	if ( '' === $title ) {

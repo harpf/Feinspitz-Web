@@ -65,6 +65,10 @@ function feinspitz_product_form_render() {
 		echo '<p>WooCommerce ist nicht aktiv — Produkte können derzeit nicht angelegt werden.</p></div>';
 		return;
 	}
+	// Bearbeiten nur echter Produkte und nur mit Objekt-Berechtigung (kein IDOR/Fremdtyp-Zugriff).
+	if ( $id && ( 'product' !== get_post_type( $id ) || ! current_user_can( 'edit_product', $id ) ) ) {
+		wp_die( 'Keine Berechtigung, dieses Produkt zu bearbeiten.' );
+	}
 	$product = $id ? wc_get_product( $id ) : null;
 
 	// Vorbelegung.
@@ -232,6 +236,10 @@ function feinspitz_product_form_save() {
 	}
 
 	$id      = isset( $_POST['feinspitz_id'] ) ? absint( $_POST['feinspitz_id'] ) : 0;
+	// Bearbeiten nur echter Produkte und nur mit Objekt-Berechtigung (kein IDOR/Fremdtyp-Zugriff).
+	if ( $id && ( 'product' !== get_post_type( $id ) || ! current_user_can( 'edit_product', $id ) ) ) {
+		wp_die( 'Keine Berechtigung, dieses Produkt zu bearbeiten.' );
+	}
 	$product = $id ? wc_get_product( $id ) : null;
 	if ( ! $product ) {
 		$product = new WC_Product_Simple();
@@ -254,6 +262,10 @@ function feinspitz_product_form_save() {
 	$product->set_category_ids( $cat_id ? array( $cat_id ) : array() );
 
 	$status = feinspitz_forms_choice( isset( $_POST['feinspitz_status'] ) ? wp_unslash( $_POST['feinspitz_status'] ) : '', array( 'publish', 'draft' ), 'draft' );
+	// Veröffentlichen nur mit publish-Berechtigung; sonst zur Freigabe vormerken.
+	if ( 'publish' === $status && ! current_user_can( 'publish_products' ) ) {
+		$status = 'pending';
+	}
 	$product->set_status( $status );
 
 	$product->set_attributes( feinspitz_product_build_attributes( $_POST ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing — Nonce oben geprüft.

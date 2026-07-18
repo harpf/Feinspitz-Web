@@ -120,8 +120,8 @@ function feinspitz_admin_action_card( $url, $icon, $title, $desc ) {
  * Startseite des Feinspitz-Menüs rendern.
  */
 function feinspitz_admin_render_dashboard() {
-	$new_product = admin_url( 'post-new.php?post_type=product' );
-	$new_post    = admin_url( 'post-new.php?post_type=post' );
+	$new_product = defined( 'FEINSPITZ_PRODUCT_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_PRODUCT_FORM_SLUG ) : admin_url( 'post-new.php?post_type=product' );
+	$new_post    = defined( 'FEINSPITZ_ARTICLE_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_ARTICLE_FORM_SLUG ) : admin_url( 'post-new.php?post_type=post' );
 	$anfragen    = admin_url( 'edit.php?post_type=feinspitz_anfrage' );
 	$products    = admin_url( 'edit.php?post_type=product' );
 
@@ -162,25 +162,24 @@ function feinspitz_admin_render_dashboard() {
 				<h3><span class="dashicons dashicons-cart" aria-hidden="true"></span> Ein Produkt anlegen</h3>
 				<ol>
 					<li>Auf <strong>„Neues Produkt"</strong> klicken.</li>
-					<li><strong>Titel</strong> (Weinname) und eine <strong>Beschreibung</strong> eintragen.</li>
-					<li>Rechts unter <strong>Produktbild</strong> ein Foto setzen.</li>
-					<li>Im Block <strong>Produktdaten → Attribute</strong> die Wein-Angaben wählen:
-						<em>Rebsorte, Weingut, Region, Süsse, Jahrgang, Volumen</em> (Auswahl aus der Liste).</li>
-					<li>Preis eintragen. Für Flags (histamingeprüft / vegan / alkoholfrei) das
-						passende <strong>Produkt-Schlagwort</strong> setzen.</li>
-					<li>Rechts oben <strong>„Veröffentlichen"</strong> klicken — fertig.</li>
+					<li><strong>Weinname</strong>, <strong>Preis (CHF)</strong> und eine <strong>Beschreibung</strong> eintragen.</li>
+					<li>Über <strong>„Bild wählen"</strong> ein Produktbild setzen.</li>
+					<li><strong>Kategorie</strong> wählen und die Wein-Angaben
+						(<em>Rebsorte, Weingut, Region, Süsse, Jahrgang, Volumen</em>) aus den Listen auswählen —
+						fehlt ein Wert, im Feld <strong>„oder neu:"</strong> eintragen.</li>
+					<li>Zutreffende <strong>Merkmale</strong> ankreuzen (Histamingeprüft / Vegan / Alkoholfrei).</li>
+					<li>Unten auf <strong>„Speichern"</strong> klicken — fertig.</li>
 				</ol>
 			</div>
 			<div class="feinspitz-guide__col">
 				<h3><span class="dashicons dashicons-edit" aria-hidden="true"></span> Einen Artikel schreiben</h3>
 				<ol>
 					<li>Auf <strong>„Neuer Artikel"</strong> klicken.</li>
-					<li><strong>Titel</strong> und Text im Editor verfassen.</li>
-					<li>Rechts unter <strong>Kategorien</strong> unbedingt
-						<strong>„Ratgeber"</strong> oder <strong>„Weinlexikon"</strong> auswählen —
-						davon hängt ab, wo der Artikel erscheint.</li>
+					<li>Oben den <strong>Typ</strong> wählen: <strong>„Ratgeber"</strong> oder
+						<strong>„Weinlexikon"</strong> — die Kategorie wird automatisch gesetzt.</li>
+					<li><strong>Titel</strong>, einen kurzen <strong>Teaser</strong> und den <strong>Text</strong> verfassen.</li>
 					<li>Ein <strong>Beitragsbild</strong> setzen (macht die Übersicht schöner).</li>
-					<li>Rechts oben <strong>„Veröffentlichen"</strong> klicken.</li>
+					<li>Unten auf <strong>„Speichern"</strong> klicken — fertig.</li>
 				</ol>
 			</div>
 		</div>
@@ -473,8 +472,8 @@ function feinspitz_admin_render_overview_widget() {
 	$count_anfragen = feinspitz_admin_count_anfragen();
 
 	$dashboard   = admin_url( 'admin.php?page=' . FEINSPITZ_ADMIN_SLUG );
-	$new_product = admin_url( 'post-new.php?post_type=product' );
-	$new_post    = admin_url( 'post-new.php?post_type=post' );
+	$new_product = defined( 'FEINSPITZ_PRODUCT_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_PRODUCT_FORM_SLUG ) : admin_url( 'post-new.php?post_type=product' );
+	$new_post    = defined( 'FEINSPITZ_ARTICLE_FORM_SLUG' ) ? admin_url( 'admin.php?page=' . FEINSPITZ_ARTICLE_FORM_SLUG ) : admin_url( 'post-new.php?post_type=post' );
 	$anfragen    = admin_url( 'edit.php?post_type=feinspitz_anfrage' );
 	?>
 	<div class="feinspitz-widget">

@@ -126,6 +126,7 @@ function feinspitz_forms_close() {
  * Text-/Zahlfeld.
  */
 function feinspitz_forms_text( $name, $label, $value = '', $required = false, $type = 'text' ) {
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- %3$s und %6$s sind statische Markup-Literale ohne Benutzerdaten.
 	printf(
 		'<p class="feinspitz-field"><label for="%1$s">%2$s%3$s</label>'
 		. '<input type="%4$s" id="%1$s" name="%1$s" value="%5$s" class="regular-text"%6$s></p>',
@@ -206,7 +207,7 @@ function feinspitz_forms_select( $name, $label, array $options, $selected = '', 
 
 /**
  * Bildauswahl über die WP-Medienbibliothek (Button + Vorschau + Hidden-ID).
- * Das JS liegt in feinspitz_forms_enqueue() (nur auf den Formular-Seiten geladen).
+ * Das JS wird über den admin_enqueue_scripts-Hook geladen (nur auf den beiden Formular-Seiten).
  */
 function feinspitz_forms_image( $name, $label, $attachment_id = 0 ) {
 	$attachment_id = absint( $attachment_id );
@@ -217,6 +218,7 @@ function feinspitz_forms_image( $name, $label, $attachment_id = 0 ) {
 			$preview = $img;
 		}
 	}
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- %2$s kommt von wp_get_attachment_image (bereits sicher), %5$s ist ein statisches Inline-Style-Literal.
 	printf(
 		'<div class="feinspitz-field feinspitz-media"><label>%1$s</label>'
 		. '<div class="feinspitz-media-preview">%2$s</div>'
@@ -224,7 +226,7 @@ function feinspitz_forms_image( $name, $label, $attachment_id = 0 ) {
 		. '<button type="button" class="button feinspitz-media-pick">Bild wählen</button> '
 		. '<button type="button" class="button-link feinspitz-media-remove"%5$s>Entfernen</button></div>',
 		esc_html( $label ),
-		$preview, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — wp_get_attachment_image ist bereits sicher.
+		$preview,
 		esc_attr( $name ),
 		$attachment_id,
 		$attachment_id ? '' : ' style="display:none"'
